@@ -1,5 +1,7 @@
 body {	color:#666;	font:300 15px/15px Roboto,Arial,Helvetica;background-color:#fff;-webkit-font-smoothing:antialiased;}
 
+#top-nav {background-color: #f7f7f7; border-color: #dedede;}
+
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}
 .btn,a,.btn:hover,a:hover {
@@ -13,7 +15,7 @@ outline: none !important;
 
 h1,h2,h3,h4{margin: 0;line-height: 1em;}
 h1{font:700 5em Roboto,Arial,Helvetica;margin:0.25em 0;text-transform: uppercase;}
-h2{font:300 2.5em Roboto,Arial,Helvetica;margin-bottom: 1.5em;}
+h2{font:300 1.7em; text-align: left; Roboto,Arial,Helvetica;margin-bottom: 1.5em;}
 h3{font:300 2em Roboto,Arial,Helvetica;margin:2em 0 1em 0;}
 h4{font:300 1.5em Roboto,Arial,Helvetica;margin-bottom: 1em;}
 h4 i{margin-right: 0.5em;}
