@@ -26,8 +26,9 @@ section img {
 }
 
 .link {
-    font-size: 18px;
+    font-size: 17px;
     margin-top: 20px;
     display: block;
     font-weight: 400;
+    color: #ffb500;
 }

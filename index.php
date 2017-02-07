@@ -94,10 +94,12 @@
       </a>
     </figure>
      <figure class="effect-zoe">
+       <a href="#anges">
         <img src="images/tmp/2_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>Les&nbsp;&nbsp; anges&nbsp;&nbsp; de&nbsp;&nbsp; passage</h2>          
         </figcaption>
+      </a>
     </figure>
     <figure class="effect-zoe">
         <a href="#about">
@@ -108,22 +110,28 @@
         </a>
     </figure>
      <figure class="effect-zoe">
+      <a href="#rat">
         <img src="images/tmp/3_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>Le&nbsp;&nbsp; rat,&nbsp;&nbsp; le&nbsp;&nbsp; roi&nbsp;&nbsp; et&nbsp;&nbsp; le&nbsp;&nbsp; fou&nbsp;&nbsp; du&nbsp;&nbsp; roi</h2>           
         </figcaption>
+      </a>
     </figure>
     <figure class="effect-zoe">
+       <a href="#elphes">
         <img src="images/tmp/5_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>Décrochez&nbsp;&nbsp; moi&nbsp;&nbsp; la&nbsp;&nbsp; lune</h2>            
         </figcaption>
+      </a>
     </figure>
      <figure class="effect-zoe">
+       <a href="#elphes">
         <img src="images/tmp/4_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>La&nbsp;&nbsp; pelle&nbsp;&nbsp; de&nbsp;&nbsp; la&nbsp;&nbsp; terre</h2>          
         </figcaption>
+      </a>
     </figure>
     
     
@@ -233,6 +241,93 @@ background-size: 20px 20px;    color: #b3b3b3;">
 </section>
 
 
+<section id="anges" style="
+    text-align: justify;
+    background-color: #6d695c;
+background-color:black;
+background-image:
+radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+color:#bfbfbf;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les anges de passage</h2>  
+    <p>
+    Pour vos marchés de nuit et toutes vos animations de rue, nous vous offrons des êtres exceptionnels, tout droit sortis des rêves : rencontre surprise avec le public, instant magique...<br />
+    Les Anges de Passage, lumineux et musicaux, vous propose un temps de grâce.
+    </p>
+
+    <div class="car1">
+      <div class="carousel-cell"><img src="images/tmp/anges/anges1.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges2.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges3.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges4.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges5.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges6.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges7.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges8.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/anges/anges9.jpg"></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="rat" style="
+                text-align: justify;
+    background-color: #d2d2d2;
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%), linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%), linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%), linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
+    color: #b17f06;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Le rat, le roi et le fou du roi</h2>  
+    <p style="font-size: 16px;
+    font-weight: 500; margin-bottom: 10px;">Création 2016</p>
+    <p>
+      Partie d'un coup de coeur pour ce théâtre d'auteur contemporain profondément ancré dans l'actualité politique, La compagnie propose une mise en scène de cette farce burlesque dans un univers sonore puissant: le Théâtre qui aime la musique.
+Matei Visniec est, avec son théâtre, comme ce jardinier qui récolterait les fruits de nos fragilités pour que l'humanités apprenne à se voir telle qu'elle est vraiment et peut-être, tente de se réinventer un devenir...
+L’histoire d'une geôle insalubre, où un Roi déchu et son bouffon vont bientôt passer à la trappe de l'histoire sous les vivats de la foule. Au dehors de la cellule, la foule, les anciens courtisans et leurs ouailles, dans l'ivresse de leur liberté retrouvée, se livrent à un carnaval morbide et délirant. Que feront-ils de cette liberté ? Pourquoi donc le destin du fou est-il lié à celui du Roi ? Peut-être les rats, à la présence envoûtante apporteront-ils un point de vue nouveau, à condition qu'ils acceptent de prendre la parole.
+    </p>
+    
+    <div class="car1">
+      <div class="carousel-cell"><img src="images/tmp/rat/image1.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image2.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image3.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image4.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image5.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image6.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/rat/image7.jpg"></div>
+    </div>
+
+  <p style="line-height: 19px;">
+      LE ROI, LE RAT ET LE FOU DU ROI, de Mattei Visniec<br />
+  DIRECTION ARTISTIQUE: Hélène Vrignaud-masurel <br />
+  INTERPRETATION: Thomas Masurel, Franck Guilbot, Jean-Baptiste Gasseling, Hélène Vrignaud-Masurel <br />
+  COSTUMES: lydie Bourgeau <br />
+  CREATION SONORE: Jean baptiste Gasseling <br />
+  REGARD EXTERIEUR: Dominique Terrier<br />
+  AIDE A LA DIRECTION D'ACTEUR: Anne Danais 
+    </p>
+
+    <div class="wowload fadeInLeft">
+      <div class="col-sm-6">
+       <a class="link" href="images/tmp/rat/Aff-lePassage-HD.pdf" target="_blank"">>> Voir l'affiche</a>
+       <a class="link" href="https://www.youtube.com/watch?v=HvfVfgs8Mxs" target="_blank"">>> Voir le trailer</a>
+       <a class="link" href="images/tmp/rat/Le courrier de l'Ouest 11 janv 2016.pdf" target="_blank"">>> Article dans <i>Le courrier de l'Ouest</i></a>
+      </div>
+    </div>
+    <div class="wowload fadeInRight">
+      <div class="col-sm-6">
+        <a class="link" href="images/tmp/rat/IMPLANTATION  EXTERIEUR ET EN SALLE DE REPLI .pdf" target="_blank"">>> Implantation extérieure</a>
+        <a class="link" href="images/tmp/rat/plan de feu.pdf" target="_blank"">>> Plan de feu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!--Contact Starts-->
 <div id="contact" class="spacer">
 
@@ -247,6 +342,7 @@ background-size: 20px 20px;    color: #b3b3b3;">
         <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp; Envoyer</button>
       </div>
   </div>
+
 
 
 
