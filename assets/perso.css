@@ -1,8 +1,33 @@
 section {
-	
 }
 
 @font-face {
 	font-family:"raleway";
     src: url("font/Raleway-Light.ttf") /* TTF file for CSS3 browsers */
+}
+
+section img {
+   opacity: 0.85;
+   border-radius: 2px;
+}
+
+.car1, .car1 img {
+	height: 200px;
+}
+
+.car1 {
+	margin-bottom: 55px;
+}
+
+.car1 img {
+	height: 200px;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+.link {
+    font-size: 18px;
+    margin-top: 20px;
+    display: block;
+    font-weight: 400;
 }

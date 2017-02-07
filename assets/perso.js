@@ -12,4 +12,13 @@ $( document ).ready(function() {
     }
   });
 
+  // Carousel
+  $('.car1').flickity({
+    // options
+    cellAlign: 'center',
+    contain: true,
+    wrapAround: true,
+    groupCells: false
+  });
+
 });

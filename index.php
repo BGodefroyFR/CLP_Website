@@ -31,6 +31,8 @@
 
 <link rel="stylesheet" href="assets/style.css">
 
+<link rel="stylesheet" href="assets/flickity/flickity.css">
+
 </head>
 
 <body>
@@ -84,10 +86,12 @@
 <!-- works -->
 <div id="works"  class=" clearfix grid"> 
     <figure class="effect-zoe">
+      <a href="#elphes">
         <img src="images/tmp/1_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>Les&nbsp;&nbsp; elphes&nbsp;&nbsp; géants</h2>          
         </figcaption>
+      </a>
     </figure>
      <figure class="effect-zoe">
         <img src="images/tmp/2_menu.jpg" alt="img01"/>
@@ -157,7 +161,15 @@
   <div>
 </section>
 
-<section style="background-color: #e1c4f7; text-align: justify;">
+<section style="text-align: justify; background:
+linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+background-color: #131313;
+background-size: 20px 20px;    color: #b3b3b3;">
   <div class="container spacer about">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Théâtre d'auteur</h2>  
     <div class="row">
@@ -165,7 +177,7 @@
         <div class="wowload fadeInLeft">
           <h4>Démarche artistique</h4>
           <p>Comme un miroir tendu, notre démarche artistique s’attachera, avec délicatesse et prudence, à dévoiler cette subtile vibration qu’est la fragilité humaine. Masquée derrière nos failles, nos dénuements, nos peurs, et nos passions, cette constante devient alors la force nécessaire pour mettre en lumière, poser un regard poétique sur nos humanités, donner du sens et tenter de devenir plus humain.</p>
-          <img src="images/tmp/helene.jpg" style="width: 45%; max-width: 150px; float: right; margin: 7px; opacity: 0.9; border-radius: 2px;"> 
+          <img src="images/tmp/helene.jpg" style="width: 45%; max-width: 150px; float: right; margin: 12px; opacity: 0.9; border-radius: 2px;"> 
           <p>Hélène Vrignaud-Masurel, écrivain et dramaturge, porte la Compagnie "le Passage" dans ses créations.
           Auteur de 4 pièces de théâtre, elle enrichit chacune de ses nouvelles créations par le regard qu’elle porte sur la fragilité : la nôtre et celle que chacun porte en soi.</p>
         </div><br />
@@ -183,6 +195,43 @@
     </div>
   <div>
 </section>
+
+
+<section id="elphes" style="background-color: #e3f5d2;
+    text-align: justify;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,.5) 20px, rgba(255,255,255,.5) 40px);">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les elphes géants</h2>  
+    <p>
+    Rencontre de l’instant, nos Elfes facétieux jouent avec le public  et apportent un instant de poésie et de bonheur à chacun...
+    </p>
+
+    <div class="car1">
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe1.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe2.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe3.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe4.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe5.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe6.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elphes/elphe7.jpg"></div>
+    </div>
+
+    <div class="wowload fadeInLeft" style="font-size: 14px; line-height: 19px;">
+    <b>Les Elfes, en 2016, c'était à...</b><br /><br />
+       - 16 juillet, Pons (17) journée médiévale<br/>
+       - 18 septembre, La Couronne (16) marché médiéval<br/>
+       - 29 mai, Chouzé sur loire (37)<br/>
+       - 8 juillet, île d'Aix (17)<br/>
+       - 18 juillet Vendays-Montalivet (33)<br/>
+       - 31 juillet, Brioude (43)<br/>
+       - 22 juillet et le 18 août, La Palmyre (17)
+    </div>
+    <div class="wowload fadeInRight">
+     <a class="link" href="images/tmp/affiche_lesElphes.jpg" target="_blank"">>> Voir l'affiche</a>
+    </div>
+  </div>
+</section>
+
 
 <!--Contact Starts-->
 <div id="contact" class="spacer">
@@ -235,6 +284,8 @@ Compagnie le Passage <br /><br /> 2009 - <?php echo date("Y"); ?>
 
 <!-- jquery -->
 <script src="assets/jquery.js"></script>
+
+<script src="assets/flickity/flickity.pkgd.min.js"></script>
 
 <script src="assets/perso.js"></script>
 
