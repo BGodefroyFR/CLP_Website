@@ -49,7 +49,7 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 .carousel-control{z-index:1000;}
 
 /*about*/
-.about p{font-size: 14px;}
+.about p{font-size: 15px;}
 .about.spacer{padding-left: 4em; padding-right: 4em;}
 .process ul li{width: 10em;height: 10em;border: 1px solid #CEEBF0;padding: 0;border-radius: 50%;margin: 0 1.25em;line-height: 13.5em;color: #21ABCA;}
 .process ul li span{line-height: 2em;display: inline-block;font-weight: 300;}

@@ -10,7 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 
 <!-- font awesome -->
-<link href="assets/font-awesome.min.css" rel="stylesheet">
+<link href="assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="assets/perso.css" rel="stylesheet">
 
@@ -63,7 +63,6 @@
               <ul class="nav navbar-nav navbar-right scroll">
                  <li class="active"><a href="#works">Accueil</a></li>
                  <li ><a href="#about">A propos</a></li>
-                 <li ><a href="#partners">Partenaires</a></li>
                  <li ><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -134,25 +133,51 @@
 
 
 
-<section id="about" style="background-color: #f1f1f1;">
+<section id="about" style="background-color: #f1f1f1; text-align: justify;">
   <div class="container spacer about">
-    <h2 class="text-center wowload fadeInUp" style="font-weight: 100; font-size: 37px;">Compagnie le Passage</h2>  
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Compagnie le Passage</h2>  
+    <div class="row">
+      <div class="wowload fadeInLeft">
+        <img src="images/tmp/logo5.png" style="width: 45%; float: right; margin: 8px; max-width: 380px;">
+        <p>La compagnie Le Passage est installée en Charente depuis 2009.<br />
+        Elle est portée par l'association Scènes en Chantier.</p>
+      </div><br />
+      <div class="wowload fadeInLeft">
+      <h5>Mentions légales</h5>
+      <p>Scènes en chantier : Association loi 1901.<br />
+        Association dépendante de la mairie de Barret (16).<br />
+        N° de licence de spectacle : 2-1036850<br /><br />
+        Président et responsable de la publication :<br />
+        Gerard Pelletant<br />
+        7, cité de l’Etang - 16120 Chateauneuf sur Charente<br />
+        Tél : 06 14 05 30 57<br />
+        paps@club-internet.fr</p>    
+      </div>
+    </div>
+  <div>
+</section>
+
+<section style="background-color: #e1c4f7; text-align: justify;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Théâtre d'auteur</h2>  
     <div class="row">
       <div class="col-sm-6">
         <div class="wowload fadeInLeft">
-          <p>La compagnie Le Passage est installée en Charente depuis 2009.<br />
-          Elle est portée par l'association Scènes en Chantier.</p>
+          <h4>Démarche artistique</h4>
+          <p>Comme un miroir tendu, notre démarche artistique s’attachera, avec délicatesse et prudence, à dévoiler cette subtile vibration qu’est la fragilité humaine. Masquée derrière nos failles, nos dénuements, nos peurs, et nos passions, cette constante devient alors la force nécessaire pour mettre en lumière, poser un regard poétique sur nos humanités, donner du sens et tenter de devenir plus humain.</p>
+          <img src="images/tmp/helene.jpg" style="width: 45%; max-width: 150px; float: right; margin: 7px; opacity: 0.9; border-radius: 2px;"> 
+          <p>Hélène Vrignaud-Masurel, écrivain et dramaturge, porte la Compagnie "le Passage" dans ses créations.
+          Auteur de 4 pièces de théâtre, elle enrichit chacune de ses nouvelles créations par le regard qu’elle porte sur la fragilité : la nôtre et celle que chacun porte en soi.</p>
         </div><br />
-        <div class="wowload fadeInLeft">
-        <h5>Mentions légales</h5>
-        <p>Scènes en chantier : Association loi 1901.<br />
-          Association dépendante de la mairie de Barret (16).<br />
-          N° de licence de spectacle : 2-1036850<br /><br />
-          Président et responsable de la publication :<br />
-          Gerard Pelletant<br />
-          7, cité de l’Etang - 16120 Chateauneuf sur Charente<br />
-          Tél : 06 14 05 30 57<br />
-          paps@club-internet.fr</p>    
+      </div>
+      <div class="col-sm-6">
+        <div class="wowload fadeInRight">
+        <h4>Les œuvres de l’auteur :</h4>
+        <p><b>La pelle de la Terre</b> aux éditions l’Harmattan, collection « Théâtre des cinq continents ».<br />
+<b>Réservoir à vie</b> – Conte d’apothicaire thérapeutique, parcours initiatique et poétique.<br />
+<b>L'homme qui poussa les murs de sont réduit</b> – Fragments poétiques pour une tragédie, itinéraire personnel de Franz Stock, aumônier de prison à Fresnes pendant la seconde guerre mondiale.<br />
+« Votre texte a retenu notre attention. Nous avons salué une belle tenue de l’ensemble et de très beaux moments. Nous avons été séduits, par exemple, par la confrontation entre Franz Stock et le Chevalier…» (Ecriture Théâtrale en Chantier. Poitou-Charentes)<br />
+<b>Encagés</b> - en cours d'écriture - </p>   
         </div>
       </div>
     </div>
@@ -163,14 +188,14 @@
 <div id="contact" class="spacer">
 
 <div class="container contactform center">
-<h2 class="text-center  wowload fadeInUp">Contact</h2>
+<h2 class="text-center  wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Contact</h2>
   <div class="row wowload fadeInLeftBig">      
       <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
         <input type="text" placeholder="Nom">
         <input type="text" placeholder="Email">
         <input type="text" placeholder="Sujet">
         <textarea rows="5" placeholder="Message"></textarea>
-        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Envoyer</button>
+        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp; Envoyer</button>
       </div>
   </div>
 
