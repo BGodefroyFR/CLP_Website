@@ -6,9 +6,30 @@ section {
     src: url("font/Raleway-Light.ttf") /* TTF file for CSS3 browsers */
 }
 
+@font-face {
+	font-family:"ralewayRegular";
+    src: url("font/Raleway-Regular.ttf") /* TTF file for CSS3 browsers */
+}
+
 section img {
    opacity: 0.85;
    border-radius: 2px;
+}
+
+h4 {
+	margin-bottom: 7px;
+    font-size: 20px;
+}
+
+.partenaire {
+	display: inline-block;
+    margin-right: 4px;
+    height: 80px;
+    margin-top: 5px;
+}
+
+#pelle p {
+	line-height: 21px;
 }
 
 .car1, .car1 img {
@@ -25,10 +46,56 @@ section img {
 	margin-left: 2px;
 }
 
-.link {
-    font-size: 17px;
-    margin-top: 20px;
+.wrapper{
+  margin:3em 0;
+}
+
+section a,section a:visited,section a:hover,section a:active{
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+	position:relative;
+  transition:0.5s color ease;
+	text-decoration:none !important;
+
+    margin-top: 25px;
     display: block;
     font-weight: 400;
-    color: #ffb500;
+    color: #d69905;
+
+    clear:both;
+   	float:left;
+   	font-family: ralewayRegular;
+    font-size: 20px;
+}
+
+section a:hover{
+	color:#a27404;
+	text-decoration:none !important;;
+}
+section a.before:before,section a.after:after{
+  content: "";
+  transition:0.5s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+}
+section a.before:before{
+  top:-0.44em;
+}
+section a.after:after{
+  bottom:-0.28em;
+}
+section a.before:before,section a.after:after{
+  height:5px;
+  height:0.30rem;
+  width:0;
+  background:#a27404;
+}
+section a:before,section a:after{
+  left:50%;
+  -webkit-transform:translateX(-50%);
+          transform:translateX(-50%);
+}
+section a.before:hover:before,section a.after:hover:after{
+  width:100%;
 }

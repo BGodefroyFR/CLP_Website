@@ -12,8 +12,6 @@
 <!-- font awesome -->
 <link href="assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<link href="assets/perso.css" rel="stylesheet">
-
 <!-- bootstrap -->
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 
@@ -32,6 +30,8 @@
 <link rel="stylesheet" href="assets/style.css">
 
 <link rel="stylesheet" href="assets/flickity/flickity.css">
+
+<link href="assets/perso.css" rel="stylesheet">
 
 </head>
 
@@ -118,7 +118,7 @@
       </a>
     </figure>
     <figure class="effect-zoe">
-       <a href="#elphes">
+       <a href="#lune">
         <img src="images/tmp/5_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>Décrochez&nbsp;&nbsp; moi&nbsp;&nbsp; la&nbsp;&nbsp; lune</h2>            
@@ -126,7 +126,7 @@
       </a>
     </figure>
      <figure class="effect-zoe">
-       <a href="#elphes">
+       <a href="#pelle">
         <img src="images/tmp/4_menu.jpg" alt="img01"/>
         <figcaption>
             <h2>La&nbsp;&nbsp; pelle&nbsp;&nbsp; de&nbsp;&nbsp; la&nbsp;&nbsp; terre</h2>          
@@ -235,7 +235,7 @@ background-size: 20px 20px;    color: #b3b3b3;">
        - 22 juillet et le 18 août, La Palmyre (17)
     </div>
     <div class="wowload fadeInRight">
-     <a class="link" href="images/tmp/affiche_lesElphes.jpg" target="_blank"">>> Voir l'affiche</a>
+     <a class="link before after" href="images/tmp/affiche_lesElphes.jpg" target="_blank"">>> Voir l'affiche</a>
     </div>
   </div>
 </section>
@@ -313,17 +313,181 @@ L’histoire d'une geôle insalubre, où un Roi déchu et son bouffon vont bient
 
     <div class="wowload fadeInLeft">
       <div class="col-sm-6">
-       <a class="link" href="images/tmp/rat/Aff-lePassage-HD.pdf" target="_blank"">>> Voir l'affiche</a>
-       <a class="link" href="https://www.youtube.com/watch?v=HvfVfgs8Mxs" target="_blank"">>> Voir le trailer</a>
-       <a class="link" href="images/tmp/rat/Le courrier de l'Ouest 11 janv 2016.pdf" target="_blank"">>> Article dans <i>Le courrier de l'Ouest</i></a>
+       <a class="link before after" href="images/tmp/rat/Aff-lePassage-HD.pdf" target="_blank"">>>&nbsp; Voir l'affiche</a>
+       <a class="link before after" href="https://www.youtube.com/watch?v=HvfVfgs8Mxs" target="_blank"">>>&nbsp; Voir le trailer</a>
+       <a class="link before after" href="images/tmp/rat/Le courrier de l'Ouest 11 janv 2016.pdf" target="_blank"">>>&nbsp; <i>Le courrier de l'Ouest</i></a>
       </div>
     </div>
     <div class="wowload fadeInRight">
       <div class="col-sm-6">
-        <a class="link" href="images/tmp/rat/IMPLANTATION  EXTERIEUR ET EN SALLE DE REPLI .pdf" target="_blank"">>> Implantation extérieure</a>
-        <a class="link" href="images/tmp/rat/plan de feu.pdf" target="_blank"">>> Plan de feu</a>
+        <a class="link before after" href="images/tmp/rat/IMPLANTATION  EXTERIEUR ET EN SALLE DE REPLI .pdf" target="_blank"">>>&nbsp; Implantation extérieure</a>
+        <a class="link before after" href="images/tmp/rat/plan de feu.pdf" target="_blank"">>>&nbsp; Plan de feu</a>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section id="lune" style="
+                text-align: justify;
+    background-color: #475667;
+background-image:
+repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+background-size: 70px 120px;
+    color: #e6e5e2;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Décrochez moi la lune</h2>  
+    <p style="font-size: 16px;
+    font-weight: 500; margin-bottom: 10px;">Géants humains, sensibles et décalés.<br /> 
+    Théâtre de rue et musique. Tout public.</p>
+    <p>
+        <i>Avec Hélène Masurel, Bertrand Malherbe, Thomas Masurel</i><br /><br />
+        Clôture, Germaine et Tonton Flash entreprennent une vaste recherche interstellaire. Guidés par Tonton et ses  lumières poétiques, ils atteignent presque l’astre solaire,  mais la grande Germaine,  éternelle insatisfaite, veut la lune ...   Comment Clôture parviendra t’il à décrocher l’impossible ?
+    </p>
+    
+    <div class="car1">
+      <div class="carousel-cell"><img src="images/tmp/lune/lune1.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/lune/lune2.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/lune/lune3.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/lune/lune4.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/lune/lune5.jpg"></div>
+    </div>
+
+    <div class="wowload fadeInLeft">
+      <div class="col-sm-6">
+       <a class="link before after" href="images/tmp/lune/affiche.jpg" target="_blank"">>> Voir l'affiche</a>
+       <a class="link before after" href="https://www.youtube.com/watch?v=2PKRpo9P9t8" target="_blank"">>> Voir le trailer</a>
+      </div>
+    </div>
+    <div class="wowload fadeInRight">
+      <div class="col-sm-6">
+        <a class="link before after" href="images/tmp/lune/fiche technique.pdf" target="_blank"">>> Fiche technique</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="pelle" style="
+                text-align: justify;
+    background-color: #dcd1bd;
+background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+    color: #1f1f1f;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">La pelle de la terre</h2>  
+    <p style="font-size: 16px;
+    font-weight: 500; margin-bottom: 10px;">
+    Spectacle. Tout public.<br />
+    Durée : 1h15</p>
+    <p>
+        <i>Avec Franck Guilbot et Thomas Masurel</i><br /><br />
+        Dans un cimetière autour d’une tombe, un fossoyeur philosophe, Tristan, lutte contre le temps qui passe pendant que Paco, son confrère, creuse pour le "client" ...<br />
+        Ces deux clowns fragiles nous font rire tant ils sont différents mais semblables dans leurs aspirations profondes. La poésie comme l'absurde s’entrecroisent sans cesse. Ils nous bousculent avec tendresse et nous invitent dans ce monde du sensible qui les rend si humains.
+    </p>
+    
+    <div class="car1">
+      <div class="carousel-cell"><img src="images/tmp/pelle/image8.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image9.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image10.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image11.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image12.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image13.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image14.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image15.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image16.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image17.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image18.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image19.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image20.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image21.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image22.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image23.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image24.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image25.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/pelle/image26.jpg"></div>
+    </div>
+
+    <div class="wowload fadeInLeft">
+      <div class="col-sm-6">
+       <a class="link before after" href="images/tmp/pelle/affiche la pelle .pdf" target="_blank"">>> Voir l'affiche</a>
+       <a class="link before after" href="https://www.youtube.com/watch?v=NRXkBso-1cI" target="_blank"">>> Voir le trailer</a>
+       <a class="link before after" href="images/tmp/pelle/article.pdf" target="_blank"">>> <i>Sud Ouest</i></a>
+      </div>
+    </div>
+    <div class="wowload fadeInRight">
+      <div class="col-sm-6">
+        <a class="link before after" href="images/tmp/pelle/plan de feu  en salle de théâtre.pdf" target="_blank"">>> plan de feu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="pelle" style="
+                text-align: justify;
+    background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#282828;
+background-size:16px 16px;
+    color: #ffffff;">
+  <div class="container spacer about">
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Actions culturelles</h2>
+    
+    <h4>Stage "Estime et confiance en soi"</h4>
+    <p>
+      Stage à destination de personnes en recherche d'emploi ou souffrant d'exclusion sociale.
+    </p>
+    
+    <h4>Théâtre et handicap</h4>
+    <p>
+      L'association Scènes en Chantier propose d’explorer la création artistique avec des personnes en situation de handicap et des personnes valides au sein d’un même projet (La Fontaine revu et corrigé, Le Prince caillou).<br />
+      Dernière création "la moulinette" : 1er avril 2016 espace Franquin à Angoulême (16) et le 12 mai 2016 au Castel à Chateaubernard (16).
+    </p>
+
+    <h4>L'instant théâtre (atelier spectacle)</h4>
+    <p>
+      Pour collégiens, primaires, lycéens ou adultes.<br />
+      Expérimenter l’expression théâtrale dans toute sa diversité (voix, rythme, expression orale, corporelle et émotionnelle, improvisation… et la découverte de soi). Chaque mercredi hors période de scolaire de 14h à 15h30 pour les collégiens et de 15h30 à 17h pour les primaires à partir du CE2.<br /><br />
+      Les ateliers sont soutenues par le département de la Charente et la CDC4B Sud-Charente.<br />
+      <img class="partenaire" src="images/tmp/logos-charente.png">
+      <img class="partenaire" src="images/tmp/logo-4B1.png">
+    </p>
+
+    <h4>Mémoire de ville</h4>
+    <p>
+      A partir des habitants de votre ville, un travail d'écriture, de mise en chanson, de lecture pour raconter, "se raconter" entre génération, le passé.
+      Lors de la représentation, les textes sont mis en voix par les comédiens et les musiciens pour les mettre en valeur.
+    </p>
+    <p>
+      <i>Public ciblé :</i> Les habitants de votre ville.<br />
+      <i>Durée de l'atelier :</i> 3 séances de 1h30, comédien intervenant + un représentation de 1h des participants de l'atelier autour des récits, étayée par les musiciens - comédiens.<br />
+      <i>Nombre de personnes maxi/atelier :</i> entre 5 et 25 personnes, chaque personne pouvant assister à 1 ou plusieurs ateliers. Des personnes non présentes peuvent aussi donner des écrits qui seront lus par les comédiens.<br />
+      <i>Age requis :</i> de 7 à 77 ans.<br />
+      Materiel pédagogique fourni. Tout lieux possible : école, centre de loisirs , médiathèque... 
+    </p>
+
+    <h4>L'atelier échasse</h4>
+    <p>
+      Apprentissage des échasses et déambulation sur échasses dans la rue. Pour les jeunes, collèges, lycées, ALSH, MJC.
+    </p>
+    <p>
+      <i>Durée de l’atelier :</i> 4 séances de 2h chacune + une représentation<br />
+      <i>Nombre de personnes :</i> entre 8 et 15 personnes, les mêmes tout le long de l’action<br />
+      <i>Age requis :</i> 7-20 ans<br />
+      <i>Matériel pédagogique :</i> échasses et costumes fournis<br />
+      <i>Lieux possibles pour l’atelier :</i> une salle (hauteur 5m minimum) ou en extérieur
+    </p>
+
+    <h4>Stage clown</h4>
+    <p>
+      Découverte du clown pour des enfants de 7 à 12 ans.
+    </p>
   </div>
 </section>
 
@@ -375,8 +539,6 @@ Compagnie le Passage <br /><br /> 2009 - <?php echo date("Y"); ?>
     <a class="close">×</a>
     <!-- The modal dialog, which will be used to wrap the lightbox content -->    
 </div>
-
-
 
 <!-- jquery -->
 <script src="assets/jquery.js"></script>
