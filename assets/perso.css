@@ -11,6 +11,10 @@ section {
     src: url("font/Raleway-Regular.ttf") /* TTF file for CSS3 browsers */
 }
 
+a {
+	text-decoration: none !important;
+}
+
 section img {
    opacity: 0.85;
    border-radius: 2px;

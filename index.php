@@ -501,12 +501,14 @@ background-size: 20px 20px;    color: #b3b3b3;">
 <div class="container contactform center">
 <h2 class="text-center  wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Contact</h2>
   <div class="row wowload fadeInLeftBig">      
-      <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
-        <input type="text" placeholder="Nom">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Sujet">
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp; Envoyer</button>
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12"> 
+        <form action="contact.php" method="post">     
+          <input type="text" name="name" placeholder="Nom">
+          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="subject" placeholder="Sujet">
+          <textarea rows="5" name="message" placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp; Envoyer</button>
+        </form>
       </div>
   </div>
 
