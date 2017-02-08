@@ -64,7 +64,7 @@
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right scroll">
                  <li class="active"><a href="#works">Accueil</a></li>
-                 <li ><a href="#about">A propos</a></li>
+                 <li ><a href="#about">La compagnie</a></li>
                  <li ><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -145,7 +145,17 @@
 
 
 
-<section id="about" style="background-color: #f1f1f1; text-align: justify;">
+<section id="about" style="text-align: justify; background:
+linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+background-color: #131313;
+background-size: 20px 20px;    color: #b3b3b3;
+
+">
   <div class="container spacer about">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Compagnie le Passage</h2>  
     <div class="row">
@@ -169,24 +179,16 @@
   <div>
 </section>
 
-<section style="text-align: justify; background:
-linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-background-color: #131313;
-background-size: 20px 20px;    color: #b3b3b3;">
+<section style="background-color: #f1f1f1; text-align: justify;">
   <div class="container spacer about">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Théâtre d'auteur</h2>  
     <div class="row">
       <div class="col-sm-6">
         <div class="wowload fadeInLeft">
           <h4>Démarche artistique</h4>
-          <p>Comme un miroir tendu, notre démarche artistique s’attachera, avec délicatesse et prudence, à dévoiler cette subtile vibration qu’est la fragilité humaine. Masquée derrière nos failles, nos dénuements, nos peurs, et nos passions, cette constante devient alors la force nécessaire pour mettre en lumière, poser un regard poétique sur nos humanités, donner du sens et tenter de devenir plus humain.</p>
+          <p>Comme un miroir tendu, notre démarche artistique s’attache, avec délicatesse et prudence, à dévoiler cette subtile vibration qu’est la fragilité humaine. Masquée derrière nos failles, nos dénuements, nos peurs, et nos passions, cette constante devient alors la force nécessaire pour mettre en lumière, poser un regard poétique sur nos humanités, donner du sens et tenter de devenir plus humain.</p>
           <img src="images/tmp/helene.jpg" style="width: 45%; max-width: 150px; float: right; margin: 12px; opacity: 0.9; border-radius: 2px;"> 
-          <p>Hélène Vrignaud-Masurel, écrivain et dramaturge, porte la Compagnie "le Passage" dans ses créations.
+          <p>Hélène Vrignaud-Masurel, écrivain et dramaturge, porte la Compagnie le Passage dans ses créations.
           Auteur de 4 pièces de théâtre, elle enrichit chacune de ses nouvelles créations par le regard qu’elle porte sur la fragilité : la nôtre et celle que chacun porte en soi.</p>
         </div><br />
       </div>
@@ -195,9 +197,9 @@ background-size: 20px 20px;    color: #b3b3b3;">
         <h4>Les œuvres de l’auteur :</h4>
         <p><b>La pelle de la Terre</b> aux éditions l’Harmattan, collection « Théâtre des cinq continents ».<br />
 <b>Réservoir à vie</b> – Conte d’apothicaire thérapeutique, parcours initiatique et poétique.<br />
-<b>L'homme qui poussa les murs de sont réduit</b> – Fragments poétiques pour une tragédie, itinéraire personnel de Franz Stock, aumônier de prison à Fresnes pendant la seconde guerre mondiale.<br />
-« Votre texte a retenu notre attention. Nous avons salué une belle tenue de l’ensemble et de très beaux moments. Nous avons été séduits, par exemple, par la confrontation entre Franz Stock et le Chevalier…» (Ecriture Théâtrale en Chantier. Poitou-Charentes)<br />
-<b>Encagés</b> - en cours d'écriture - </p>   
+<b>L'homme qui poussa les murs de son réduit</b> – Fragments poétiques pour une tragédie, itinéraire personnel de Franz Stock, aumônier de prison à Fresnes pendant la seconde guerre mondiale.<br />
+« <i>Votre texte a retenu notre attention. Nous avons salué une belle tenue de l’ensemble et de très beaux moments. Nous avons été séduits, par exemple, par la confrontation entre Franz Stock et le Chevalier…</i>» (Ecriture Théâtrale en Chantier. Poitou-Charentes)<br />
+<b>Encagés</b> – en cours d'écriture</p>   
         </div>
       </div>
     </div>
@@ -211,7 +213,7 @@ background-size: 20px 20px;    color: #b3b3b3;">
   <div class="container spacer about">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les elphes géants</h2>  
     <p>
-    Rencontre de l’instant, nos Elfes facétieux jouent avec le public  et apportent un instant de poésie et de bonheur à chacun...
+    Rencontre de l’instant, nos elfes facétieux jouent avec le public  et apportent un instant de poésie et de bonheur à chacun...
     </p>
 
     <div class="car1">
@@ -257,7 +259,7 @@ color:#bfbfbf;">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les anges de passage</h2>  
     <p>
     Pour vos marchés de nuit et toutes vos animations de rue, nous vous offrons des êtres exceptionnels, tout droit sortis des rêves : rencontre surprise avec le public, instant magique...<br />
-    Les Anges de Passage, lumineux et musicaux, vous propose un temps de grâce.
+    Les Anges de Passage, lumineux et musicaux, vous proposent un temps de grâce.
     </p>
 
     <div class="car1">
@@ -286,9 +288,9 @@ color:#bfbfbf;">
     <p style="font-size: 16px;
     font-weight: 500; margin-bottom: 10px;">Création 2016</p>
     <p>
-      Partie d'un coup de coeur pour ce théâtre d'auteur contemporain profondément ancré dans l'actualité politique, La compagnie propose une mise en scène de cette farce burlesque dans un univers sonore puissant: le Théâtre qui aime la musique.
-Matei Visniec est, avec son théâtre, comme ce jardinier qui récolterait les fruits de nos fragilités pour que l'humanités apprenne à se voir telle qu'elle est vraiment et peut-être, tente de se réinventer un devenir...
-L’histoire d'une geôle insalubre, où un Roi déchu et son bouffon vont bientôt passer à la trappe de l'histoire sous les vivats de la foule. Au dehors de la cellule, la foule, les anciens courtisans et leurs ouailles, dans l'ivresse de leur liberté retrouvée, se livrent à un carnaval morbide et délirant. Que feront-ils de cette liberté ? Pourquoi donc le destin du fou est-il lié à celui du Roi ? Peut-être les rats, à la présence envoûtante apporteront-ils un point de vue nouveau, à condition qu'ils acceptent de prendre la parole.
+      Partie d'un coup de coeur pour ce théâtre d'auteur contemporain profondément ancré dans l'actualité politique, la compagnie propose une mise en scène de cette farce burlesque dans un univers sonore puissant : le théâtre qui aime la musique.
+Matei Visniec est, avec son théâtre, comme ce jardinier qui récolterait les fruits de nos fragilités pour que l'humanité apprenne à se voir telle qu'elle est vraiment et peut-être, tente de se réinventer un devenir...<br/>
+L’histoire d'une geôle insalubre, où un roi déchu et son bouffon vont bientôt passer à la trappe de l'histoire sous les vivats de la foule. Au dehors de la cellule, la foule, les anciens courtisans et leurs ouailles, dans l'ivresse de leur liberté retrouvée, se livrent à un carnaval morbide et délirant.<br /> Que feront-ils de cette liberté ? Pourquoi donc le destin du fou est-il lié à celui du roi ? Peut-être les rats, à la présence envoûtante apporteront-ils un point de vue nouveau, à condition qu'ils acceptent de prendre la parole.
     </p>
     
     <div class="car1">
@@ -429,13 +431,14 @@ background-image: repeating-linear-gradient(-45deg, transparent, transparent 35p
 <section id="pelle" style="
                 text-align: justify;
     background:
-radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#282828;
-background-size:16px 16px;
-    color: #ffffff;">
+linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+background-color: #131313;
+background-size: 20px 20px;    color: #b3b3b3;">
   <div class="container spacer about">
     <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Actions culturelles</h2>
     

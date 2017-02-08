@@ -18,7 +18,8 @@ $( document ).ready(function() {
     cellAlign: 'center',
     contain: true,
     wrapAround: true,
-    groupCells: false
+    groupCells: false,
+    imagesLoaded: true
   });
 
 });
