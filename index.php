@@ -45,9 +45,6 @@
         <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
           <div class="container">
             <div class="navbar-header">
-              <!-- Logo Starts -->
-              <a class="navbar-brand"><img src="images/tmp/region_poitou.png" style="height:38px;opacity: 0.7;"></a>
-              <!-- #Logo Ends -->
 
 
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -86,10 +83,10 @@
 <!-- works -->
 <div id="works"  class=" clearfix grid"> 
     <figure class="effect-zoe">
-      <a href="#elphes">
+      <a href="#elfes">
         <img src="images/tmp/1_menu.jpg" alt="img01"/>
         <figcaption>
-            <h2>Les&nbsp;&nbsp; elphes&nbsp;&nbsp; géants</h2>          
+            <h2>Les&nbsp;&nbsp; elfes&nbsp;&nbsp; géants</h2>          
         </figcaption>
       </a>
     </figure>
@@ -167,13 +164,9 @@ background-size: 20px 20px;    color: #b3b3b3;
       <div class="wowload fadeInLeft">
       <h5>Mentions légales</h5>
       <p>Scènes en chantier : Association loi 1901.<br />
-        Association dépendante de la mairie de Barret (16).<br />
         N° de licence de spectacle : 2-1036850<br /><br />
-        Président et responsable de la publication :<br />
-        Gerard Pelletant<br />
-        7, cité de l’Etang - 16120 Chateauneuf sur Charente<br />
-        Tél : 06 14 05 30 57<br />
-        paps@club-internet.fr</p>    
+        Président et responsable de la publication : Gerard Pelletant<br />
+        Contact : Hélène Masurel - 06 27 86 29 29
       </div>
     </div>
   <div>
@@ -207,23 +200,23 @@ background-size: 20px 20px;    color: #b3b3b3;
 </section>
 
 
-<section id="elphes" style="background-color: #e3f5d2;
+<section id="elfes" style="background-color: #e3f5d2;
     text-align: justify;
     background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,.5) 20px, rgba(255,255,255,.5) 40px);">
   <div class="container spacer about">
-    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les elphes géants</h2>  
+    <h2 class="text-center wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Les elfes géants</h2>  
     <p>
     Rencontre de l’instant, nos elfes facétieux jouent avec le public  et apportent un instant de poésie et de bonheur à chacun...
     </p>
 
     <div class="car1">
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe1.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe2.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe3.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe4.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe5.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe6.jpg"></div>
-      <div class="carousel-cell"><img src="images/tmp/elphes/elphe7.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe1.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe2.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe3.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe4.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe5.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe6.jpg"></div>
+      <div class="carousel-cell"><img src="images/tmp/elfes/elfe7.jpg"></div>
     </div>
 
     <div class="wowload fadeInLeft" style="font-size: 14px; line-height: 19px;">
@@ -237,7 +230,7 @@ background-size: 20px 20px;    color: #b3b3b3;
        - 22 juillet et le 18 août, La Palmyre (17)
     </div>
     <div class="wowload fadeInRight">
-     <a class="link before after" href="images/tmp/affiche_lesElphes.jpg" target="_blank"">>> Voir l'affiche</a>
+     <a class="link before after" href="images/tmp/affiche_leselfes.jpg" target="_blank"">>> Voir l'affiche</a>
     </div>
   </div>
 </section>
