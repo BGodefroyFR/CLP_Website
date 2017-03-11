@@ -315,6 +315,7 @@ L’histoire d'une geôle insalubre, où un roi déchu et son bouffon vont bient
     </div>
     <div class="wowload fadeInRight">
       <div class="col-sm-6">
+      <a class="link before after" href="images/tmp/Le Roi- le rat et le fou du roi- dossier com-min.pdf" target="_blank"">>>&nbsp; Dossier artistique</a>
         <a class="link before after" href="images/tmp/rat/IMPLANTATION  EXTERIEUR ET EN SALLE DE REPLI .pdf" target="_blank"">>>&nbsp; Implantation extérieure</a>
         <a class="link before after" href="images/tmp/rat/plan de feu.pdf" target="_blank"">>>&nbsp; Plan de feu</a>
       </div>
@@ -414,6 +415,7 @@ background-image: repeating-linear-gradient(-45deg, transparent, transparent 35p
     </div>
     <div class="wowload fadeInRight">
       <div class="col-sm-6">
+        <a class="link before after" href="images/tmp/Dossier Artistique La Pelle de la Terre complet-min.pdf" target="_blank"">>>&nbsp; Dossier artistique</a>
         <a class="link before after" href="images/tmp/pelle/plan de feu  en salle de théâtre.pdf" target="_blank"">>> plan de feu</a>
       </div>
     </div>
