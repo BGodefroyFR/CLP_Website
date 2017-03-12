@@ -36,6 +36,8 @@
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
+
 <div class="topbar animated fadeInLeftBig"></div>
 
 <!-- Header Starts -->
