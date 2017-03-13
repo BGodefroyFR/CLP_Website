@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Section</title>
+
+		<link rel="stylesheet" href="section.css">
+		<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="bkgPatterns.js"></script>
+		<script type="text/javascript" src="section.js"></script>
+	</head>
+	<body>
+
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+    
+    	<section id='navButtons'>
+			<img src='images/validate.png'>
+			<img src='images/cancel.png'>
+		</section>
+
+		<section id='general'>
+			<h1>Section</h1>
+
+			<div><p>Titre :</p><input type="text" name="title" value=""></div>
+
+			<div id='isTopLink'><input type="checkbox" name="isTopLink"><p>Lien haut de page</p></div>
+			<div id='topLinkText' hidden><p>Texte :</p><input type="text" name="topLinkText" value=""></div>
+
+			<div id='isMiniature'><input type="checkbox" name="isMiniature"><p>Miniature</p></div>
+			<div id='miniatureImage' hidden>
+				<input type="file" name="miniatureImage">
+		 	</div>
+		 </section>
+
+		 <section id='style'>
+		 	<div><p>Couleur de police :</p><input type="color" name="fontColor" value=""></div>
+		 	<div><p>Couleur du fond :</p><input type="color" name="backgroundColor" value=""></div>
+		 </section>
+
+	</form>
+
+	</body>
+</html>
