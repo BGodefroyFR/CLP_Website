@@ -41,6 +41,15 @@ $( document ).ready(function() {
 		});
 
 	});
+	$(document).on("click", "#content .galery .galeryImage .up",function() {
+		$(this).parent().parent().swapWith( $(this).parent().parent().prev() );
+	});
+	$(document).on("click", "#content .galery .galeryImage .down",function() {
+		$(this).parent().parent().swapWith( $(this).parent().parent().next() );
+	});
+	$(document).on("click", "#content .galery .galeryImage .image_delete img",function() {
+		$(this).parent().parent().remove();
+	});
 
 	// Link
 	$('#addButtons #addLink').click(function() {

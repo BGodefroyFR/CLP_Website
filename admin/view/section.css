@@ -2,6 +2,7 @@ div p, div input {
 	display: inline-block;
 }
 
+/* Patterns */
 #style #patternDemo div {
 	width: 95%;
 	height: 150px;
@@ -13,14 +14,30 @@ div p, div input {
     padding: 8px;
 }
 
+/* TextArea */
 .textArea {
 	background-color: red;
 }
 
+/* Galery */
 .galery {
 	background-color: green;
 }
+    .galery .galeryImage .image_delete {
+		display: inline-block;
+	}
+		.galery .galeryImage .image_delete img {
+			height: 13px;
+		}
+	.galery .galeryImage .image_upDown {
+		display: inline-block;
+	}
+		.galery .galeryImage .image_upDown img {
+			height: 9px;
+			display: block;
+		}
 
+/* Link */
 .link {
 	background-color: blue;
 }
