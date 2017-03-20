@@ -1,3 +1,26 @@
 div p, div input {
 	display: inline-block;
 }
+
+#style #patternDemo div {
+	width: 95%;
+	height: 150px;
+    border-color: #adadad;
+    border-width: 4px;
+    border-style: solid;
+    font-family: Roboto, Arial;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.textArea {
+	background-color: red;
+}
+
+.galery {
+	background-color: green;
+}
+
+.link {
+	background-color: blue;
+}

@@ -6,6 +6,10 @@
 		<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="bkgPatterns.js"></script>
 		<script type="text/javascript" src="section.js"></script>
+
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 
@@ -31,8 +35,23 @@
 		 </section>
 
 		 <section id='style'>
-		 	<div><p>Couleur de police :</p><input type="color" name="fontColor" value=""></div>
-		 	<div><p>Couleur du fond :</p><input type="color" name="backgroundColor" value=""></div>
+		 	<div id="patternSelection"></div>
+		 	<div><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value=""></div>
+		 	<div><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="black"></div>
+		 	<div><p>Aperçu:</p></div>
+		 	<div id="patternDemo">
+		 	</div>
+		 </section>
+
+		 <section id='addButtons'>
+		 	<div>
+		 		<button type="button" id="addTextArea">+ zone de texte</button>
+		 		<button type="button" id="addGalery">+ galerie</button>
+		 		<button type="button" id="addLink">+ lien</button>
+		 	</div>
+		 </section>
+
+		 <section id='content'>
 		 </section>
 
 	</form>

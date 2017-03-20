@@ -18,4 +18,44 @@ $( document ).ready(function() {
 		}
 	});
 
+	// Text area
+	$('#addButtons #addTextArea').click(function() {
+		$.get('asset/textArea.html', function(data) {
+		     $('#content').append(data);
+		});
+	});
+
+	// Galery
+	$('#addButtons #addGalery').click(function() {
+		$.get('asset/galery.html', function(data) {
+		     $('#content').append(data);
+		     $.get('asset/galery_image.html', function(data) {
+		     	$('#content .galery:last-child').append(data);
+		     });
+		});
+	});
+	$(document).on("click", "#content .galery .galery_addPhoto",function() {
+		var curGalery = $(this).parent().parent();
+		$.get('asset/galery_image.html', function(data) {
+		    curGalery.append(data);
+		});
+
+	});
+
+	// Link
+	$('#addButtons #addLink').click(function() {
+		$.get('asset/link.html', function(data) {
+		     $('#content').append(data);
+		});
+	});
+	$(document).on("change", "#content .link .link_isUpload",function() {
+		if ($(this).val() == 'true') {
+			$(this).parent().find('.link_uploadedFile').show();
+			$(this).parent().find('.link_url').hide();
+		} else {
+			$(this).parent().find('.link_uploadedFile').hide();
+			$(this).parent().find('.link_url').show();
+		}
+	});
+
 });

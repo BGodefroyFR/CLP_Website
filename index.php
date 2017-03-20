@@ -268,6 +268,12 @@ color:#bfbfbf;">
       <div class="carousel-cell"><img src="images/tmp/anges/anges8.jpg"></div>
       <div class="carousel-cell"><img src="images/tmp/anges/anges9.jpg"></div>
     </div>
+
+   <div class="wowload fadeInLeft">
+      <div class="col-sm-6">
+      	<a class="link before after" href="https://youtu.be/3ki_FlVeRMQ" target="_blank"">>>&nbsp; Voir le trailer</a>
+      </div>
+    </div>
   </div>
 </section>
 
