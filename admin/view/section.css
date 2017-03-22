@@ -18,6 +18,13 @@ div p, div input {
 .textArea {
 	background-color: red;
 }
+	.textArea .editorArea {
+		display: inline-block;
+    	width: 45%;
+	}
+		.textArea .editorArea p {
+			height: 18px;
+		}
 
 /* Galery */
 .galery {
