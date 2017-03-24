@@ -34,9 +34,11 @@ $( document ).ready(function() {
 		if($(this).is(':checked')) {
 			$(this).parent().parent().find('#rightColumn').show();
 			$(this).parent().parent().find('#leftColumn p').html("Colonne gauche");
+			$(this).parent().parent().find('#leftColumn').css('width', '45%');
 		} else {
 			$(this).parent().parent().find('#rightColumn').hide();
 			$(this).parent().parent().find('#leftColumn p').html("");
+			$(this).parent().parent().find('#leftColumn').css('width', '90%');
 		}
 	});
 

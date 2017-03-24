@@ -20,7 +20,6 @@ div p, div input {
 }
 	.textArea .editorArea {
 		display: inline-block;
-    	width: 45%;
 	}
 		.textArea .editorArea p {
 			height: 18px;
