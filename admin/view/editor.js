@@ -26,7 +26,10 @@ var initSample = ( function() {
 
 		// Depending on the wysiwygare plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
-			CKEDITOR.replace( id );
+			CKEDITOR.replace( id, {
+			    filebrowserUploadUrl: "../controller/upload.php";
+			    filebrowserImageBrowseUrl = '../controller/imgBrowser.php';
+			} );
 		} else {
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( id );
