@@ -38,7 +38,7 @@ $( document ).ready(function() {
 		} else {
 			$(this).parent().parent().find('#rightColumn').hide();
 			$(this).parent().parent().find('#leftColumn p').html("");
-			$(this).parent().parent().find('#leftColumn').css('width', '90%');
+			$(this).parent().parent().find('#leftColumn').css('width', '100%');
 		}
 	});
 
@@ -76,11 +76,11 @@ $( document ).ready(function() {
 	});
 	$(document).on("change", "#content .link .link_isUpload",function() {
 		if ($(this).val() == 'true') {
-			$(this).parent().find('.link_uploadedFile').show();
-			$(this).parent().find('.link_url').hide();
+			$(this).parent().parent().find('.link_uploadedFile').show();
+			$(this).parent().parent().find('.link_urlInput').hide();
 		} else {
-			$(this).parent().find('.link_uploadedFile').hide();
-			$(this).parent().find('.link_url').show();
+			$(this).parent().parent().find('.link_uploadedFile').hide();
+			$(this).parent().parent().find('.link_urlInput').show();
 		}
 	});
 

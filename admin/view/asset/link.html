@@ -1,10 +1,13 @@
 <div class='link'>
-<p class='elem_label'>LIEN</p>
+<p class='sectionLabel'>Lien</p>
 <form>
-	<input type="radio" class='link_isUpload' name="link_isUpload" value="true" checked="checked">Uploader un fichier<br>
-	<div><input type="file" name="link_uploadedFile" class='link_uploadedFile'></div>
-
-	<input type="radio" class='link_isUpload' name="link_isUpload" value="false">Lien extérieur<br>
-	<div><p>URL:</p><input type="text" name="link_url" class='link_url' style='display: none;'></div>
+	<div class='link_uploadDiv'>
+		<input type="radio" class='link_isUpload' name="link_isUpload" value="true" checked="checked">Uploader un fichier<br>
+		<div><input type="file" name="link_uploadedFile" class='link_uploadedFile'></div>
+	</div>
+	<div class='link_urlDiv'>
+		<input type="radio" class='link_isUpload' name="link_isUpload" value="false">Lien extérieur<br>
+		<div class='link_urlInput' style='display: none;'><p>URL:</p><input type="text" name="link_url" class='link_url'></div>
+	</div>
 </form>
 </div>

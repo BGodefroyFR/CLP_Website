@@ -29,6 +29,7 @@ $( document ).ready(function() {
 
 	$("#style #patternSelection").html(getSelectHTML());
 	setInterval(updatePatternDemo, 100);
+	
 
 	function getSelectHTML() {
 		var content = "<select id='selectPattern'>";

@@ -21,13 +21,15 @@
 
 	<form action="upload.php" method="post" enctype="multipart/form-data">
     
-    	<section id='navButtons'>
-			<img src='images/validate.png'>
-			<img src='images/cancel.png'>
+    	<section id='saveButtons'>
+			<button type="button" id="save">Sauvegarder</button>
 		</section>
 
+		<h1>Section</h1>
+
 		<section id='general'>
-			<h1>Section</h1>
+
+			<p class='sectionLabel'>Général</p>
 
 			<div><p>Titre :</p><input type="text" name="title" value=""></div>
 
@@ -41,10 +43,12 @@
 		 </section>
 
 		 <section id='style'>
+		 	<p class='sectionLabel'>Style</p>
+
 		 	<div id="patternSelection"></div>
-		 	<div><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value=""></div>
-		 	<div><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="black"></div>
-		 	<div><p>Aperçu:</p></div>
+		 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value=""></div>
+		 	<div class='colorSelector'><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="black"></div>
+		 	<div id='preview'><p>Aperçu:</p></div>
 		 	<div id="patternDemo">
 		 	</div>
 		 </section>

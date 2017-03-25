@@ -1,49 +1,170 @@
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 20px;
+    margin-bottom: 30px;
+}
+
 div p, div input {
 	display: inline-block;
+	font-size: 15px;
+}
+
+div input {
+	margin-left: 6px;
+	margin-right: 5px;
+    vertical-align: middle;
+}
+
+section .sectionLabel, div .sectionLabel {
+	font-family: monospace;
+    font-size: 12px;
+    color: #e48917;
+    width: 100%;
+    text-align: right;
+    margin: 0px;
+}
+
+#general, #style {
+	border-style: solid;
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: #ababab;
+    background-color: whitesmoke;
+    padding: 8px;
+    margin-bottom: 15px;
+    max-width: 500px;
+}
+
+#isTopLink {
+	height: 26px;
+}
+
+#isMiniature {
+	height: 36px;
+}
+
+#miniatureImage {
+    margin-bottom: 5px;
+}
+
+	#miniatureImage input {
+		margin-left: 22px;
+    	margin-top: 4px;
+	}
+
+#topLinkText {
+	height: 35px;
+    margin-left: 23px;
+}
+
+#patternSelection {
+	height: 25px;
+}
+
+#selectPattern {
+	height: 25px;
+}
+
+.colorSelector {
+	height: 40px;
+}
+
+#addButtons {
+	margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+#addButtons button {
+	margin-right: 3px;
 }
 
 /* Patterns */
-#style #patternDemo div {
-	width: 95%;
+#style #patternDemo div {;
 	height: 150px;
     border-color: #adadad;
     border-width: 4px;
-    border-style: solid;
+    border-style: hidden;
     font-family: Roboto, Arial;
     font-size: 14px;
     padding: 8px;
 }
+#preview p {
+	font-size: 13px;
+    color: #464646;
+    margin-bottom: 4px;
+}
+
+.textArea, .galery, .link {
+    border-width: 1px;
+    border-style: dashed;
+    background-color: #e8e8e8;
+    padding: 8px;
+    margin-bottom: 15px;
+}
 
 /* TextArea */
 .textArea {
-	background-color: red;
 }
 	.textArea .editorArea {
 		display: inline-block;
 	}
 		.textArea .editorArea p {
-			height: 18px;
+			height: 8px;
+		    color: #848484;
+		    font-size: 13px;
 		}
+	.textArea #isTwoCol {
+		height: 35px;
+	}
 
 /* Galery */
 .galery {
-	background-color: green;
 }
-    .galery .galeryImage .image_delete {
-		display: inline-block;
+
+	.galery button {
+	    margin-bottom: 23px;
 	}
-		.galery .galeryImage .image_delete img {
-			height: 13px;
-		}
-	.galery .galeryImage .image_upDown {
-		display: inline-block;
+	.galery .galeryImage {
+		margin-top: 8px;
 	}
-		.galery .galeryImage .image_upDown img {
-			height: 9px;
-			display: block;
+	    .galery .galeryImage .image_delete {
+			display: inline-block;
 		}
+			.galery .galeryImage .image_delete img {
+				height: 12px;
+			    opacity: 0.6;
+			}
+		.galery .galeryImage .image_upDown {
+			display: inline-block;
+			vertical-align: middle;
+		}
+			.galery .galeryImage .image_upDown img {
+				height: 8px;
+				display: block;
+				opacity: 0.9;
+			}
+
+			.galery .galeryImage .image_upDown .up {
+				margin-bottom: 3px;
+			}
 
 /* Link */
 .link {
-	background-color: blue;
 }
+	.link .link_uploadedFile, .link  .link_urlInput {
+		margin-left: 23px;
+		height: 28px;
+	}
+		.link .link_uploadedFile, .link  .link_urlInput p {
+			margin-top: 5px;
+		}
+	.link .link_uploadDiv {
+		margin-bottom: 14px;
+	}
+
+	    
