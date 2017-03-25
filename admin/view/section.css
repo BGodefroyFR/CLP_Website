@@ -1,5 +1,6 @@
 body {
 	font-family: sans-serif;
+	padding-bottom: 15px;
 }
 
 h1 {
@@ -51,7 +52,13 @@ section .sectionLabel, div .sectionLabel {
 #miniatureImage {
     margin-bottom: 5px;
 }
-
+	#miniatureImage p {
+		font-size: 12px;
+	    color: #6f6f6f;
+	    margin-top: 2px;
+	    margin-bottom: 0px;
+	    margin-left: 22px;
+	}
 	#miniatureImage input {
 		margin-left: 22px;
     	margin-top: 4px;
@@ -99,72 +106,95 @@ section .sectionLabel, div .sectionLabel {
     margin-bottom: 4px;
 }
 
-.textArea, .galery, .link {
+#content > div {
     border-width: 1px;
     border-style: dashed;
     background-color: #e8e8e8;
     padding: 8px;
     margin-bottom: 15px;
+    min-height: 90px;
 }
 
-/* TextArea */
-.textArea {
+#content > div > .actions {
+	float: right;
+    margin-top: 15px;
+    margin-right: 10px;
 }
-	.textArea .editorArea {
-		display: inline-block;
-	}
-		.textArea .editorArea p {
-			height: 8px;
-		    color: #848484;
-		    font-size: 13px;
-		}
-	.textArea #isTwoCol {
-		height: 35px;
+	#content > div > .actions img {
+		height: 11px;
+		display: block;
+		opacity: 0.9;
 	}
 
-/* Galery */
-.galery {
-}
+	#content > div > .actions .up {
+		margin-bottom: 5px;
+	}
 
-	.galery button {
-	    margin-bottom: 23px;
+	#content > div > .actions .delete {
+		height: 16px;
+	    opacity: 0.7;
+	    margin-top: 14px;
+	    margin-left: 2px;
 	}
-	.galery .galeryImage {
-		margin-top: 8px;
+
+	/* TextArea */
+	.textArea {
 	}
-	    .galery .galeryImage .image_delete {
+		.textArea .editorArea {
 			display: inline-block;
 		}
-			.galery .galeryImage .image_delete img {
-				height: 12px;
-			    opacity: 0.6;
-			}
-		.galery .galeryImage .image_upDown {
-			display: inline-block;
-			vertical-align: middle;
-		}
-			.galery .galeryImage .image_upDown img {
+			.textArea .editorArea p {
 				height: 8px;
-				display: block;
-				opacity: 0.9;
+			    color: #848484;
+			    font-size: 13px;
 			}
-
-			.galery .galeryImage .image_upDown .up {
-				margin-bottom: 3px;
-			}
-
-/* Link */
-.link {
-}
-	.link .link_uploadedFile, .link  .link_urlInput {
-		margin-left: 23px;
-		height: 28px;
-	}
-		.link .link_uploadedFile, .link  .link_urlInput p {
-			margin-top: 5px;
+		.textArea #isTwoCol {
+			height: 35px;
 		}
-	.link .link_uploadDiv {
-		margin-bottom: 14px;
+
+	/* Galery */
+	.galery {
 	}
+
+		.galery button {
+		    margin-bottom: 23px;
+		}
+		.galery .galeryImage {
+			margin-top: 8px;
+		}
+		    .galery .galeryImage .image_delete {
+				display: inline-block;
+			}
+				.galery .galeryImage .image_delete img {
+					height: 12px;
+				    opacity: 0.6;
+				}
+			.galery .galeryImage .image_upDown {
+				display: inline-block;
+				vertical-align: middle;
+			}
+				.galery .galeryImage .image_upDown img {
+					height: 8px;
+					display: block;
+					opacity: 0.9;
+				}
+
+				.galery .galeryImage .image_upDown .up {
+					margin-bottom: 3px;
+				}
+
+	/* Link */
+	.link {
+	}
+		.link .link_uploadedFile, .link  .link_urlInput {
+			margin-left: 23px;
+			height: 28px;
+		}
+			.link .link_uploadedFile, .link  .link_urlInput p {
+				margin-top: 5px;
+			}
+		.link .link_uploadDiv {
+			margin-bottom: 14px;
+		}
 
 	    
