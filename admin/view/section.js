@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+	// Save area
+	$('#saveArea button').click(function() {
+		$('#saveArea p').css('display', 'inline');
+		setTimeout(function() {
+		    $('#saveArea p').css('display', 'none');
+		}, 3000);
+	});
+
 	// Top link
 	$('#general #isTopLink input').click(function() {
 		if($('#general #isTopLink input').is(':checked')) {

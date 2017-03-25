@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+	// Save area
+	$('#saveArea button').click(function() {
+		$('#saveArea p').css('display', 'inline');
+		setTimeout(function() {
+		    $('#saveArea p').css('display', 'none');
+		}, 3000);
+	});
+
 	// Top links
 	for (var i = 0; i < 3; i++) {
 		$.get('asset/toplink.html', function(data) {
@@ -31,7 +39,8 @@ $( document ).ready(function() {
 			$(this).parent().parent().swapWith( $(this).parent().parent().next() );
 	});
 	$(document).on("click", ".content > .contentElem .delete",function() {
-		$(this).parent().parent().remove();
+		if (confirm("Supprimer cette section ?"))
+			$(this).parent().parent().remove();
 	});
 	
 

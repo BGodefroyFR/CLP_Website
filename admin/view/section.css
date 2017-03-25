@@ -30,6 +30,14 @@ section .sectionLabel, div .sectionLabel {
     margin: 0px;
 }
 
+#saveArea p {
+	font-size: 12px;
+    color: #73ab3a;
+    display: none;
+    margin-left: 3px;
+    font-family: sans-serif;
+}
+
 #general, #style {
 	border-style: solid;
     border-width: 2px;

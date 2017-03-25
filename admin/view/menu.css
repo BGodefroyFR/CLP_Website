@@ -23,6 +23,14 @@ div input {
     vertical-align: middle;
 }
 
+#saveArea p {
+	font-size: 12px;
+    color: #73ab3a;
+    margin-left: 3px;
+    font-family: sans-serif;
+    display: none;
+}
+
 section .sectionLabel {
 	font-family: monospace;
     font-size: 12px;
