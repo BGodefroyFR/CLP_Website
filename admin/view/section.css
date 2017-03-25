@@ -6,8 +6,8 @@ body {
 h1 {
 	text-align: center;
 	font-size: 30px;
-	margin-top: 20px;
-    margin-bottom: 30px;
+	margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 div p, div input {
@@ -39,6 +39,8 @@ section .sectionLabel, div .sectionLabel {
     padding: 8px;
     margin-bottom: 15px;
     max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #isTopLink {
