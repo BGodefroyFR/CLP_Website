@@ -1,0 +1,98 @@
+body {
+	font-family: sans-serif;
+	padding-bottom: 15px;
+}
+
+h1 {
+	text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+div p, div input {
+	display: inline-block;
+	font-size: 15px;
+	margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div input {
+	margin-left: 6px;
+	margin-right: 5px;
+    vertical-align: middle;
+}
+
+section .sectionLabel {
+	font-family: monospace;
+    font-size: 12px;
+    color: #e48917;
+    width: 100%;
+    text-align: right;
+    margin: 0px;
+}
+
+#toplinks, #miniatures, #sections {
+	border-style: solid;
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: #ababab;
+    background-color: whitesmoke;
+    padding: 8px;
+    margin-bottom: 15px;
+    max-width: 500px;
+    padding-bottom: 11px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contentElem {
+	background-color: #d8d8d8;
+    margin-top: 8px;
+    padding: 6px;
+}
+
+section > div .actions .image_delete {
+	display: inline-block;
+}
+	section > div .actions img {
+		height: 12px;
+	    opacity: 0.6;
+	}
+section > div .actions {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+	section > div .actions img {
+		height: 8px;
+		display: block;
+		opacity: 0.9;
+	}
+
+	section > div .actions .up {
+		margin-bottom: 3px;
+	}
+
+	section > .section .actionsSection {
+		display: inline-block;
+	}
+
+	section > .section .actionsSection {
+		float: right;
+	}
+
+		section > .section .actionsSection > * {
+			display: inline-block;
+		}
+
+		section > .section .actionsSection .delete {
+			height: 14px;
+		    vertical-align: middle;
+		    opacity: 0.8;
+		    margin-left: 5px;
+		}
+
+#sections #addSection {
+	margin-bottom: 10px;
+}

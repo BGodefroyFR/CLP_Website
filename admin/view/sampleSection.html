@@ -19,53 +19,53 @@
 	</head>
 	<body>
 
-	<form action="upload.php" method="post" enctype="multipart/form-data">
-    
-    	<section id='saveButtons'>
-			<button type="button" id="save">Sauvegarder</button>
-		</section>
+		<form action="upload.php" method="post" enctype="multipart/form-data">
+	    
+	    	<section id='saveButtons'>
+				<button type="button" id="save">Sauvegarder</button>
+			</section>
 
-		<h1>Section</h1>
+			<h1>Section</h1>
 
-		<section id='general'>
+			<section id='general'>
 
-			<p class='sectionLabel'>Général</p>
+				<p class='sectionLabel'>Général</p>
 
-			<div><p>Titre :</p><input type="text" name="title" value=""></div>
+				<div><p>Titre :</p><input type="text" name="title" value=""></div>
 
-			<div id='isTopLink'><input type="checkbox" name="isTopLink"><p>Lien haut de page</p></div>
-			<div id='topLinkText' hidden><p>Texte :</p><input type="text" name="topLinkText" value=""></div>
+				<div id='isTopLink'><input type="checkbox" name="isTopLink"><p>Lien haut de page</p></div>
+				<div id='topLinkText' hidden><p>Texte :</p><input type="text" name="topLinkText" value=""></div>
 
-			<div id='isMiniature'><input type="checkbox" name="isMiniature"><p>Miniature</p></div>
-			<div id='miniatureImage' hidden>
-				<p>Image aux dimensions 1234*800 (important !)</p>
-				<input type="file" name="miniatureImage">
-		 	</div>
-		 </section>
+				<div id='isMiniature'><input type="checkbox" name="isMiniature"><p>Miniature</p></div>
+				<div id='miniatureImage' hidden>
+					<p>Image aux dimensions 1234*800 (important !)</p>
+					<input type="file" name="miniatureImage">
+			 	</div>
+			 </section>
 
-		 <section id='style'>
-		 	<p class='sectionLabel'>Style</p>
+			 <section id='style'>
+			 	<p class='sectionLabel'>Style</p>
 
-		 	<div id="patternSelection"></div>
-		 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value=""></div>
-		 	<div class='colorSelector'><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="black"></div>
-		 	<div id='preview'><p>Aperçu:</p></div>
-		 	<div id="patternDemo">
-		 	</div>
-		 </section>
+			 	<div id="patternSelection"></div>
+			 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value=""></div>
+			 	<div class='colorSelector'><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="black"></div>
+			 	<div id='preview'><p>Aperçu:</p></div>
+			 	<div id="patternDemo">
+			 	</div>
+			 </section>
 
-		 <section id='addButtons'>
-		 	<div>
-		 		<button type="button" id="addTextArea">+ zone de texte</button>
-		 		<button type="button" id="addGalery">+ galerie</button>
-		 		<button type="button" id="addLink">+ lien</button>
-		 	</div>
-		 </section>
+			 <section id='addButtons'>
+			 	<div>
+			 		<button type="button" id="addTextArea">+ zone de texte</button>
+			 		<button type="button" id="addGalery">+ galerie</button>
+			 		<button type="button" id="addLink">+ lien</button>
+			 	</div>
+			 </section>
 
-		 <section id='content'>
-		 </section>
+			 <section id='content'>
+			 </section>
 
-	</form>
+		</form>
 
 	</body>
 </html>

@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Modifier le site</title>
+
+		<link rel="stylesheet" href="menu.css">
+		<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="util.js"></script>
+		<script type="text/javascript" src="menu.js"></script>
+
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<section id='saveButtons'>
+			<button type="button" id="save">Sauvegarder</button>
+		</section>
+
+		<h1>Modifier le site</h1>
+
+		<form action="upload.php" method="post" enctype="multipart/form-data">
+
+			<section id='toplinks'>
+				<p class='sectionLabel'>Liens haut de page</p>
+			</section>
+
+			<section id='miniatures'>
+				<p class='sectionLabel'>Miniatures</p>
+
+			</section>
+
+			<section id='sections'>
+				<p class='sectionLabel'>Sections</p>
+				<button type="button" id="addSection">+ section</button>
+
+			</section>
+
+		</form>
+	</body>
+</html>
