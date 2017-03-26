@@ -95,6 +95,9 @@ $( document ).ready(function() {
 		$('#addButtons #addLink').click(function() {
 			$.get('asset/link.html', function(data) {
 			     $('#content').append(data);
+			     var newName = 'link_isUpload_' + parseInt(Math.random() * 1e9);
+			     $('#content .link:last .link_uploadDiv .link_isUpload').attr('name', newName);
+			     $('#content .link:last .link_urlDiv .link_isUpload').attr('name', newName);
 			});
 		});
 		$(document).on("change", "#content .link .link_isUpload",function() {

@@ -32,7 +32,7 @@ $( document ).ready(function() {
 	
 
 	function getSelectHTML() {
-		var content = "<select id='selectPattern'>";
+		var content = "<select name='selectPattern' id='selectPattern'>";
 		for (var i = 0; i < patterns.length; i++) {
 		    content += "<option value='" + patterns[i] + "'>" + patterns[i] + "</option>";
 		}

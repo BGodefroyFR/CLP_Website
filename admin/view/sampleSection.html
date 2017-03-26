@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="section.js"></script>
 		<script src="lib/ckeditor/ckeditor.js"></script>
 		<script src="editor.js"></script>
+		<script src="../controller/sendAjax.js"></script>
 
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
@@ -18,9 +19,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-
-		<form action="upload.php" method="post" enctype="multipart/form-data">
-	    
+		<form id='mainForm' action="upload.php" method="post" enctype="multipart/form-data">
+			<input type="hidden" value="36" name="id" />
+			<input type="hidden" value="0" name="rank" />
 	    	<section id='saveArea'>
 				<button type="button" id="save">Sauvegarder</button>
 				<p>Modifications sauvegardées et publiées avec succès.</p>

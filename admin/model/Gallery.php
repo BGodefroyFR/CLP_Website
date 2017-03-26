@@ -2,14 +2,21 @@
 
 class Gallery extends Elem {
 
-   var $sectionId = NULL;
+	var $sectionId = NULL;
+	
+	function __construct() {
+	}
 
-   function __construct($tuple) {
-      parent::__construct($tuple);
-      $this->sectionId = $tuple['sectionId'];
+	function createFromBdd($tuple) {
+		parent::createFromBdd($tuple);
+		$this->sectionId = $tuple['sectionId'];
+	}
+
+	function createFromForm($sectionId) {
+      $this->sectionId = $sectionId;
    }
 
-   function toFrontEnd() {
-   }
- }
+	function toFrontEnd() {
+	}
+}
 ?>

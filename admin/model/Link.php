@@ -8,13 +8,24 @@ class Link extends Elem {
    var $uploadId = NULL;
    var $sectionId = NULL;
 
-   function __construct($tuple) {
-      parent::__construct($tuple);
+   function __construct() {
+   }
+
+   function createFromBdd($tuple) {
+      parent::createFromBdd($tuple);
       $this->onServer = $tuple['onServer'];
       $this->label = $tuple['label'];
       $this->target = $tuple['target'];
       $this->uploadId = $tuple['uploadId'];
       $this->sectionId = $tuple['sectionId'];
+   }
+
+   function createFromForm($onServer, $label, $target, $uploadId, $sectionId) {
+      $this->onServer = $onServer;
+      $this->label = $label;
+      $this->target = $target;
+      $this->uploadId = $uploadId;
+      $this->sectionId = $sectionId;
    }
 
    function toFrontEnd() {

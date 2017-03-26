@@ -1,5 +1,5 @@
 <?php
-include 'util.php';
+include '../util.php';
 include 'Elem.php';
 include 'Link.php';
 include 'Gallery.php';
@@ -20,6 +20,9 @@ class Model {
 	var $toplinks = array();
 	var $uploads = array();
 	var $galleryimages = array();
+
+	function __construct() {
+	}
 
 	function loadFromDB() {
 		$bdd = connectBDD();

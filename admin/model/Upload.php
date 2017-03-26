@@ -2,14 +2,21 @@
 
 class Upload extends Elem {
 
-   var $path = NULL;
+	var $path = NULL;
 
-   function __construct($tuple) {
-      parent::__construct($tuple);
-      $this->path = $tuple['path'];
-   }
+	function __construct() {
+	}
 
-   function toFrontEnd() {
-   }
- }
+	function createFromBdd($tuple) {
+		parent::createFromBdd($tuple);
+		$this->path = $tuple['path'];
+	}
+
+	function createFromForm($path) {
+	  $this->path = $path;
+	}
+
+	function toFrontEnd() {
+	}
+}
 ?>
