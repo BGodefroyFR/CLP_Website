@@ -196,6 +196,10 @@ section .sectionLabel, div .sectionLabel {
 	/* Link */
 	.link {
 	}
+		.link .link_label {
+			margin-left: 5px;
+		    margin-bottom: 10px;
+    	}
 		.link .link_uploadedFile, .link  .link_urlInput {
 			margin-left: 23px;
 			height: 28px;

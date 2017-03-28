@@ -3,7 +3,7 @@
 class GalleryImage extends Elem {
 
 	var $galleryId = NULL;
-	var $imageId = NULL;
+	var $path = NULL;
 
 	function __construct() {
 	}
@@ -11,12 +11,12 @@ class GalleryImage extends Elem {
 	function createFromBdd($tuple) {
 		parent::createFromBdd($tuple);
 		$this->galleryId = $tuple['galleryId'];
-		$this->imageId = $tuple['imageId'];
+		$this->path = $tuple['path'];
 	}
 
-	function createFromForm($galleryId, $imageId) {
+	function createFromForm($galleryId, $path) {
 	  $this->galleryId = $galleryId;
-	  $this->imageId = $imageId;
+	  $this->path = $path;
 	}
 
 	function toFrontEnd() {

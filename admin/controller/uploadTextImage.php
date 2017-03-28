@@ -1,5 +1,7 @@
 <?php
-	if (file_exists("../../images/upload/" . $_FILES["upload"]["name"]))
+	// Upload script for Ckeditor
+
+	if (file_exists("../../images/textImages/" . $_FILES["upload"]["name"]))
 	{
 	 echo $_FILES["upload"]["name"] . " existe deja. ";
 	}

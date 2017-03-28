@@ -3,7 +3,7 @@
 class Miniature extends Elem {
 
 	var $sectionId = NULL;
-	var $imageId = NULL;
+	var $imagePath = NULL;
 
 	function __construct() {
 	}
@@ -11,12 +11,12 @@ class Miniature extends Elem {
 	function createFromBdd($tuple) {
 		parent::createFromBdd($tuple);
 		$this->sectionId = $tuple['sectionId'];
-		$this->imageId = $tuple['imageId'];
+		$this->imagePath = $tuple['imagePath'];
 	}
 
-	function createFromForm($sectionId, $imageId) {
+	function createFromForm($sectionId, $imagePath) {
 	  $this->sectionId = $sectionId;
-	  $this->imageId = $imageId;
+	  $this->imagePath = $imagePath;
 	}
 
 	function toFrontEnd() {

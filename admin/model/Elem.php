@@ -12,11 +12,5 @@
 	      $this->timestamp = $tuple['timestamp'];
 	      $this->rank = $tuple['rank'];
 	  }
-
-	  function createFromForm($id, $timestamp, $rank) {
-	      $this->id = $id;
-	      $this->timestamp = $timestamp;
-	      $this->rank = $rank;
-	   }
    }
 ?>
