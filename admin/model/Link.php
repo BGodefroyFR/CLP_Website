@@ -20,12 +20,13 @@ class Link extends Elem {
       $this->sectionId = $tuple['sectionId'];
    }
 
-   function createFromForm($onServer, $label, $target, $uploadId, $sectionId) {
+   function createFromForm($onServer, $label, $target, $uploadId, $sectionId, $rank) {
       $this->onServer = $onServer;
       $this->label = $label;
       $this->target = $target;
       $this->uploadId = $uploadId;
       $this->sectionId = $sectionId;
+      $this->rank = $rank;
    }
 
    function toFrontEnd() {

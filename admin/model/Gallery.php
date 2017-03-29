@@ -5,7 +5,6 @@ class Gallery extends Elem {
 	var $sectionId = NULL;
 	
 	function __construct() {
-		$id = rand(1,1e9);
 	}
 
 	function createFromBdd($tuple) {
@@ -13,11 +12,17 @@ class Gallery extends Elem {
 		$this->sectionId = $tuple['sectionId'];
 	}
 
-	function createFromForm($sectionId) {
+	function createFromForm($sectionId, $rank) {
       $this->sectionId = $sectionId;
+      $this->rank = $rank;
    }
 
 	function toFrontEnd() {
+	}
+
+	function toBDD() {
+		//$q = "DELETE FROM adm_gallery WHERE id='" . $this->$id . "'; ";
+		//$q += "INSERT INTO adm_gallery(id, sectionId, rank)"
 	}
 }
 ?>

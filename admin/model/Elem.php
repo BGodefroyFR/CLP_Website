@@ -5,6 +5,8 @@
       var $rank;
 
       function __construct() {
+         $id = rand(1,1e9);
+         $rank = -1;
       }
 
 	  function createFromBdd($tuple) {

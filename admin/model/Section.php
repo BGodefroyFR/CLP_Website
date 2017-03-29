@@ -18,11 +18,12 @@ class Section extends Elem {
       $this->backgroundPattern = $tuple['backgroundPattern'];
    }
 
-   function createFromForm($title, $textColor, $backgroundColor, $backgroundPattern) {
+   function createFromForm($title, $textColor, $backgroundColor, $backgroundPattern, $rank) {
       $this->title = $title;
       $this->textColor = $textColor;
       $this->backgroundColor = $backgroundColor;
       $this->backgroundPattern = $backgroundPattern;
+      $this->rank = $rank;
    }
 
    function toFrontEnd() {

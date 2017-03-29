@@ -14,9 +14,10 @@ class GalleryImage extends Elem {
 		$this->path = $tuple['path'];
 	}
 
-	function createFromForm($galleryId, $path) {
+	function createFromForm($galleryId, $path, $rank) {
 	  $this->galleryId = $galleryId;
 	  $this->path = $path;
+	  $this->rank = $rank;
 	}
 
 	function toFrontEnd() {

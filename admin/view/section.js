@@ -42,13 +42,14 @@ $( document ).ready(function() {
 		// Text area
 		$('#addButtons #addTextArea').click(function() {
 			$.get('asset/textArea.html', function(data) {
-			     $('#content').append(data);
+			    $('#content').append(data);
 				var randId1 = "editor_" + Math.floor(Math.random() * 1e9);
 				document.getElementById("editor1").id = randId1;
 				initSample(randId1);
 				var randId2 = "editor_" + Math.floor(Math.random() * 1e9);
 				document.getElementById("editor2").id = randId2;
 				initSample(randId2);
+				$('#content .textArea:last-child .rankMarker').attr('name', 'textarea_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 		});
 		$(document).on("change", "#content .textArea #isTwoCol input",function() {
@@ -70,6 +71,7 @@ $( document ).ready(function() {
 			     $.get('asset/galery_image.html', function(data) {
 			     	$('#content .galery:last-child').append(data);
 			     });
+			     $('#content .galery:last-child .rankMarker').attr('name', 'gallery_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 		});
 		$(document).on("click", "#content .galery .galery_addPhoto",function() {
