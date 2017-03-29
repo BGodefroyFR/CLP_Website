@@ -2,9 +2,11 @@
 
 class Gallery extends Elem {
 
-	var $sectionId = NULL;
+	var $sectionId;
 	
 	function __construct() {
+		parent::__construct();
+		$this->sectionId = -1;
 	}
 
 	function createFromBdd($tuple) {
@@ -21,8 +23,10 @@ class Gallery extends Elem {
 	}
 
 	function toBDD() {
-		//$q = "DELETE FROM adm_gallery WHERE id='" . $this->$id . "'; ";
-		//$q += "INSERT INTO adm_gallery(id, sectionId, rank)"
+		$q = "DELETE FROM adm_gallery WHERE id='" . $this->id . "'; ";
+		$q .= "INSERT INTO adm_gallery(id, sectionId, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
+		return $q;
 	}
 }
 ?>

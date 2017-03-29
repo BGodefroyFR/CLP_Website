@@ -2,25 +2,35 @@
 
 class GalleryImage extends Elem {
 
-	var $galleryId = NULL;
-	var $path = NULL;
+	var $galleryId;
+	var $uploadId;
 
 	function __construct() {
+		parent::__construct();
+		$this->galleryId = -1;
+		$this->uploadId = -1;
 	}
 
 	function createFromBdd($tuple) {
 		parent::createFromBdd($tuple);
 		$this->galleryId = $tuple['galleryId'];
-		$this->path = $tuple['path'];
+		$this->uploadId = $tuple['uploadId'];
 	}
 
-	function createFromForm($galleryId, $path, $rank) {
+	function createFromForm($galleryId, $uploadId, $rank) {
 	  $this->galleryId = $galleryId;
-	  $this->path = $path;
+	  $this->uploadId = $uploadId;
 	  $this->rank = $rank;
 	}
 
 	function toFrontEnd() {
+	}
+
+	function toBDD() {
+		$q = "DELETE FROM adm_galleryimage WHERE id='" . $this->id . "'; ";
+		$q .= "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->galleryId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
+		return $q;
 	}
 }
 ?>

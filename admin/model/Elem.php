@@ -5,8 +5,8 @@
       var $rank;
 
       function __construct() {
-         $id = rand(1,1e9);
-         $rank = -1;
+         $this->id = rand(1,1e9);
+         $this->rank = -1;
       }
 
 	  function createFromBdd($tuple) {
@@ -14,5 +14,7 @@
 	      $this->timestamp = $tuple['timestamp'];
 	      $this->rank = $tuple['rank'];
 	  }
+
+     abstract function toBDD();
    }
 ?>

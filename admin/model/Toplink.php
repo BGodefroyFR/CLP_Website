@@ -2,10 +2,13 @@
 
 class Toplink extends Elem {
 
-	var $sectionId = NULL;
-	var $label = NULL;
+	var $sectionId;
+	var $label;
 
 	function __construct() {
+		parent::__construct();
+		$this->sectionId = -1;
+		$this->label = "";
 	}
 
 	function createFromBdd($tuple) {
@@ -20,6 +23,13 @@ class Toplink extends Elem {
 	}
 
 	function toFrontEnd() {
+	}
+
+	function toBDD() {
+		$q = "DELETE FROM adm_toplink WHERE id='" . $this->id . "'; ";
+		$q .= "INSERT INTO adm_toplink(id, sectionId, label, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->label . "', '" . $this->rank . "'); ";
+		return $q;
 	}
 }
 ?>

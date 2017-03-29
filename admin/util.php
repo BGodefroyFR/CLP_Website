@@ -1,4 +1,9 @@
 <?php
+	function executeQuery($q) {
+		$bdd = connectBDD();
+		$bdd->query($q);
+	}
+
 	function connectBDD() {
 		try
 		{

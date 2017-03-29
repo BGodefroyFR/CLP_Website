@@ -2,9 +2,11 @@
 
 class Upload extends Elem {
 
-	var $path = NULL;
+	var $path;
 
 	function __construct() {
+		parent::__construct();
+		$this->path = "";
 	}
 
 	function createFromBdd($tuple) {
@@ -17,6 +19,13 @@ class Upload extends Elem {
 	}
 
 	function toFrontEnd() {
+	}
+
+	function toBDD() {
+		$q = "DELETE FROM adm_upload WHERE id='" . $this->id . "'; ";
+		$q .= "INSERT INTO adm_upload(id, path)" 
+			. "VALUES('" . $this->id . "', '" . $this->path . "'); ";
+		return $q;
 	}
 }
 ?>

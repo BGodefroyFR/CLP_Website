@@ -35,6 +35,10 @@
 	$newModel = createTextareas($newModel, $textAreaRanks);
 	$newModel = createGalleries($newModel, $galleriesRanks);
 
+	// Exports model to BDD
+	executeQuery($newModel->toBDD());
+
+
 	// -------------------------------------
 
 	function createSection($model) {
@@ -91,7 +95,7 @@
 					$url = $uploadFilesPaths[$pathCount ++];
 
 				$newLink->createFromForm(
-					$link_isUpload[$count],
+					(int)$link_isUpload[$count],
 					current($_POST['link_label']), 
 					$url,
 					($link_isUpload[$count] ? $model->uploads[$pathCount-1]->id : -1),
@@ -110,7 +114,7 @@
 			if (strrpos($key, 'isTwoCol') === 0) {
 				$newTextArea = new TextArea();
 				$newTextArea->createFromForm($_POST['id'],
-					$value,
+					(int)$value,
 					$_POST['editor'.($count*2)],
 					$_POST['editor'.($count*2+1)],
 					$textAreaRanks[$count]);
@@ -125,7 +129,7 @@
 		$photosPerGallery = array();
 		$count = 0;
 		foreach($_POST as $key => $value) {
-			if (strrpos($key, 'gallery') === 0) {
+			if (strrpos($key, 'gallery_') === 0) {
 				$newGallery = new Gallery();
 				$newGallery->createFromForm($_POST['id'], $galleriesRanks[$count]);
 				array_push($photosPerGallery, $value);
@@ -139,8 +143,12 @@
 		$count = 0;
 		for ($i = 0; $i < sizeof($photosPerGallery); $i++) {
 			for ($j = 0; $j < $photosPerGallery[$i]; $j++) {
+				$newUpload = new Upload();
+				$newUpload->createFromForm($uploadFilesPaths[$count]);
+				array_push($model->uploads, $newUpload);
+
 				$newGalleryimage = new Galleryimage();
-				$newGalleryimage->createFromForm($model->galleries[$i]->id, $uploadFilesPaths[$count], $count);
+				$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $count);
 				$count ++;
 				array_push($model->galleryimages, $newGalleryimage);
 			}

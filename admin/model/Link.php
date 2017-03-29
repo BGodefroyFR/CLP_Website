@@ -2,13 +2,19 @@
 
 class Link extends Elem {
 
-   var $onServer = NULL;
-   var $label = NULL;
-   var $target = NULL;
-   var $uploadId = NULL;
-   var $sectionId = NULL;
+   var $onServer;
+   var $label;
+   var $target;
+   var $uploadId;
+   var $sectionId;
 
    function __construct() {
+      parent::__construct();
+      $this->onServer = false;
+      $this->label = "";
+      $this->target = "";
+      $this->uploadId = -1;
+      $this->sectionId = -1;
    }
 
    function createFromBdd($tuple) {
@@ -30,6 +36,13 @@ class Link extends Elem {
    }
 
    function toFrontEnd() {
+   }
+
+   function toBDD() {
+      $q = "DELETE FROM adm_link WHERE id='" . $this->id . "'; ";
+      $q .= "INSERT INTO adm_link(id, onServer, label, target, uploadId, sectionId, rank)" 
+         . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . $this->label . "', '" . $this->target . "', '" . $this->uploadId . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
+      return $q;
    }
  }
 ?>

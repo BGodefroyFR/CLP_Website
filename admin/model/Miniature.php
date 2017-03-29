@@ -2,10 +2,13 @@
 
 class Miniature extends Elem {
 
-	var $sectionId = NULL;
-	var $uploadId = NULL;
+	var $sectionId;
+	var $uploadId;
 
 	function __construct() {
+		parent::__construct();
+		$this->sectionId = -1;
+		$this->uploadId = -1;
 	}
 
 	function createFromBdd($tuple) {
@@ -20,6 +23,13 @@ class Miniature extends Elem {
 	}
 
 	function toFrontEnd() {
+	}
+
+	function toBDD() {
+		$q = "DELETE FROM adm_miniature WHERE id='" . $this->id . "'; ";
+		$q .= "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
+		return $q;
 	}
 }
 ?>

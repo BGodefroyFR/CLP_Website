@@ -2,12 +2,17 @@
 
 class Section extends Elem {
 
-   var $title = NULL;
-   var $textColor = NULL;
-   var $backgroundColor = NULL;
-   var $backgroundPattern = NULL;
+   var $title;
+   var $textColor;
+   var $backgroundColor;
+   var $backgroundPattern;
 
    function __construct() {
+      parent::__construct();
+      $this->title = "";
+      $this->textColor = "";
+      $this->backgroundColor = "";
+      $this->backgroundPattern = "";
    }
 
    function createFromBdd($tuple) {
@@ -27,6 +32,13 @@ class Section extends Elem {
    }
 
    function toFrontEnd() {
+   }
+
+   function toBDD() {
+      $q = "DELETE FROM adm_section WHERE id='" . $this->id . "'; ";
+      $q .= "INSERT INTO adm_section(id, title, textColor, backgroundColor, backgroundPattern, rank)" 
+         . "VALUES('" . $this->id . "', '" . $this->title . "', '" . $this->textColor . "', '" . $this->backgroundColor . "', '" . $this->backgroundPattern . "', '" . $this->rank . "'); ";
+      return $q;
    }
  }
 ?>

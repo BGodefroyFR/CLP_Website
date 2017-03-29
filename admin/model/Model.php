@@ -62,5 +62,36 @@ class Model {
 
         $r->closeCursor();
 	}
+
+	function toBDD() {
+		$q = "";
+
+		foreach($this->links as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->galleries as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->textareas as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->sections as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->miniatures as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->toplinks as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->uploads as $e) {
+			$q .= $e->toBDD();
+		}
+		foreach($this->galleryimages as $e) {
+			$q .= $e->toBDD();
+		}
+
+		return $q;
+	}
 }
 ?>
