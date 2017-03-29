@@ -7,8 +7,8 @@
 	$content = $myJSON;
 	file_put_contents($file, $content);*/
 
-	$content = file_get_contents('/home/bruno/compagnielepassage.fr/admin/controller/save.json');
-	$_POST = json_decode($content, true);
+	//$content = file_get_contents('/home/bruno/compagnielepassage.fr/admin/controller/save.json');
+	//$_POST = json_decode($content, true);
 
 	// Get contents ranking
 	$linksRanks = array();
@@ -17,7 +17,7 @@
 
 	$curRank = 0;
 	foreach($_POST as $key => $value) {
-		if (strrpos($key, 'link_label') === 0) {
+		if (strrpos($key, 'link_isUpload') === 0) {
 			array_push($linksRanks, $curRank ++);
 		} else if (strrpos($key, 'textarea_rankMarker') === 0) {
 			array_push($textAreaRanks, $curRank ++);
@@ -59,14 +59,16 @@
 
 	function createMiniature($model) {
 		if (isset($_POST['isMiniature']) && strcmp($_POST['isMiniature'], "on") == 0) {
-			$path = uploadFile ('../../images/miniatures', $_FILE['miniatureImage']);
-			$newUpload = new Upload();
-			$newUpload->createFromForm($path);
-			array_push($model->uploads, $newUpload);
+			if (!isUploadError($_FILES['miniatureImage']['error'])) {
+				$path = uploadFile ('images/miniatures', $_FILES['miniatureImage']);
+				$newUpload = new Upload();
+				$newUpload->createFromForm($path);
+				array_push($model->uploads, $newUpload);
 
-			$newMiniature = new Miniature();
-			$newMiniature->createFromForm($_POST['id'], $newUpload->id);
-			array_push($model->miniatures, $newMiniature);
+				$newMiniature = new Miniature();
+				$newMiniature->createFromForm($_POST['id'], $newUpload->id);
+				array_push($model->miniatures, $newMiniature);
+			}
 		}
 		return $model;
 	}
@@ -78,43 +80,49 @@
 				array_push($link_isUpload, $value);
 			}
 		}
+		$uploadOffset = sizeof($model->uploads);
 		if (isset($_POST['link_label'])) {
-			$uploadFilesPaths = uploadFiles ('../../file-upload', $_FILE['link_uploadedFile']);
+			$uploadFilesPaths = uploadFiles ('file-upload', $_FILES['link_uploadedFile']);
 			foreach ($uploadFilesPaths as $path) {
-				$newUpload = new Upload();
-				$newUpload->createFromForm($path);
-				array_push($model->uploads, $newUpload);
+				if (strlen($path) > 0) {
+					$newUpload = new Upload();
+					$newUpload->createFromForm($path);
+					array_push($model->uploads, $newUpload);
+				}
 			}
 			
 			$count = 0;
 			$pathCount = 0;
-			while (next($_POST['link_label'])) {
+			
+			while (current($_POST['link_label'])) {
 				$newLink = new Link();
 				$url = $_POST['link_url'][$count];
-				if ($link_isUpload[$count])
+				if (booltoInt($link_isUpload[$count])) 
 					$url = $uploadFilesPaths[$pathCount ++];
-
-				$newLink->createFromForm(
-					(int)$link_isUpload[$count],
-					current($_POST['link_label']), 
-					$url,
-					($link_isUpload[$count] ? $model->uploads[$pathCount-1]->id : -1),
-					$_POST['id'],
-					$linksRanks[$count]);
+				if (strlen($url) > 0) {
+					$newLink->createFromForm(
+						booltoInt($link_isUpload[$count]),
+						current($_POST['link_label']), 
+						$url,
+						(booltoInt($link_isUpload[$count]) ? $model->uploads[$pathCount-1 + $uploadOffset]->id : -1),
+						$_POST['id'],
+						$linksRanks[$count]);
+					array_push($model->links, $newLink);
+				}
 				$count ++;
-				array_push($model->links, $newLink);
+				next($_POST['link_label']);
 			}
 		}
 		return $model;
 	}
 
 	function createTextareas($model, $textAreaRanks) {
+		$count = 0;
 		foreach($_POST as $key => $value) {
-			$count = 0;
 			if (strrpos($key, 'isTwoCol') === 0) {
 				$newTextArea = new TextArea();
 				$newTextArea->createFromForm($_POST['id'],
-					(int)$value,
+					booltoInt($value),
 					$_POST['editor'.($count*2)],
 					$_POST['editor'.($count*2+1)],
 					$textAreaRanks[$count]);
@@ -132,25 +140,29 @@
 			if (strrpos($key, 'gallery_') === 0) {
 				$newGallery = new Gallery();
 				$newGallery->createFromForm($_POST['id'], $galleriesRanks[$count]);
-				array_push($photosPerGallery, $value);
+				array_push($photosPerGallery, 0);
 				array_push($model->galleries, $newGallery);
 				$count ++;
+			} else if (strrpos($key, 'galleryIm_rankMarker') === 0) {
+				$photosPerGallery[$count-1] ++;
 			}
 		}
 		if(sizeof($photosPerGallery) > 0) {
-			$uploadFilesPaths = uploadFiles ('../../images/galeries', $_FILE['galery_photoUpload']);
+			$uploadFilesPaths = uploadFiles ('images/galeries', $_FILES['galery_photoUpload']);
 		}
 		$count = 0;
 		for ($i = 0; $i < sizeof($photosPerGallery); $i++) {
 			for ($j = 0; $j < $photosPerGallery[$i]; $j++) {
-				$newUpload = new Upload();
-				$newUpload->createFromForm($uploadFilesPaths[$count]);
-				array_push($model->uploads, $newUpload);
+				if (strlen($uploadFilesPaths[$count]) > 0) {
+					$newUpload = new Upload();
+					$newUpload->createFromForm($uploadFilesPaths[$count]);
+					array_push($model->uploads, $newUpload);
 
-				$newGalleryimage = new Galleryimage();
-				$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $count);
+					$newGalleryimage = new Galleryimage();
+					$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $j);
+					array_push($model->galleryimages, $newGalleryimage);
+				}
 				$count ++;
-				array_push($model->galleryimages, $newGalleryimage);
 			}
 		}
 		return $model;

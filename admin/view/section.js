@@ -70,14 +70,16 @@ $( document ).ready(function() {
 			     $('#content').append(data);
 			     $.get('asset/galery_image.html', function(data) {
 			     	$('#content .galery:last-child').append(data);
+			     	$('#content .galery:last .galeryImage .rankMarker').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
 			     });
-			     $('#content .galery:last-child .rankMarker').attr('name', 'gallery_rankMarker' + parseInt(Math.random() * 1e9));
+			     $('#content .galery:last-child > .rankMarker').attr('name', 'gallery_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 		});
 		$(document).on("click", "#content .galery .galery_addPhoto",function() {
 			var curGalery = $(this).parent().parent();
 			$.get('asset/galery_image.html', function(data) {
 			    curGalery.append(data);
+			    curGalery.find('.rankMarker:last').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 
 		});

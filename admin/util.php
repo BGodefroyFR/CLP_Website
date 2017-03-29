@@ -23,5 +23,10 @@
 		return substr($path, $pos+1);
 	}
 
+	// Boolean to Int
+	function booltoInt($b) {
+		return (strcmp($b, 'true') == 0 ? 1 : 0);
+	}
+
 
 ?>
