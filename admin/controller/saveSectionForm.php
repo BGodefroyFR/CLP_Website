@@ -43,7 +43,7 @@
 
 	function createSection($model) {
 		$newSection = new Section();
-		$newSection->createFromForm($_POST['title'], $_POST['fontColor'], $_POST['backgroundColor'], $_POST['selectPattern'], $_POST['id']);
+		$newSection->createFromForm($_POST['title'], $_POST['fontColor'], $_POST['backgroundColor'], $_POST['selectPattern'], $_POST['rank'], $_POST['id']);
 		array_push($model->sections, $newSection);
 		return $model;
 	}
@@ -62,7 +62,7 @@
 			if (!isUploadError($_FILES['miniatureImage']['error'])) {
 				$path = uploadFile ('images/miniatures', $_FILES['miniatureImage']);
 				$newUpload = new Upload();
-				$newUpload->createFromForm($path);
+				$newUpload->createFromForm($path[1], $path[0]);
 				array_push($model->uploads, $newUpload);
 
 				$newMiniature = new Miniature();
@@ -84,9 +84,9 @@
 		if (isset($_POST['link_label'])) {
 			$uploadFilesPaths = uploadFiles ('file-upload', $_FILES['link_uploadedFile']);
 			foreach ($uploadFilesPaths as $path) {
-				if (strlen($path) > 0) {
+				if (strlen($path[1]) > 0) {
 					$newUpload = new Upload();
-					$newUpload->createFromForm($path);
+					$newUpload->createFromForm($path[1], $path[0]);
 					array_push($model->uploads, $newUpload);
 				}
 			}
@@ -98,7 +98,7 @@
 				$newLink = new Link();
 				$url = $_POST['link_url'][$count];
 				if (booltoInt($link_isUpload[$count])) 
-					$url = $uploadFilesPaths[$pathCount ++];
+					$url = $uploadFilesPaths[$pathCount ++][1];
 				if (strlen($url) > 0) {
 					$newLink->createFromForm(
 						booltoInt($link_isUpload[$count]),
@@ -153,9 +153,9 @@
 		$count = 0;
 		for ($i = 0; $i < sizeof($photosPerGallery); $i++) {
 			for ($j = 0; $j < $photosPerGallery[$i]; $j++) {
-				if (strlen($uploadFilesPaths[$count]) > 0) {
+				if (strlen($uploadFilesPaths[$count][1]) > 0) {
 					$newUpload = new Upload();
-					$newUpload->createFromForm($uploadFilesPaths[$count]);
+					$newUpload->createFromForm($uploadFilesPaths[$count][1], $uploadFilesPaths[$count][0]);
 					array_push($model->uploads, $newUpload);
 
 					$newGalleryimage = new Galleryimage();

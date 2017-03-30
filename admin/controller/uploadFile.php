@@ -3,7 +3,7 @@
 		$id = rand(1,1e9) . '.' . pathinfo($file["name"], PATHINFO_EXTENSION);
 		$target_file = "../../" . $target_dir . "/" . $id;
 		move_uploaded_file($file["tmp_name"], $target_file);
-		return $target_dir . "/" . $id;
+		return array($file["name"], $target_dir . "/" . $id);
 	}
 
 	function uploadFiles ($target_dir, $files) {
@@ -13,7 +13,7 @@
 				$id = rand(1,1e9) . '.' . pathinfo($files["name"][$i], PATHINFO_EXTENSION);
 				$target_file = "../../" . $target_dir . "/" . $id;
 				move_uploaded_file($files["tmp_name"][$i], $target_file);
-				array_push($paths, $target_dir . "/" . $id);
+				array_push($paths, array($files["name"][$i], $target_dir . "/" . $id));
 			} else {
 				array_push($paths, "");
 			}

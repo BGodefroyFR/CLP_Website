@@ -32,9 +32,15 @@ $( document ).ready(function() {
 	
 
 	function getSelectHTML() {
+		currentBackgroundPattern = $("#style #currentBackgroundPattern").val();
+
 		var content = "<select name='selectPattern' id='selectPattern'>";
 		for (var i = 0; i < patterns.length; i++) {
-		    content += "<option value='" + patterns[i] + "'>" + patterns[i] + "</option>";
+		    content += "<option ";
+		    if (currentBackgroundPattern === patterns[i]) {
+		    	content += "selected='selected' ";
+		    }
+		   	content += "value='" + patterns[i] + "'>" + patterns[i] + "</option>";
 		}
 		content += "</select>";
 		return content;
@@ -45,7 +51,7 @@ $( document ).ready(function() {
 
 		p = getPattern(patternName);
 		var curColor = "";
-		if (lastPattern != patternName) {
+		if (lastPattern != "" && lastPattern != patternName) {
 			setBkgColor(p[1]);
 			curColor = p[1];
 		} else {

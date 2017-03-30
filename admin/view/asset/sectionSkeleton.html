@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Section</title>
+
+		<link rel="stylesheet" href="section.css">
+		<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="util.js"></script>
+		<script type="text/javascript" src="bkgPatterns.js"></script>
+		<script type="text/javascript" src="section.js"></script>
+		<script src="lib/ckeditor/ckeditor.js"></script>
+		<script src="editor.js"></script>
+		<script src="../controller/sendSectionAjax.js"></script>
+
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<form id='mainForm' action="upload.php" method="post" enctype="multipart/form-data">
+			<input type="hidden" value="36" name="id" />
+			<input type="hidden" value="0" name="rank" />
+	    	<section id='saveArea'>
+				<button type="button" id="save">Sauvegarder</button>
+				<p>Modifications sauvegardées et publiées avec succès.</p>
+			</section>
+
+			<h1>Section</h1>
+
+			<section id='general'>
+
+				<p class='sectionLabel'>Général</p>
+
+				<div><p>Titre :</p><input type="text" name="title" value="<TITLE>"></div>
+
+				<div id='isTopLink'><input type="checkbox" name="isTopLink" <ISTOPLINK>><p>Lien haut de page</p></div>
+				<div id='topLinkText' <ISTOPLINKHIDDEN>><p>Texte :</p><input type="text" name="topLinkText" value="<TOPLINK>"></div>
+
+				<div id='isMiniature'><input type="checkbox" name="isMiniature" <ISMINIATURE>><p>Miniature</p></div>
+				<div id='miniatureImage' <ISMINIATUREHIDDEN>>
+					<MINIATUREIMAGE>
+					<p id='warningMiniatureDim'>Image aux dimensions 1234*800 (important !)</p>
+					<input type='file' name='miniatureImage'>
+			 	</div>
+			 </section>
+
+			 <section id='style'>
+			 	<p class='sectionLabel'>Style</p>
+
+			 	<input type="hidden" id='currentBackgroundPattern' value="<BACKGROUNDPATTERN>"/>
+			 	<div id="patternSelection"></div>
+			 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value="<BACKGROUNDCOLOR>"></div>
+			 	<div class='colorSelector'><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="<FONTCOLOR>"></div>
+			 	<div id='preview'><p>Aperçu:</p></div>
+			 	<div id="patternDemo">
+			 	</div>
+			 </section>
+
+			 <section id='addButtons'>
+			 	<div>
+			 		<button type="button" id="addTextArea">+ zone de texte</button>
+			 		<button type="button" id="addGalery">+ galerie</button>
+			 		<button type="button" id="addLink">+ lien</button>
+			 	</div>
+			 </section>
+
+			 <section id='content'>
+			 </section>
+
+		</form>
+
+	</body>
+</html>
