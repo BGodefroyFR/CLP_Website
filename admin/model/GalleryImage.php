@@ -23,7 +23,18 @@ class GalleryImage extends Elem {
 	  $this->rank = $rank;
 	}
 
-	function toFrontEnd() {
+	function toFrontEnd($uploads) {
+		$content = file_get_contents('../view/asset/curGalery_image.html');
+
+		$imageName = "";
+		foreach($uploads as $u) {
+		    if ($u->id == $this->uploadId) {
+		       $imageName = $u->initialName;
+		       break;
+		    }
+		}
+		$content = str_replace('<IMAGENAME>', $imageName, $content);
+		return $content;
 	}
 
 	function toBDD() {

@@ -1,0 +1,20 @@
+<div class='textArea contentElem'>
+	<p class='sectionLabel'>Zone de texte</p>
+	<div class='actions'>
+		<img class='up' src='images/up.png'>
+		<img class='down' src='images/down.png'>
+		<img class='delete' src='images/delete.png'>
+	</div>
+	<input type="hidden" name="rankMarker" class='rankMarker'/>
+	<form>
+		<div id='isTwoCol'><input type="checkbox" name="isTwoCol" <IS2COL>><p>2 colonnes</p></div>
+		<div class='editorArea' id='leftColumn' style='width: <LEFTCOLWIDTH>%;'>
+			<p></p>
+			<div name='editor1[]' id='editor1' class='editorContainer'><CONTENTLEFT></div>
+		</div>
+		<div class='editorArea' id='rightColumn' style='<DISPLAYRIGHTCOL> width: 45%;'>
+			<p>Colonne droite</p>
+			<div name='editor2[]' id='editor2' class='editorContainer'><CONTENTRIGHT></div>
+		</div>
+	</form>
+</div>

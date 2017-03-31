@@ -123,6 +123,19 @@ class Model {
 		// Background pattern
 		$content = str_replace('<BACKGROUNDPATTERN>', $this->getById($this->sections, $sectionId)->backgroundPattern, $content);
 
+		// Links
+		foreach ($this->links as $l) {
+			$content = $this->insertElemToFrontContent($content, $l->toFrontEnd($this->uploads));
+		}
+		// Galleries
+		foreach ($this->galleries as $g) {
+			$content = $this->insertElemToFrontContent($content, $g->toFrontEnd($this->galleryimages, $this->uploads));
+		}
+		// Textareas
+		foreach ($this->textareas as $t) {
+			$content = $this->insertElemToFrontContent($content, $t->toFrontEnd());
+		}
+
 		return $content;
 	}
 
@@ -169,6 +182,14 @@ class Model {
 			if ($s->sectionId == $id)
 				return $s;
 		}
+	}
+
+	function insertElemToFrontContent($content, $elem) {
+		$pos = strpos($content, '</section></form>');
+		$newContent = substr($content, 0, $pos)
+			. $elem
+			. substr($content, $pos);
+		return $newContent;
 	}
 }
 ?>

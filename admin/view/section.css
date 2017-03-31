@@ -200,6 +200,19 @@ section .sectionLabel, div .sectionLabel {
 				.galery .galeryImage .image_upDown .up {
 					margin-bottom: 3px;
 				}
+		.curGaleryImage .imagename {
+			display: inline-block;
+			margin-left: 6px;
+		    margin-right: 5px;
+		    vertical-align: middle;
+		    min-width: 284px;
+		}
+			.curGaleryImage .imagename p {
+				margin-top: 0px;
+    			margin-bottom: 0px;
+    			color: #3a898c;
+			}
+
 
 	/* Link */
 	.link {
@@ -218,5 +231,19 @@ section .sectionLabel, div .sectionLabel {
 		.link .link_uploadDiv {
 			margin-bottom: 14px;
 		}
+	.curLink .link_label p {
+		font-size: 18px;
+	    display: block;
+	    margin-left: 18px;
+	    margin-top: 5px;
+	    margin-bottom: 0px;
+	    color: #3a898c;
+	}
+	.curLink .link_target p {
+	    font-size: 12px;
+	    color: #6f6f6f;
+	    margin-left: 22px;
+	    margin-top: -5px;
+	}
 
 	    

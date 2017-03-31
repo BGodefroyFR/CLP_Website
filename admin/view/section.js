@@ -40,18 +40,24 @@ $( document ).ready(function() {
 	});
 
 		// Text area
+		while(document.getElementById("editor1")) { // Initializes generated textareas
+	        initTextArea();
+	    }
 		$('#addButtons #addTextArea').click(function() {
 			$.get('asset/textArea.html', function(data) {
 			    $('#content').append(data);
-				var randId1 = "editor_" + Math.floor(Math.random() * 1e9);
-				document.getElementById("editor1").id = randId1;
-				initSample(randId1);
-				var randId2 = "editor_" + Math.floor(Math.random() * 1e9);
-				document.getElementById("editor2").id = randId2;
-				initSample(randId2);
-				$('#content .textArea:last-child .rankMarker').attr('name', 'textarea_rankMarker' + parseInt(Math.random() * 1e9));
+			    initTextArea();
 			});
 		});
+		function initTextArea() {
+			$('#content #editor1').parent().parent().parent().find('.rankMarker').attr('name', 'textarea_rankMarker' + parseInt(Math.random() * 1e9));
+			var randId1 = "editor_" + Math.floor(Math.random() * 1e9);
+			document.getElementById("editor1").id = randId1;
+			initSample(randId1);
+			var randId2 = "editor_" + Math.floor(Math.random() * 1e9);
+			document.getElementById("editor2").id = randId2;
+			initSample(randId2);
+		}
 		$(document).on("change", "#content .textArea #isTwoCol input",function() {
 			if($(this).is(':checked')) {
 				$(this).parent().parent().find('#rightColumn').show();

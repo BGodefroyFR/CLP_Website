@@ -32,6 +32,21 @@ class Textarea extends Elem {
    }
 
    function toFrontEnd() {
+      $content = file_get_contents('../view/asset/curTextArea.html');
+      $content = str_replace('<CONTENTLEFT>', $this->contentCol1, $content);
+
+      if ($this->isTwoCol) {
+         $content = str_replace('<IS2COL>', 'checked', $content);
+         $content = str_replace('<DISPLAYRIGHTCOL>', 'display: inline-block;', $content);
+         $content = str_replace('<CONTENTRIGHT>', $this->contentCol2, $content);
+         $content = str_replace('<LEFTCOLWIDTH>', '45', $content);
+      } else {
+         $content = str_replace('<IS2COL>', '', $content);
+         $content = str_replace('<DISPLAYRIGHTCOL>', 'display:none;', $content);
+         $content = str_replace('<CONTENTRIGHT>', '', $content);
+         $content = str_replace('<LEFTCOLWIDTH>', '90', $content);
+      }
+      return $content;
    }
 
    function toBDD() {

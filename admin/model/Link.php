@@ -35,7 +35,23 @@ class Link extends Elem {
       $this->rank = $rank;
    }
 
-   function toFrontEnd() {
+   function toFrontEnd($uploads) {
+      $content = file_get_contents('../view/asset/curLink.html');
+      $content = str_replace('<LINK_LABEL>', $this->label, $content);
+
+      $url = "";
+      if ($this->uploadId == -1) {
+         $url = $this->target;
+      } else {
+         foreach($uploads as $u) {
+            if ($u->id == $this->uploadId) {
+               $url = $u->initialName;
+               break;
+            }
+         }
+      }
+      $content = str_replace('<LINK_TARGET>', $url, $content);
+      return $content;
    }
 
    function toBDD() {

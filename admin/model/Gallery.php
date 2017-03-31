@@ -19,7 +19,12 @@ class Gallery extends Elem {
       $this->rank = $rank;
    }
 
-	function toFrontEnd() {
+	function toFrontEnd($allGalerieImages, $uploads) {
+		$content = file_get_contents('../view/asset/galery.html');
+		foreach ($this->getGalerieImages($allGalerieImages) as $g) {
+			$content = $this->insertGalerieImageToFrontContent($content, $g->toFrontEnd($uploads));
+		}
+		return $content;
 	}
 
 	function toBDD() {
@@ -27,6 +32,24 @@ class Gallery extends Elem {
 		$q .= "INSERT INTO adm_gallery(id, sectionId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
 		return $q;
+	}
+
+	function insertGalerieImageToFrontContent($content, $galerieImage) {
+		$pos = strrpos($content, '</div>');
+		$newContent = substr($content, 0, $pos)
+			. $galerieImage
+			. substr($content, $pos);
+		return $newContent;
+	}
+
+	function getGalerieImages($allGalerieImages) {
+		$galerieImages = array();
+		foreach ($allGalerieImages as $i) {
+			if ($i->galleryId == $this->id) {
+				array_push($galerieImages, $i);
+			}
+		}
+		return $galerieImages;
 	}
 }
 ?>
