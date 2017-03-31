@@ -26,8 +26,7 @@ class Toplink extends Elem {
 	}
 
 	function toBDD() {
-		$q = "DELETE FROM adm_toplink WHERE id='" . $this->id . "'; ";
-		$q .= "INSERT INTO adm_toplink(id, sectionId, label, rank)" 
+		$q = "INSERT INTO adm_toplink(id, sectionId, label, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->label . "', '" . $this->rank . "'); ";
 		return $q;
 	}

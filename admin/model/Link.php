@@ -51,12 +51,15 @@ class Link extends Elem {
          }
       }
       $content = str_replace('<LINK_TARGET>', $url, $content);
+      $content = str_replace('<UPLOADID>', $this->uploadId, $content);
+      $content = str_replace('<ISONSERVER>', $this->onServer, $content);
+      $content = str_replace('<RANDOMID>', rand(1,1e9), $content);
+      
       return $content;
    }
 
    function toBDD() {
-      $q = "DELETE FROM adm_link WHERE id='" . $this->id . "'; ";
-      $q .= "INSERT INTO adm_link(id, onServer, label, target, uploadId, sectionId, rank)" 
+      $q = "INSERT INTO adm_link(id, onServer, label, target, uploadId, sectionId, rank)" 
          . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . $this->label . "', '" . $this->target . "', '" . $this->uploadId . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
       return $q;
    }

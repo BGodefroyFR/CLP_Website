@@ -21,6 +21,7 @@ class Gallery extends Elem {
 
 	function toFrontEnd($allGalerieImages, $uploads) {
 		$content = file_get_contents('../view/asset/galery.html');
+		$content = str_replace("name=\"rankMarker\"", "name=\"gallery_rankMarker" . rand(1, 1e9) . "\"", $content);
 		foreach ($this->getGalerieImages($allGalerieImages) as $g) {
 			$content = $this->insertGalerieImageToFrontContent($content, $g->toFrontEnd($uploads));
 		}
@@ -28,8 +29,7 @@ class Gallery extends Elem {
 	}
 
 	function toBDD() {
-		$q = "DELETE FROM adm_gallery WHERE id='" . $this->id . "'; ";
-		$q .= "INSERT INTO adm_gallery(id, sectionId, rank)" 
+		$q = "INSERT INTO adm_gallery(id, sectionId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
 		return $q;
 	}

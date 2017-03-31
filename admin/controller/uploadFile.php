@@ -15,7 +15,7 @@
 				move_uploaded_file($files["tmp_name"][$i], $target_file);
 				array_push($paths, array($files["name"][$i], $target_dir . "/" . $id));
 			} else {
-				array_push($paths, "");
+				array_push($paths, array("", ""));
 			}
 		}
 		return $paths;

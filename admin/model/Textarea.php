@@ -52,8 +52,7 @@ class Textarea extends Elem {
    }
 
    function toBDD() {
-      $q = "DELETE FROM adm_textarea WHERE id='" . $this->id . "'; ";
-      $q .= "INSERT INTO adm_textarea(id, sectionId, isTwoCol, contentCol1, contentCol2, rank)" 
+      $q = "INSERT INTO adm_textarea(id, sectionId, isTwoCol, contentCol1, contentCol2, rank)" 
          . "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->isTwoCol . "', '" . $this->contentCol1 . "', '" . $this->contentCol2 . "', '" . $this->rank . "'); ";
       return $q;
    }

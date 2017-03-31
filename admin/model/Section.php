@@ -36,8 +36,7 @@ class Section extends Elem {
    }
 
    function toBDD() {
-      $q = "DELETE FROM adm_section WHERE id='" . $this->id . "'; ";
-      $q .= "INSERT INTO adm_section(id, title, textColor, backgroundColor, backgroundPattern, rank)" 
+      $q = "INSERT INTO adm_section(id, title, textColor, backgroundColor, backgroundPattern, rank)" 
          . "VALUES('" . $this->id . "', '" . $this->title . "', '" . $this->textColor . "', '" . $this->backgroundColor . "', '" . $this->backgroundPattern . "', '" . $this->rank . "'); ";
       return $q;
    }

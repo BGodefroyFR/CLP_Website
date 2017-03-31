@@ -15,6 +15,8 @@
 	$textAreaRanks = array();
 	$galleriesRanks = array();
 
+	cleanUpUploads(36);
+
 	$curRank = 0;
 	foreach($_POST as $key => $value) {
 		if (strrpos($key, 'link_isUpload') === 0) {
@@ -35,11 +37,41 @@
 	$newModel = createTextareas($newModel, $textAreaRanks);
 	$newModel = createGalleries($newModel, $galleriesRanks);
 
-	// Exports model to BDD
+	// Cleans DB
+	cleanUpDB($_POST['id']);
+
+	// Exports model to DB
 	executeQuery($newModel->toBDD());
+
+	// Cleans uploads
+	cleanUpUploads($_POST['id']);
 
 
 	// -------------------------------------
+
+	function cleanUpDB($sectionId) {
+		$q = "DELETE FROM adm_galleryimage WHERE galleryId IN " 
+			. "(SELECT id FROM adm_gallery WHERE sectionId = '" . $sectionId . "'); ";
+
+		$q .= "DELETE FROM adm_link WHERE sectionId = '" . $sectionId . "'; ";
+		$q .= "DELETE FROM adm_textarea WHERE sectionId = '" . $sectionId . "'; ";
+		$q .= "DELETE FROM adm_gallery WHERE sectionId = '" . $sectionId . "'; ";
+
+		$q .= "DELETE FROM adm_section WHERE id='" . $sectionId . "'; "
+		 . "DELETE FROM adm_toplink WHERE sectionId='" . $sectionId . "'; "
+		 . "DELETE FROM adm_miniature WHERE sectionId='" . $sectionId . "'; ";
+
+		executeQuery($q);
+	}
+
+	function cleanUpUploads($sectionId) {
+		$q = "DELETE FROM adm_upload WHERE id NOT IN " 
+			. "(SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
+			. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' "
+			. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "'); ";
+		executeQuery($q);
+		//error_log($q);
+	}
 
 	function createSection($model) {
 		$newSection = new Section();
@@ -81,7 +113,7 @@
 			}
 		}
 		$uploadOffset = sizeof($model->uploads);
-		if (isset($_POST['link_label'])) {
+		if (isset($_FILES['link_uploadedFile'])) {
 			$uploadFilesPaths = uploadFiles ('file-upload', $_FILES['link_uploadedFile']);
 			foreach ($uploadFilesPaths as $path) {
 				if (strlen($path[1]) > 0) {
@@ -90,28 +122,42 @@
 					array_push($model->uploads, $newUpload);
 				}
 			}
-			
-			$count = 0;
-			$pathCount = 0;
-			
-			while (current($_POST['link_label'])) {
-				$newLink = new Link();
-				$url = $_POST['link_url'][$count];
-				if (booltoInt($link_isUpload[$count])) 
+		}
+		
+		$totalCount = 0;
+		$curCount = 0;
+		$newCount = 0;
+		$pathCount = 0;
+
+		while (isset($_POST['isCurLink']) && current($_POST['isCurLink'])) {
+			$newLink = new Link();
+			if(strcmp(current($_POST['isCurLink']), 'true') == 0) {
+				$newLink->createFromForm(
+					(int)$_POST['isOnServer'][$curCount],
+					$_POST['curLink_label'][$curCount], 
+					$_POST['curLink_target'][$curCount],
+					$_POST['curUploadId'][$curCount],
+					$_POST['id'],
+					$linksRanks[$totalCount ++]);
+				$curCount ++;
+			} else {
+				$url = $_POST['link_url'][$newCount];
+				if (booltoInt($link_isUpload[$newCount])) 
 					$url = $uploadFilesPaths[$pathCount ++][1];
 				if (strlen($url) > 0) {
 					$newLink->createFromForm(
-						booltoInt($link_isUpload[$count]),
-						current($_POST['link_label']), 
+						booltoInt($link_isUpload[$newCount]),
+						$_POST['link_label'][$newCount], 
 						$url,
-						(booltoInt($link_isUpload[$count]) ? $model->uploads[$pathCount-1 + $uploadOffset]->id : -1),
+						(booltoInt($link_isUpload[$newCount]) ? $model->uploads[$pathCount-1 + $uploadOffset]->id : -1),
 						$_POST['id'],
-						$linksRanks[$count]);
-					array_push($model->links, $newLink);
+						$linksRanks[$totalCount ++]);
 				}
-				$count ++;
-				next($_POST['link_label']);
+				$newCount ++;
 			}
+
+			array_push($model->links, $newLink);
+			next($_POST['isCurLink']);
 		}
 		return $model;
 	}
@@ -119,7 +165,7 @@
 	function createTextareas($model, $textAreaRanks) {
 		$count = 0;
 		foreach($_POST as $key => $value) {
-			if (strrpos($key, 'isTwoCol') === 0) {
+			if (strrpos($key, 'isTwoCol') === 0 && strcmp($key, 'isTwoCol') != 0) {
 				$newTextArea = new TextArea();
 				$newTextArea->createFromForm($_POST['id'],
 					booltoInt($value),
@@ -135,6 +181,7 @@
 
 	function createGalleries($model, $galleriesRanks) {
 		$photosPerGallery = array();
+		$isNewImage = array();
 		$count = 0;
 		foreach($_POST as $key => $value) {
 			if (strrpos($key, 'gallery_') === 0) {
@@ -143,26 +190,38 @@
 				array_push($photosPerGallery, 0);
 				array_push($model->galleries, $newGallery);
 				$count ++;
-			} else if (strrpos($key, 'galleryIm_rankMarker') === 0) {
+			} else if (strrpos($key, 'curGalleryIm_rankMarker') === 0) {
 				$photosPerGallery[$count-1] ++;
+				array_push($isNewImage, true);
+			}
+			else if (strrpos($key, 'galleryIm_rankMarker') === 0) {
+				$photosPerGallery[$count-1] ++;
+				array_push($isNewImage, false);
 			}
 		}
-		if(sizeof($photosPerGallery) > 0) {
+		if(isset($_FILES['galery_photoUpload'])) {
 			$uploadFilesPaths = uploadFiles ('images/galeries', $_FILES['galery_photoUpload']);
 		}
-		$count = 0;
+		$totalCount = 0;
+		$newCount = 0;
+		$curCount = 0;
 		for ($i = 0; $i < sizeof($photosPerGallery); $i++) {
 			for ($j = 0; $j < $photosPerGallery[$i]; $j++) {
-				if (strlen($uploadFilesPaths[$count][1]) > 0) {
-					$newUpload = new Upload();
-					$newUpload->createFromForm($uploadFilesPaths[$count][1], $uploadFilesPaths[$count][0]);
-					array_push($model->uploads, $newUpload);
+				$newGalleryimage = new Galleryimage();
+				if ($isNewImage[$totalCount]) {
+					$newGalleryimage->createFromForm($model->galleries[$i]->id, $_POST['uploadId'][$curCount ++], $j);	
+				} else {
+					if (strlen($uploadFilesPaths[$newCount][1]) > 0) {
+						$newUpload = new Upload();
+						$newUpload->createFromForm($uploadFilesPaths[$newCount][1], $uploadFilesPaths[$newCount][0]);
+						array_push($model->uploads, $newUpload);
 
-					$newGalleryimage = new Galleryimage();
-					$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $j);
-					array_push($model->galleryimages, $newGalleryimage);
+						$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $j);
+					}
+					$newCount ++;
 				}
-				$count ++;
+				array_push($model->galleryimages, $newGalleryimage);
+				$totalCount ++;
 			}
 		}
 		return $model;

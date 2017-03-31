@@ -50,7 +50,7 @@ $( document ).ready(function() {
 			});
 		});
 		function initTextArea() {
-			$('#content #editor1').parent().parent().parent().find('.rankMarker').attr('name', 'textarea_rankMarker' + parseInt(Math.random() * 1e9));
+			$('#content #editor1').parent().parent().parent().find('.textarea_rankMarker').attr('name', 'textarea_rankMarker' + parseInt(Math.random() * 1e9));
 			var randId1 = "editor_" + Math.floor(Math.random() * 1e9);
 			document.getElementById("editor1").id = randId1;
 			initSample(randId1);
@@ -76,16 +76,16 @@ $( document ).ready(function() {
 			     $('#content').append(data);
 			     $.get('asset/galery_image.html', function(data) {
 			     	$('#content .galery:last-child').append(data);
-			     	$('#content .galery:last .galeryImage .rankMarker').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
+			     	$('#content .galery:last .galeryImage .galeryImage_rankMarker').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
 			     });
-			     $('#content .galery:last-child > .rankMarker').attr('name', 'gallery_rankMarker' + parseInt(Math.random() * 1e9));
+			     $('#content .galery:last-child > .galery_rankMarker').attr('name', 'gallery_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 		});
 		$(document).on("click", "#content .galery .galery_addPhoto",function() {
 			var curGalery = $(this).parent().parent();
 			$.get('asset/galery_image.html', function(data) {
 			    curGalery.append(data);
-			    curGalery.find('.rankMarker:last').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
+			    curGalery.find('.galeryImage_rankMarker:last').attr('name', 'galleryIm_rankMarker' + parseInt(Math.random() * 1e9));
 			});
 
 		});

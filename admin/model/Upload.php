@@ -26,8 +26,7 @@ class Upload extends Elem {
 	}
 
 	function toBDD() {
-		$q = "DELETE FROM adm_upload WHERE id='" . $this->id . "'; ";
-		$q .= "INSERT INTO adm_upload(id, path, initialName)" 
+		$q = "INSERT INTO adm_upload(id, path, initialName)" 
 			. "VALUES('" . $this->id . "', '" . $this->path . "', '" . $this->initialName . "'); ";
 		return $q;
 	}

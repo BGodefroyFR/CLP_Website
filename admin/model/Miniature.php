@@ -26,8 +26,7 @@ class Miniature extends Elem {
 	}
 
 	function toBDD() {
-		$q = "DELETE FROM adm_miniature WHERE id='" . $this->id . "'; ";
-		$q .= "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
+		$q = "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
 		return $q;
 	}

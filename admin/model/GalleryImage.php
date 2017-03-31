@@ -33,13 +33,14 @@ class GalleryImage extends Elem {
 		       break;
 		    }
 		}
+		$content = str_replace('<RANKMARKER>', 'curGalleryIm_rankMarker' . rand(1, 1e9), $content);
 		$content = str_replace('<IMAGENAME>', $imageName, $content);
+		$content = str_replace('<UPLOADID>', $this->uploadId, $content);
 		return $content;
 	}
 
 	function toBDD() {
-		$q = "DELETE FROM adm_galleryimage WHERE id='" . $this->id . "'; ";
-		$q .= "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
+		$q = "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->galleryId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
 		return $q;
 	}
