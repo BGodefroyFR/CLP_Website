@@ -77,7 +77,7 @@ class Model {
             array_push($this->uploads, $e);
 		}
         // galleryimages
-		$r = $bdd->query("SELECT * FROM adm_galleryimage");
+		$r = $bdd->query("SELECT * FROM adm_galleryimage ORDER BY rank ASC");
 		while($d = $r->fetch()) {
 			$e = new Galleryimage($d);
 			$e->createFromBdd($d);
@@ -123,17 +123,16 @@ class Model {
 		// Background pattern
 		$content = str_replace('<BACKGROUNDPATTERN>', $this->getById($this->sections, $sectionId)->backgroundPattern, $content);
 
-		// Links
-		foreach ($this->links as $l) {
-			$content = $this->insertElemToFrontContent($content, $l->toFrontEnd($this->uploads));
-		}
-		// Galleries
-		foreach ($this->galleries as $g) {
-			$content = $this->insertElemToFrontContent($content, $g->toFrontEnd($this->galleryimages, $this->uploads));
-		}
-		// Textareas
-		foreach ($this->textareas as $t) {
-			$content = $this->insertElemToFrontContent($content, $t->toFrontEnd());
+		// Links, galleries ans textareas
+		$sortedElems = $this->getSortedElements();
+		foreach($sortedElems as $curElem) {
+			if (strcmp(get_class($curElem), "Link") == 0) {
+				$content = $this->insertElemToFrontContent($content, $curElem->toFrontEnd($this->uploads));
+			} else if (strcmp(get_class($curElem), "Gallery") == 0) {
+				$content = $this->insertElemToFrontContent($content, $curElem->toFrontEnd($this->galleryimages, $this->uploads));
+			} else if (strcmp(get_class($curElem), "Textarea") == 0) {
+				$content = $this->insertElemToFrontContent($content, $curElem->toFrontEnd());
+			}
 		}
 
 		return $content;
@@ -190,6 +189,41 @@ class Model {
 			. $elem
 			. substr($content, $pos);
 		return $newContent;
+	}
+
+	function getSortedElements() {
+		$sortedElems = array();
+		$curRank = 0;
+		do {
+			$isElemFound = false;
+			foreach ($this->galleries as $e) {
+				if ($e->rank == $curRank) {
+					array_push($sortedElems, $e);
+					$isElemFound = true;
+					break;
+				}
+			}
+			if (!$isElemFound) {
+				foreach ($this->textareas as $e) {
+					if ($e->rank == $curRank) {
+						array_push($sortedElems, $e);
+						$isElemFound = true;
+						break;
+					}
+				}
+			}
+			if (!$isElemFound) {
+				foreach ($this->links as $e) {
+					if ($e->rank == $curRank) {
+						array_push($sortedElems, $e);
+						$isElemFound = true;
+						break;
+					}
+				}
+			}
+			$curRank ++;
+		} while($isElemFound);
+		return $sortedElems;
 	}
 }
 ?>
