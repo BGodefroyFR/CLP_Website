@@ -40,11 +40,13 @@ class Textarea extends Elem {
          $content = str_replace('<DISPLAYRIGHTCOL>', 'display: inline-block;', $content);
          $content = str_replace('<CONTENTRIGHT>', $this->contentCol2, $content);
          $content = str_replace('<LEFTCOLWIDTH>', '45', $content);
+         $content = str_replace('<LEFTCOLLABEL>', 'Colonne gauche', $content);
       } else {
          $content = str_replace('<IS2COL>', '', $content);
          $content = str_replace('<DISPLAYRIGHTCOL>', 'display:none;', $content);
          $content = str_replace('<CONTENTRIGHT>', '', $content);
          $content = str_replace('<LEFTCOLWIDTH>', '90', $content);
+         $content = str_replace('<LEFTCOLLABEL>', '', $content);
       }
       return $content;
    }

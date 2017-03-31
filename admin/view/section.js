@@ -66,7 +66,7 @@ $( document ).ready(function() {
 			} else {
 				$(this).parent().parent().find('#rightColumn').hide();
 				$(this).parent().parent().find('#leftColumn p').html("");
-				$(this).parent().parent().find('#leftColumn').css('width', '100%');
+				$(this).parent().parent().find('#leftColumn').css('width', '90%');
 			}
 		});
 
