@@ -1,8 +1,9 @@
 $( document ).ready(function() {
 
-    $("#saveArea button").click(function() {
-        var formData = new FormData(document.getElementById('mainForm'));
+    var isRecentSave = true;
+    var timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
 
+    function preprocessFormData(formData) {
         // Textareas
         var count = 0;
         $('.textArea .editorArea > div.editorContainer').each(function () {
@@ -22,10 +23,16 @@ $( document ).ready(function() {
             formData.append('gallery' + (count ++), nbImages);
         });
 
+        return formData;
+    }
 
-        /*for(var pair of formData.entries()) {
-          alert(pair[0]+ ', '+ pair[1]); 
-        }*/
+    function saveForm() {
+        var formData = new FormData(document.getElementById('mainForm'));
+        formData = preprocessFormData(formData);
+
+        isRecentSave = true;
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
 
         $.ajax({
             url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/saveSectionForm.php',
@@ -33,11 +40,31 @@ $( document ).ready(function() {
             data: formData,
             async: false,
             success: function (data) {
-                alert('success');
+                $('#saveArea #success').css('display', 'inline');
+                setTimeout(function() {
+                    $('#saveArea #success').css('display', 'none');
+                }, 3000);
+            },
+            error: function (data) {
+                $('#saveArea #fail').css('display', 'inline');
+                setTimeout(function() {
+                    $('#saveArea #fail').css('display', 'none');
+                }, 3000);
             },
             cache: false,
             contentType: false,
             processData: false
         });
+    }
+
+    $("#saveArea button").click(function() {
+        saveForm();
+    });
+
+    $("#nav button").click(function() {
+        if (!isRecentSave && confirm("Enregistrer les modifications ?")) {
+            saveForm();
+        }
+        window.location = "mainMenu.html";
     });
 });

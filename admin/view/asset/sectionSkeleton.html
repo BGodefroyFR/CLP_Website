@@ -22,9 +22,13 @@
 		<form id='mainForm' action="upload.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" value="36" name="id" />
 			<input type="hidden" value="0" name="rank" />
+			<section id='nav'>
+				<button type="button" id="backButton"><< Retour</button>
+			</section>
 	    	<section id='saveArea'>
 				<button type="button" id="save">Sauvegarder</button>
-				<p>Modifications sauvegardées et publiées avec succès.</p>
+				<p id='success'>Modifications sauvegardées et publiées avec succès.</p>
+				<p id='fail'>La sauvegarde a échouée.</p>
 			</section>
 
 			<h1>Section</h1>
