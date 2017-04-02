@@ -10,18 +10,18 @@
 	}
 	else
 	{
-		 move_uploaded_file($_FILES["upload"]["tmp_name"],
-		 "../../images/textImages/" . $_FILES["upload"]["name"]);
+		$id = rand(1,1e9) . '.' . pathinfo($_FILES["upload"]["name"], PATHINFO_EXTENSION);
+		move_uploaded_file($_FILES["upload"]["tmp_name"],"../../images/textImages/" . $id);
 
 		$newUpload = new Upload();
-		$newUpload->createFromForm("images/textImages/" . $_FILES["upload"]["name"], $_FILES["upload"]["name"]);
+		$newUpload->createFromForm("images/textImages/" . $id, $_FILES["upload"]["name"]);
 		$newUpload->isTextEmbeded = 1;
 		executeQuery($newUpload->toBDD());
 
 		echo "Image uploadée";
 
 	 	$funcNum = $_GET['CKEditorFuncNum'] ;
-		$url = "../../images/textImages/" . $_FILES["upload"]["name"];
+		$url = "../../images/textImages/" . $id;
 		$message = 'Image uploadée avec succès';
  
 		echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";

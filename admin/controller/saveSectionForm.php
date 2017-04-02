@@ -14,9 +14,7 @@
 	$linksRanks = array();
 	$textAreaRanks = array();
 	$galleriesRanks = array();
-
-	cleanUpUploads(36);
-
+	
 	$curRank = 0;
 	foreach($_POST as $key => $value) {
 		if (strrpos($key, 'link_isUpload') === 0) {
@@ -65,7 +63,6 @@
 	}
 
 	function cleanUpUploads($sectionId) {
-		// Cleans up files
 		$toRemove = "SELECT path FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN ("
     		. "SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
     		. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' " 
@@ -75,12 +72,47 @@
 		while($f = $filesList->fetch()) {
 			unlink("../../" . $f['path']);
 		}
-
-		// Cleans up DB
 		$q = "DELETE FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN (SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
 			. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' "
 			. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "'); ";
 		executeQuery($q);
+
+		// Embeded images
+		$embededImages = getTextAreaEmbedFiles();
+		$toRemove = "SELECT path FROM adm_upload WHERE path LIKE 'images/textImages/%' ";
+		foreach ($embededImages as $e) {
+			$toRemove .= "and path <> '" . $e . "' ";
+		}
+		$filesList = executeQuery($toRemove);
+		while($f = $filesList->fetch()) {
+			unlink("../../" . $f['path']);
+			error_log("../../" . $f['path']);
+		}
+		$q = "DELETE FROM adm_upload WHERE path LIKE 'images/textImages/%' ";
+		foreach ($embededImages as $e) {
+			$q .= "and path <> '" . $e . "' ";
+		}
+		executeQuery($q);
+	}
+
+	function getTextAreaEmbedFiles() {
+		$textAreaContents = executeQuery("SELECT contentCol1, contentCol2 FROM adm_textarea");
+		$images = array();
+		while($e = $textAreaContents->fetch()) {
+			for ($i = 1; $i <= 2; $i++) {
+				$startPos = 0;
+				do {
+					if (strlen($e['contentCol'.$i]) <= $startPos+1)
+						break;
+					$startPos = strpos($e['contentCol'.$i], "src=\"../../images/textImages/", $startPos+1);
+					if($startPos > -1) {
+						$endPos = strpos($e['contentCol'.$i], "\"", $startPos + strlen("src=\"../../images/textImages/"));
+						array_push($images, substr($e['contentCol'.$i], $startPos + strlen("src=\"../../"), $endPos - $startPos - strlen("src=\"../../")));
+					}
+				} while ($startPos > -1);
+			}
+		}
+		return $images;
 	}
 
 	function createSection($model) {
