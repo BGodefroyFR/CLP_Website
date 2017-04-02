@@ -41,6 +41,7 @@
 				<div id='isMiniature'><input type="checkbox" name="isMiniature" <ISMINIATURE>><p>Miniature</p></div>
 				<div id='miniatureImage' <ISMINIATUREHIDDEN>>
 					<MINIATUREIMAGE>
+					<input type="hidden" name="miniatureUploadId" value='<MINIATUREUPLOADID>' />
 					<p id='warningMiniatureDim'>Image aux dimensions 1234*800 (important !)</p>
 					<input type='file' name='miniatureImage'>
 			 	</div>
@@ -51,7 +52,7 @@
 
 			 	<input type="hidden" id='currentBackgroundPattern' value="<BACKGROUNDPATTERN>"/>
 			 	<div id="patternSelection"></div>
-			 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" value="" id='backgroundColor' name="backgroundColor" value="<BACKGROUNDCOLOR>"></div>
+			 	<div class='colorSelector'><p>Couleur du fond :</p><input type="color" id='backgroundColor' name="backgroundColor" value="<BACKGROUNDCOLOR>"></div>
 			 	<div class='colorSelector'><p>Couleur de police :</p><input type="color" id='fontColor' name="fontColor" value="<FONTCOLOR>"></div>
 			 	<div id='preview'><p>Aperçu:</p></div>
 			 	<div id="patternDemo">

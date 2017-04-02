@@ -4,11 +4,13 @@ class Upload extends Elem {
 
 	var $path;
 	var $initialName;
+	var $isTextEmbeded;
 
 	function __construct() {
 		parent::__construct();
 		$this->path = "";
 		$this->initialName = "";
+		$this->isTextEmbeded = 0;
 	}
 
 	function createFromBdd($tuple) {
@@ -26,8 +28,8 @@ class Upload extends Elem {
 	}
 
 	function toBDD() {
-		$q = "INSERT INTO adm_upload(id, path, initialName)" 
-			. "VALUES('" . $this->id . "', '" . $this->path . "', '" . $this->initialName . "'); ";
+		$q = "INSERT INTO adm_upload(id, path, initialName, isTextEmbeded)" 
+			. "VALUES('" . $this->id . "', '" . $this->path . "', '" . $this->initialName . "', '" . $this->isTextEmbeded . "'); ";
 		return $q;
 	}
 }

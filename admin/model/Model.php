@@ -101,6 +101,7 @@ class Model {
 			$content = str_replace('<ISTOPLINKHIDDEN>', '', $content);
 		} else {
 			$content = str_replace('<ISTOPLINK>', '', $content);
+			$content = str_replace('<TOPLINK>', '', $content);
 			$content = str_replace('<ISTOPLINKHIDDEN>', 'hidden', $content);
 		}
 
@@ -111,9 +112,11 @@ class Model {
 			$content = str_replace('<ISMINIATUREHIDDEN>', '', $content);
 			$tmp = "<p id='curMiniature'>" . $this->getById($this->uploads, $miniature->uploadId)->initialName . "</p>";
 			$content = str_replace('<MINIATUREIMAGE>', $tmp, $content);
+			$content = str_replace('<MINIATUREUPLOADID>', $miniature->uploadId, $content);
 		} else {
 			$content = str_replace('<ISMINIATURE>', '', $content);
 			$content = str_replace('<ISMINIATUREHIDDEN>', 'hidden', $content);
+			$content = str_replace('<MINIATUREUPLOADID>', '-1', $content);
 		}
 
 		// Background color

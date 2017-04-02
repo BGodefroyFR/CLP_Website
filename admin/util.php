@@ -1,7 +1,7 @@
 <?php
 	function executeQuery($q) {
 		$bdd = connectBDD();
-		$bdd->query($q);
+		return $bdd->query($q);
 	}
 
 	function connectBDD() {

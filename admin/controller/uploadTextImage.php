@@ -1,15 +1,24 @@
 <?php
 	// Upload script for Ckeditor
+	include '../util.php';
+	include '../model/Elem.php';
+	include '../model/Upload.php';
 
 	if (file_exists("../../images/textImages/" . $_FILES["upload"]["name"]))
 	{
-	 echo $_FILES["upload"]["name"] . " existe deja. ";
+		echo $_FILES["upload"]["name"] . " existe deja. ";
 	}
 	else
 	{
-	 move_uploaded_file($_FILES["upload"]["tmp_name"],
-	 "../../images/textImages/" . $_FILES["upload"]["name"]);
-	 echo "Image uploadée";
+		 move_uploaded_file($_FILES["upload"]["tmp_name"],
+		 "../../images/textImages/" . $_FILES["upload"]["name"]);
+
+		$newUpload = new Upload();
+		$newUpload->createFromForm("images/textImages/" . $_FILES["upload"]["name"], $_FILES["upload"]["name"]);
+		$newUpload->isTextEmbeded = 1;
+		executeQuery($newUpload->toBDD());
+
+		echo "Image uploadée";
 
 	 	$funcNum = $_GET['CKEditorFuncNum'] ;
 		$url = "../../images/textImages/" . $_FILES["upload"]["name"];

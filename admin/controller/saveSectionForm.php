@@ -65,12 +65,22 @@
 	}
 
 	function cleanUpUploads($sectionId) {
-		$q = "DELETE FROM adm_upload WHERE id NOT IN " 
-			. "(SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
+		// Cleans up files
+		$toRemove = "SELECT path FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN ("
+    		. "SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
+    		. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' " 
+    		. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "')";
+
+		$filesList = executeQuery($toRemove);
+		while($f = $filesList->fetch()) {
+			unlink("../../" . $f['path']);
+		}
+
+		// Cleans up DB
+		$q = "DELETE FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN (SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
 			. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' "
 			. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "'); ";
 		executeQuery($q);
-		//error_log($q);
 	}
 
 	function createSection($model) {
@@ -99,6 +109,11 @@
 
 				$newMiniature = new Miniature();
 				$newMiniature->createFromForm($_POST['id'], $newUpload->id);
+				array_push($model->miniatures, $newMiniature);
+			}
+			if(sizeof($model->miniatures) == 0 && strcmp($_POST['miniatureUploadId'], '-1') != 0) {
+				$newMiniature = new Miniature();
+				$newMiniature->createFromForm($_POST['id'], $_POST['miniatureUploadId']);
 				array_push($model->miniatures, $newMiniature);
 			}
 		}
