@@ -15,8 +15,8 @@ class Textarea extends Elem {
       $this->contentCol2 = "";
    }
 
-   function createFromBdd($tuple) {
-      parent::createFromBdd($tuple);
+   function loadFromDB($tuple) {
+      parent::loadFromDB($tuple);
       $this->sectionId = $tuple['sectionId'];
       $this->isTwoCol = $tuple['isTwoCol'];
       $this->contentCol1 = $tuple['contentCol1'];
@@ -31,7 +31,7 @@ class Textarea extends Elem {
       $this->rank = $rank;
    }
 
-   function toFrontEnd() {
+   function toSectionForm() {
       $content = file_get_contents('../view/asset/curTextArea.html');
       $content = str_replace('<CONTENTLEFT>', $this->contentCol1, $content);
 
@@ -51,10 +51,15 @@ class Textarea extends Elem {
       return $content;
    }
 
-   function toBDD() {
+   function toSQL() {
       $q = "INSERT INTO adm_textarea(id, sectionId, isTwoCol, contentCol1, contentCol2, rank)" 
          . "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->isTwoCol . "', '" . $this->contentCol1 . "', '" . $this->contentCol2 . "', '" . $this->rank . "'); ";
       return $q;
+   }
+
+   function delete() {
+      $q = "DELETE FROM adm_textarea WHERE id = '" . $this->id . "'; ";
+      executeQuery($q);
    }
  }
 ?>

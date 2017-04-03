@@ -9,13 +9,11 @@
          $this->rank = -1;
       }
 
-	  function createFromBdd($tuple) {
+	  function loadFromDB($tuple) {
 	      $this->id = $tuple['id'];
 	      $this->timestamp = $tuple['timestamp'];
          if (isset($tuple['rank']))
 	        $this->rank = $tuple['rank'];
 	  }
-
-     abstract function toBDD();
    }
 ?>

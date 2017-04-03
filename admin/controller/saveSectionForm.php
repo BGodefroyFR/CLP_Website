@@ -2,15 +2,7 @@
 	include '../model/Model.php';
 	include 'uploadFile.php';
 
-	/*$myJSON = json_encode($_POST);
-	$file = '/home/bruno/compagnielepassage.fr/admin/controller/save.json';
-	$content = $myJSON;
-	file_put_contents($file, $content);*/
-
-	//$content = file_get_contents('/home/bruno/compagnielepassage.fr/admin/controller/save.json');
-	//$_POST = json_decode($content, true);
-
-	// Get contents ranking
+	// Gets contents ranking
 	$linksRanks = array();
 	$textAreaRanks = array();
 	$galleriesRanks = array();
@@ -26,48 +18,38 @@
 		}
 	}
 
-	// Creates and fill model
+	// Creates and fills model
 	$newModel = new Model();
-	$newModel = createSection($newModel);
-	$newModel = createToplink($newModel);
-	$newModel = createMiniature($newModel);
-	$newModel = createLinks($newModel, $linksRanks);
-	$newModel = createTextareas($newModel, $textAreaRanks);
-	$newModel = createGalleries($newModel, $galleriesRanks);
+	$newSection = new Section();
+	$newSection = createSection();
+	$newSection = createToplink($newSection);
+	$newSection = createMiniature($newSection);
+	$newSection = createLinks($newSection, $linksRanks);
+	$newSection = createTextareas($newSection, $textAreaRanks);
+	$newSection = createGalleries($newSection, $galleriesRanks);
 
-	// Cleans DB
-	cleanUpDB($_POST['id']);
+	array_push($newModel->sections, $newSection);
+
+	// Removes old version of section
+	$oldModel = new Model();
+	$oldModel->loadFromDB();
+	$oldModel->deleteSection($_POST['id']);
 
 	// Exports model to DB
-	executeQuery($newModel->toBDD());
+	error_log($newModel->toSQL());
+	executeQuery($newModel->toSQL());
 
 	// Cleans uploads
-	cleanUpUploads($_POST['id']);
+	//cleanUpUploads($_POST['id']);
 
 
 	// -------------------------------------
-
-	function cleanUpDB($sectionId) {
-		$q = "DELETE FROM adm_galleryimage WHERE galleryId IN " 
-			. "(SELECT id FROM adm_gallery WHERE sectionId = '" . $sectionId . "'); ";
-
-		$q .= "DELETE FROM adm_link WHERE sectionId = '" . $sectionId . "'; ";
-		$q .= "DELETE FROM adm_textarea WHERE sectionId = '" . $sectionId . "'; ";
-		$q .= "DELETE FROM adm_gallery WHERE sectionId = '" . $sectionId . "'; ";
-
-		$q .= "DELETE FROM adm_section WHERE id='" . $sectionId . "'; "
-		 . "DELETE FROM adm_toplink WHERE sectionId='" . $sectionId . "'; "
-		 . "DELETE FROM adm_miniature WHERE sectionId='" . $sectionId . "'; ";
-
-		executeQuery($q);
-	}
 
 	function cleanUpUploads($sectionId) {
 		$toRemove = "SELECT path FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN ("
     		. "SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
     		. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' " 
     		. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "')";
-
 		$filesList = executeQuery($toRemove);
 		while($f = $filesList->fetch()) {
 			unlink("../../" . $f['path']);
@@ -78,7 +60,7 @@
 		executeQuery($q);
 
 		// Embeded images
-		$embededImages = getTextAreaEmbedFiles();
+		$embededImages = getTextAreaEmbededFiles();
 		$toRemove = "SELECT path FROM adm_upload WHERE path LIKE 'images/textImages/%' ";
 		foreach ($embededImages as $e) {
 			$toRemove .= "and path <> '" . $e . "' ";
@@ -95,7 +77,7 @@
 		executeQuery($q);
 	}
 
-	function getTextAreaEmbedFiles() {
+	function getTextAreaEmbededFiles() {
 		$textAreaContents = executeQuery("SELECT contentCol1, contentCol2 FROM adm_textarea");
 		$images = array();
 		while($e = $textAreaContents->fetch()) {
@@ -115,58 +97,56 @@
 		return $images;
 	}
 
-	function createSection($model) {
+	function createSection() {
 		$newSection = new Section();
 		$newSection->createFromForm($_POST['title'], $_POST['fontColor'], $_POST['backgroundColor'], $_POST['selectPattern'], $_POST['rank'], $_POST['id']);
-		array_push($model->sections, $newSection);
-		return $model;
+		return $newSection;
 	}
 
-	function createToplink($model) {
+	function createToplink($section) {
 		if (isset($_POST['isTopLink']) && strcmp($_POST['isTopLink'], "on") == 0) {
 			$newTopLink = new TopLink();
 			$newTopLink->createFromForm($_POST['id'], $_POST['topLinkText']);
-			array_push($model->toplinks, $newTopLink);
+			$section->toplink = $newTopLink;
 		}
-		return $model;
+		return $section;
 	}
 
-	function createMiniature($model) {
+	function createMiniature($section) {
 		if (isset($_POST['isMiniature']) && strcmp($_POST['isMiniature'], "on") == 0) {
 			if (!isUploadError($_FILES['miniatureImage']['error'])) {
-				$path = uploadFile ('images/miniatures', $_FILES['miniatureImage']);
-				$newUpload = new Upload();
-				$newUpload->createFromForm($path[1], $path[0]);
-				array_push($model->uploads, $newUpload);
-
 				$newMiniature = new Miniature();
-				$newMiniature->createFromForm($_POST['id'], $newUpload->id);
-				array_push($model->miniatures, $newMiniature);
+				$newMiniature->createFromForm($_POST['id'], -1);
+				$section->miniature = $newMiniature;
+
+				$path = uploadFile ('images/miniatures', $_FILES['miniatureImage']);
+				$section->miniature->upload = new Upload();
+				$section->miniature->upload->createFromForm($path[1], $path[0]);
 			}
-			if(sizeof($model->miniatures) == 0 && strcmp($_POST['miniatureUploadId'], '-1') != 0) {
+			if($section->miniature == null && strcmp($_POST['miniatureUploadId'], '-1') != 0) {
 				$newMiniature = new Miniature();
 				$newMiniature->createFromForm($_POST['id'], $_POST['miniatureUploadId']);
-				array_push($model->miniatures, $newMiniature);
+				$section->miniature = $newMiniature;
 			}
 		}
-		return $model;
+		return $section;
 	}
 
-	function createLinks($model, $linksRanks) {
+	function createLinks($section, $linksRanks) {
 		$link_isUpload = array();
+		$uploads = array();
 		foreach($_POST as $key => $value) {
 			if (strrpos($key, 'link_isUpload_') === 0) {
 				array_push($link_isUpload, $value);
 			}
 		}
-		$uploadOffset = sizeof($model->uploads);
 		if (isset($_FILES['link_uploadedFile'])) {
 			$uploadFilesPaths = uploadFiles ('file-upload', $_FILES['link_uploadedFile']);
 			foreach ($uploadFilesPaths as $path) {
 				if (strlen($path[1]) > 0) {
 					$newUpload = new Upload();
 					$newUpload->createFromForm($path[1], $path[0]);
-					array_push($model->uploads, $newUpload);
+					array_push($uploads, $newUpload);
 				}
 			}
 		}
@@ -196,20 +176,21 @@
 						booltoInt($link_isUpload[$newCount]),
 						$_POST['link_label'][$newCount], 
 						$url,
-						(booltoInt($link_isUpload[$newCount]) ? $model->uploads[$pathCount-1 + $uploadOffset]->id : -1),
+						(booltoInt($link_isUpload[$newCount]) ? $uploads[$pathCount-1]->id : -1),
 						$_POST['id'],
 						$linksRanks[$totalCount ++]);
+					$newLink->upload = $uploads[$pathCount-1];
 				}
 				$newCount ++;
 			}
 
-			array_push($model->links, $newLink);
+			array_push($section->links, $newLink);
 			next($_POST['isCurLink']);
 		}
-		return $model;
+		return $section;
 	}
 
-	function createTextareas($model, $textAreaRanks) {
+	function createTextareas($section, $textAreaRanks) {
 		$count = 0;
 		foreach($_POST as $key => $value) {
 			if (strrpos($key, 'isTwoCol') === 0 && strcmp($key, 'isTwoCol') != 0) {
@@ -220,13 +201,13 @@
 					$_POST['editor'.($count*2+1)],
 					$textAreaRanks[$count]);
 				$count ++;
-				array_push($model->textareas, $newTextArea);
+				array_push($section->textareas, $newTextArea);
 			}
 		}
-		return $model;
+		return $section;
 	}
 
-	function createGalleries($model, $galleriesRanks) {
+	function createGalleries($section, $galleriesRanks) {
 		$photosPerGallery = array();
 		$isNewImage = array();
 		$count = 0;
@@ -235,7 +216,7 @@
 				$newGallery = new Gallery();
 				$newGallery->createFromForm($_POST['id'], $galleriesRanks[$count]);
 				array_push($photosPerGallery, 0);
-				array_push($model->galleries, $newGallery);
+				array_push($section->galleries, $newGallery);
 				$count ++;
 			} else if (strrpos($key, 'curGalleryIm_rankMarker') === 0) {
 				$photosPerGallery[$count-1] ++;
@@ -256,22 +237,22 @@
 			for ($j = 0; $j < $photosPerGallery[$i]; $j++) {
 				$newGalleryimage = new Galleryimage();
 				if ($isNewImage[$totalCount]) {
-					$newGalleryimage->createFromForm($model->galleries[$i]->id, $_POST['uploadId'][$curCount ++], $j);	
+					$newGalleryimage->createFromForm($section->galleries[$i]->id, $_POST['uploadId'][$curCount ++], $j);
+					array_push($section->galleries[$i]->galleryimages, $newGalleryimage);	
 				} else {
-					if (strlen($uploadFilesPaths[$newCount][1]) > 0) {
+					if (sizeof($uploadFilesPaths) > 0 && strlen($uploadFilesPaths[$newCount][1]) > 0) {
+						$newGalleryimage->createFromForm($section->galleries[$i]->id, -1, $j);
 						$newUpload = new Upload();
 						$newUpload->createFromForm($uploadFilesPaths[$newCount][1], $uploadFilesPaths[$newCount][0]);
-						array_push($model->uploads, $newUpload);
-
-						$newGalleryimage->createFromForm($model->galleries[$i]->id, $newUpload->id, $j);
+						$newGalleryimage->upload = $newUpload;
+						array_push($section->galleries[$i]->galleryimages, $newGalleryimage);
 					}
 					$newCount ++;
 				}
-				array_push($model->galleryimages, $newGalleryimage);
 				$totalCount ++;
 			}
 		}
-		return $model;
+		return $section;
 	}
 
 ?>

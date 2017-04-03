@@ -18,16 +18,17 @@
 	<body>
 		<section id='saveArea'>
 			<button type="button" id="save">Sauvegarder</button>
-			<p>Modifications sauvegardées et publiées avec succès.</p>
+			<p id='success'>Modifications sauvegardées et publiées avec succès.</p>
+			<p id='fail'>La sauvegarde a échouée.</p>
 		</section>
 
 		<h1>Modifier le site</h1>
 
-		<form action="upload.php" method="post" enctype="multipart/form-data">
+		<form id='mainForm' action="upload.php" method="post" enctype="multipart/form-data">
 
 			<section id='toplinks' class='content'>
 				<p class='sectionLabel'>Liens haut de page</p>
-				<UPLINKS>
+				<TOPLINKS>
 			</section>
 
 			<section id='miniatures' class='content'>

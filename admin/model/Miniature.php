@@ -3,32 +3,48 @@
 class Miniature extends Elem {
 
 	var $sectionId;
-	var $uploadId;
+	var $upload;
 
 	function __construct() {
 		parent::__construct();
 		$this->sectionId = -1;
-		$this->uploadId = -1;
+		$this->upload = null;
 	}
 
-	function createFromBdd($tuple) {
-		parent::createFromBdd($tuple);
+	function loadFromDB($tuple) {
+		parent::loadFromDB($tuple);
 		$this->sectionId = $tuple['sectionId'];
-		$this->uploadId = $tuple['uploadId'];
+		$this->upload = new Upload();
+      	$this->upload->loadFromDB($tuple['uploadId']);
 	}
 
 	function createFromForm($sectionId, $uploadId) {
 	  $this->sectionId = $sectionId;
-	  $this->uploadId = $uploadId;
+	  $this->upload = new Upload();
+	  $this->upload->loadFromDB($uploadId);
 	}
 
-	function toFrontEnd() {
+	function toMenuForm($sectionTitle) {
+		$content = file_get_contents('../view/asset/miniature.html');
+		$content = str_replace('<ID>', $this->id, $content);
+		$content = str_replace('<TITLE>', $sectionTitle, $content);
+		return $content;
 	}
 
-	function toBDD() {
-		$q = "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
-			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
+	function toSQL() {
+		$q = $this->upload->toSQL();
+		$q .= "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->upload->id . "', '" . $this->rank . "'); ";
 		return $q;
+	}
+
+	function rankUpdate() {
+		return "UPDATE adm_miniature SET rank = '" . $this->rank . "' WHERE id = '" . $this->id . "'; ";
+	}
+
+	function delete() {
+      	$q .= "DELETE FROM adm_miniature WHERE id = '" . $this->id . "'; ";
+    	executeQuery($q);
 	}
 }
 ?>

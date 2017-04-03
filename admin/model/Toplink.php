@@ -11,8 +11,8 @@ class Toplink extends Elem {
 		$this->label = "";
 	}
 
-	function createFromBdd($tuple) {
-		parent::createFromBdd($tuple);
+	function loadFromDB($tuple) {
+		parent::loadFromDB($tuple);
 		$this->sectionId = $tuple['sectionId'];
 		$this->label = $tuple['label'];
 	}
@@ -22,13 +22,26 @@ class Toplink extends Elem {
 	  $this->label = $label;
 	}
 
-	function toFrontEnd() {
+	function toMenuForm($sectionTitle) {
+		$content = file_get_contents('../view/asset/toplink.html');
+		$content = str_replace('<ID>', $this->id, $content);
+		$content = str_replace('<TITLE>', $sectionTitle, $content);
+		return $content;
 	}
 
-	function toBDD() {
+	function toSQL() {
 		$q = "INSERT INTO adm_toplink(id, sectionId, label, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->label . "', '" . $this->rank . "'); ";
 		return $q;
+	}
+
+	function rankUpdate() {
+		return "UPDATE adm_toplink SET rank = '" . $this->rank . "' WHERE id = '" . $this->id . "'; ";
+	}
+
+	function delete() {
+		$q = "DELETE FROM adm_toplink WHERE id = '" . $this->id . "'; ";
+    	executeQuery($q);
 	}
 }
 ?>

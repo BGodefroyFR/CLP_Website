@@ -16,7 +16,7 @@
 		$newUpload = new Upload();
 		$newUpload->createFromForm("images/textImages/" . $id, $_FILES["upload"]["name"]);
 		$newUpload->isTextEmbeded = 1;
-		executeQuery($newUpload->toBDD());
+		executeQuery($newUpload->toSQL());
 
 		echo "Image uploadée";
 

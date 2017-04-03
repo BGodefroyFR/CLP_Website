@@ -3,46 +3,46 @@
 class GalleryImage extends Elem {
 
 	var $galleryId;
-	var $uploadId;
+	var $upload;
 
 	function __construct() {
 		parent::__construct();
 		$this->galleryId = -1;
-		$this->uploadId = -1;
+		$this->upload = null;
 	}
 
-	function createFromBdd($tuple) {
-		parent::createFromBdd($tuple);
+	function loadFromDB($tuple) {
+		parent::loadFromDB($tuple);
 		$this->galleryId = $tuple['galleryId'];
-		$this->uploadId = $tuple['uploadId'];
+		$this->upload = new Upload();
+      	$this->upload->loadFromDB($tuple['uploadId']);
 	}
 
 	function createFromForm($galleryId, $uploadId, $rank) {
 	  $this->galleryId = $galleryId;
-	  $this->uploadId = $uploadId;
+	  $this->upload = new Upload();
+      $this->upload->loadFromDB($uploadId);
 	  $this->rank = $rank;
 	}
 
-	function toFrontEnd($uploads) {
+	function toSectionForm() {
 		$content = file_get_contents('../view/asset/curGalery_image.html');
-
-		$imageName = "";
-		foreach($uploads as $u) {
-		    if ($u->id == $this->uploadId) {
-		       $imageName = $u->initialName;
-		       break;
-		    }
-		}
 		$content = str_replace('<RANKMARKER>', 'curGalleryIm_rankMarker' . rand(1, 1e9), $content);
-		$content = str_replace('<IMAGENAME>', $imageName, $content);
-		$content = str_replace('<UPLOADID>', $this->uploadId, $content);
+		$content = str_replace('<IMAGENAME>', $this->upload->initialName, $content);
+		$content = str_replace('<UPLOADID>', $this->upload->id, $content);
 		return $content;
 	}
 
-	function toBDD() {
-		$q = "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
-			. "VALUES('" . $this->id . "', '" . $this->galleryId . "', '" . $this->uploadId . "', '" . $this->rank . "'); ";
+	function toSQL() {
+		$q = $this->upload->toSQL();
+      	$q .= "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
+			. "VALUES('" . $this->id . "', '" . $this->galleryId . "', '" . $this->upload->id . "', '" . $this->rank . "'); ";
 		return $q;
+	}
+
+	function delete() {
+		$q = "DELETE FROM adm_galleryimage WHERE id = '" . $this->id . "'; ";
+		executeQuery($q);
 	}
 }
 ?>
