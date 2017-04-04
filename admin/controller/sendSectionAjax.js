@@ -65,6 +65,6 @@ $( document ).ready(function() {
         if (!isRecentSave && confirm("Enregistrer les modifications ?")) {
             saveForm();
         }
-        window.location = "mainMenu.html";
+        window.location = "menu.php";
     });
 });

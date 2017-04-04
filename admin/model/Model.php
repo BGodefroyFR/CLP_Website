@@ -22,7 +22,12 @@ class Model {
 	}
 
 	function toSectionForm($sectionId) {
-		return $this->getSection($sectionId)->toSectionForm();
+		$s = $this->getSection($sectionId);
+		if ($s == null) {
+			$s = new Section();
+			array_push($this->sections, $s);
+		}
+		return $s->toSectionForm();
 	}
 
 	function toMenuForm() {
@@ -31,11 +36,35 @@ class Model {
 		$topLinkContent = "";
 		$miniatureContent = "";
 		$sectionContent = "";
-		foreach ($this->sections as $s) {
-			$topLinkContent .= $s->toTopLinksMenuForm();
-			$miniatureContent .= $s->toMiniaturesMenuForm();
-			$sectionContent .= $s->toSectionsMenuForm();
-		}
+
+		$isDone;
+		do {
+			$isDone = true;
+			foreach ($this->sections as $s) {
+				if ($s->toplink != null && $s->toplink->rank == -1)
+					$topLinkContent .= $s->toplink->toMenuForm($s->title);
+				if ($s->miniature != null && $s->miniature->rank == -1)
+					$miniatureContent .= $s->miniature->toMenuForm($s->title);
+			}
+		} while(!$isDone);
+
+		$isDone;
+		$rankCounter = 0;
+		do {
+			$isDone = true;
+			foreach ($this->sections as $s) {
+				if ($s->toplink != null && $s->toplink->rank == $rankCounter)
+					$topLinkContent .= $s->toplink->toMenuForm($s->title);
+				if ($s->miniature != null && $s->miniature->rank == $rankCounter)
+					$miniatureContent .= $s->miniature->toMenuForm($s->title);
+				if ($s->rank == $rankCounter) {
+					$sectionContent .= $s->toMenuForm();
+					$isDone = false;
+				}
+			}
+			$rankCounter ++;
+		} while(!$isDone);
+
 		$content = str_replace('<TOPLINKS>', $topLinkContent, $content);
 		$content = str_replace('<MINIATURES>', $miniatureContent, $content);
 		$content = str_replace('<SECTIONS>', $sectionContent, $content);
@@ -52,9 +81,7 @@ class Model {
 	}
 
 	function deleteSection($sectionIndex) {
-		if($s = $this->getSection($sectionIndex)) {
-			$s->delete();
-		}
+		$this->sections[$sectionIndex]->delete();
 	}
 
 	function getSection($id) {

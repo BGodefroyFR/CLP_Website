@@ -20,9 +20,8 @@ $( document ).ready(function() {
 	});
 	$(document).on("click", ".content > .contentElem .delete",function() {
 		if (confirm("Supprimer cette section ?"))
+			$('.' + $(this).parent().parent().find(".rankMarker").val()).parent().parent().remove();
 			$(this).parent().parent().remove();
 	});
-	
-
 
 });

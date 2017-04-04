@@ -21,10 +21,10 @@ class Section extends Elem {
 
    function __construct() {
       parent::__construct();
-      $this->title = "";
-      $this->textColor = "";
-      $this->backgroundColor = "";
-      $this->backgroundPattern = "";
+      $this->title = "Nouvelle section";
+      $this->textColor = "#5c5c5c";
+      $this->backgroundColor = "#e0e0e0";
+      $this->backgroundPattern = "Uni";
    }
 
    function loadFromDB($tuple) {
@@ -81,6 +81,9 @@ class Section extends Elem {
    function toSectionForm() {
       $content = file_get_contents('../view/asset/sectionSkeleton.html');
 
+      $content = str_replace('<SECTIONID>', $this->id, $content);
+      $content = str_replace('<SECTIONRANK>', $this->rank, $content);
+
       // Title
       $content = str_replace('<TITLE>', $this->title, $content);
 
@@ -131,23 +134,7 @@ class Section extends Elem {
       $this->id = $id;
    }
 
-   function toTopLinksMenuForm() {
-      if ($this->toplink != null) {
-         return $this->toplink->toMenuForm($this->title);
-      } else {
-         return "";
-      }
-   }
-
-   function toMiniaturesMenuForm() {
-      if ($this->miniature != null) {
-         return $this->miniature->toMenuForm($this->title);
-      } else {
-         return "";
-      }
-   }
-
-   function toSectionsMenuForm() {
+   function toMenuForm() {
       $content = file_get_contents('../view/asset/section.html');
       $content = str_replace('<ID>', $this->id, $content);
       $content = str_replace('<TITLE>', $this->title, $content);

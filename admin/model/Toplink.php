@@ -26,6 +26,7 @@ class Toplink extends Elem {
 		$content = file_get_contents('../view/asset/toplink.html');
 		$content = str_replace('<ID>', $this->id, $content);
 		$content = str_replace('<TITLE>', $sectionTitle, $content);
+		$content = str_replace('<SECTIONID>', $this->sectionId, $content);
 		return $content;
 	}
 

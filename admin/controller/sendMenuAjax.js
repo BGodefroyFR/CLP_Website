@@ -29,4 +29,24 @@ $( document ).ready(function() {
     $("#saveArea button").click(function() {
         saveForm();
     });
+
+    // Edit section
+    $(document).on("click", ".section .actionsSection #edit", function() {
+        saveForm();
+        $.ajax({
+            url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/generateSectionForm.php?id=' + $(this).parent().parent().find('.rankMarker').val(),
+            type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                window.location = "modifySection.html";
+            },
+            error: function (data) {
+                
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
 });

@@ -36,11 +36,10 @@
 	$oldModel->deleteSection($_POST['id']);
 
 	// Exports model to DB
-	error_log($newModel->toSQL());
 	executeQuery($newModel->toSQL());
 
 	// Cleans uploads
-	//cleanUpUploads($_POST['id']);
+	cleanUpUploads($_POST['id']);
 
 
 	// -------------------------------------
@@ -68,7 +67,6 @@
 		$filesList = executeQuery($toRemove);
 		while($f = $filesList->fetch()) {
 			unlink("../../" . $f['path']);
-			error_log("../../" . $f['path']);
 		}
 		$q = "DELETE FROM adm_upload WHERE path LIKE 'images/textImages/%' ";
 		foreach ($embededImages as $e) {
