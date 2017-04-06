@@ -33,7 +33,7 @@
 	// Removes old version of section
 	$oldModel = new Model();
 	$oldModel->loadFromDB();
-	$oldModel->deleteSection($_POST['id']);
+	$oldModel->deleteSectionById($_POST['id'], false);
 
 	// Exports model to DB
 	executeQuery($newModel->toSQL());
@@ -165,24 +165,24 @@
 					$_POST['id'],
 					$linksRanks[$totalCount ++]);
 				$curCount ++;
+				array_push($section->links, $newLink);
 			} else {
 				$url = $_POST['link_url'][$newCount];
-				if (booltoInt($link_isUpload[$newCount])) 
+				if (booltoInt($link_isUpload[$newCount]) && strlen($uploadFilesPaths[$pathCount][1]) > 0) 
 					$url = $uploadFilesPaths[$pathCount ++][1];
-				if (strlen($url) > 0) {
-					$newLink->createFromForm(
-						booltoInt($link_isUpload[$newCount]),
-						$_POST['link_label'][$newCount], 
-						$url,
-						(booltoInt($link_isUpload[$newCount]) ? $uploads[$pathCount-1]->id : -1),
-						$_POST['id'],
-						$linksRanks[$totalCount ++]);
+				$newLink->createFromForm(
+					booltoInt($link_isUpload[$newCount]),
+					$_POST['link_label'][$newCount], 
+					$url,
+					((booltoInt($link_isUpload[$newCount]) && $pathCount > 0) ? $uploads[$pathCount-1]->id : -1),
+					$_POST['id'],
+					$linksRanks[$totalCount]);
+				if ($pathCount > 0)
 					$newLink->upload = $uploads[$pathCount-1];
-				}
+				array_push($section->links, $newLink);
+				$totalCount ++;
 				$newCount ++;
 			}
-
-			array_push($section->links, $newLink);
 			next($_POST['isCurLink']);
 		}
 		return $section;

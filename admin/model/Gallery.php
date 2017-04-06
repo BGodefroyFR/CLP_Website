@@ -49,9 +49,9 @@ class Gallery extends Elem {
 		return $q;
 	}
 
-	function delete() {
+	function delete($removeUploads) {
 		foreach($this->galleryimages as $g) {
-			$g->delete();
+			$g->delete($removeUploads);
 		}
       	$q = "DELETE FROM adm_gallery WHERE id = '" . $this->id . "'; ";
 		executeQuery($q);

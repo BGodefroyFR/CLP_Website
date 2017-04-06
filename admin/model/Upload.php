@@ -40,6 +40,10 @@ class Upload extends Elem {
 	}
 
 	function delete() {
+		// Deletes on disk
+		if (strlen($this->path) > 0)
+			unlink("../../" . $this->path);
+
 		$q = "DELETE FROM adm_upload WHERE id = '" . $this->id . "'; ";
     	executeQuery($q);
 	}

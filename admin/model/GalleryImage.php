@@ -34,13 +34,18 @@ class GalleryImage extends Elem {
 	}
 
 	function toSQL() {
-		$q = $this->upload->toSQL();
+		$q = "";
+      	if ($this->upload != null)
+			$q .= $this->upload->toSQL();
       	$q .= "INSERT INTO adm_galleryimage(id, galleryId, uploadId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->galleryId . "', '" . $this->upload->id . "', '" . $this->rank . "'); ";
 		return $q;
 	}
 
-	function delete() {
+	function delete($removeUploads) {
+		if ($removeUploads) {
+	         $this->upload->delete();
+	      }
 		$q = "DELETE FROM adm_galleryimage WHERE id = '" . $this->id . "'; ";
 		executeQuery($q);
 	}

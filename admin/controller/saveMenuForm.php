@@ -81,7 +81,7 @@
 		$count = 0;
 		foreach($listDeleted as $e) {
 			if ($e == true) {
-				$model->deleteSection($count);
+				$model->deleteSectionByIndex($count, true);
 			}
 			$count ++;
 		}

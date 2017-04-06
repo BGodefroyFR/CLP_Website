@@ -19,9 +19,10 @@ $( document ).ready(function() {
 			$(this).parent().parent().swapWith( $(this).parent().parent().next() );
 	});
 	$(document).on("click", ".content > .contentElem .delete",function() {
-		if (confirm("Supprimer cette section ?"))
-			$('.' + $(this).parent().parent().find(".rankMarker").val()).parent().parent().remove();
+		if (confirm("Supprimer cette section ?")) {
+			$('.' + $(this).parent().parent().find(".rankMarker").val()).parent().remove();
 			$(this).parent().parent().remove();
+		}
 	});
 
 });

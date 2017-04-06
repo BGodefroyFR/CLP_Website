@@ -165,16 +165,16 @@ class Section extends Elem {
       return $q;
    }
 
-   function delete() {
+   function delete($removeUploads) {
       if ($this->miniature != null)
-         $this->miniature->delete();
+         $this->miniature->delete($removeUploads);
       if ($this->toplink != null)
          $this->toplink->delete();
       foreach ($this->links as $e) {
-         $e->delete();
+         $e->delete($removeUploads);
       }
       foreach ($this->galleries as $e) {
-         $e->delete();
+         $e->delete($removeUploads);
       }
       foreach ($this->textareas as $e) {
          $e->delete();

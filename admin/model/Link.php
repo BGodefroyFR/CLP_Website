@@ -56,13 +56,21 @@ class Link extends Elem {
    }
 
    function toSQL() {
-      $q = $this->upload->toSQL();
+      $q = "";
+      $uploadId = -1;
+      if ($this->upload != null) {
+         $q .= $this->upload->toSQL();
+         $uploadId = $this->upload->id;
+      }
       $q .= "INSERT INTO adm_link(id, onServer, label, target, uploadId, sectionId, rank)" 
-         . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . $this->label . "', '" . $this->target . "', '" . $this->upload->id . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
+         . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . $this->label . "', '" . $this->target . "', '" . $uploadId . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
       return $q;
    }
 
-   function delete() {
+   function delete($removeUploads) {
+      if ($removeUploads) {
+         $this->upload->delete();
+      }
       $q = "DELETE FROM adm_link WHERE id = '" . $this->id . "'; ";
       executeQuery($q);
    }

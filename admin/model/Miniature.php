@@ -33,7 +33,9 @@ class Miniature extends Elem {
 	}
 
 	function toSQL() {
-		$q = $this->upload->toSQL();
+		$q = "";
+      	if ($this->upload != null)
+			$q .= $this->upload->toSQL();
 		$q .= "INSERT INTO adm_miniature(id, sectionId, uploadId, rank)" 
 			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->upload->id . "', '" . $this->rank . "'); ";
 		return $q;
@@ -43,8 +45,11 @@ class Miniature extends Elem {
 		return "UPDATE adm_miniature SET rank = '" . $this->rank . "' WHERE id = '" . $this->id . "'; ";
 	}
 
-	function delete() {
-      	$q .= "DELETE FROM adm_miniature WHERE id = '" . $this->id . "'; ";
+	function delete($removeUploads) {
+		if ($removeUploads) {
+	         $this->upload->delete();
+	      }
+      	$q = "DELETE FROM adm_miniature WHERE id = '" . $this->id . "'; ";
     	executeQuery($q);
 	}
 }

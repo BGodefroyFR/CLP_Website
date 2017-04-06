@@ -42,7 +42,7 @@ class Model {
 			$isDone = true;
 			foreach ($this->sections as $s) {
 				if ($s->toplink != null && $s->toplink->rank == -1)
-					$topLinkContent .= $s->toplink->toMenuForm($s->title);
+					$topLinkContent .= $s->toplink->toMenuForm();
 				if ($s->miniature != null && $s->miniature->rank == -1)
 					$miniatureContent .= $s->miniature->toMenuForm($s->title);
 			}
@@ -80,8 +80,14 @@ class Model {
 		return $q;
 	}
 
-	function deleteSection($sectionIndex) {
-		$this->sections[$sectionIndex]->delete();
+	function deleteSectionByIndex($sectionIndex, $removeUploads) {
+		$this->sections[$sectionIndex]->delete($removeUploads);
+	}
+
+	function deleteSectionById($id, $removeUploads) {
+		$section = $this->getSection($id);
+		if ($section != null)
+			$section->delete($removeUploads);
 	}
 
 	function getSection($id) {
