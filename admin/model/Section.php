@@ -165,6 +165,10 @@ class Section extends Elem {
       return $q;
    }
 
+   function toWebsite() {
+      return "";
+   }
+
    function delete($removeUploads) {
       if ($this->miniature != null)
          $this->miniature->delete($removeUploads);

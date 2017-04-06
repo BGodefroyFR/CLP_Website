@@ -36,6 +36,10 @@ class Toplink extends Elem {
 		return $q;
 	}
 
+	function toWebsite() {
+		return "";
+	}
+
 	function rankUpdate() {
 		return "UPDATE adm_toplink SET rank = '" . $this->rank . "' WHERE id = '" . $this->id . "'; ";
 	}

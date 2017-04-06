@@ -80,6 +80,71 @@ class Model {
 		return $q;
 	}
 
+	function toWebsite() {
+		$content = file_get_contents('../../assets/html_chuncks/skeleton.php');
+		$sortedSections = $this->getSortedArray($this->sections);
+
+		$miniatures = array();
+		$toplinks = array();
+		foreach ($this->sections as $s) {
+			if ($s->miniature != null)
+				array_push($miniatures, $s->miniature);
+			if ($s->toplinks != null)
+				array_push($toplinks, $s->toplink);
+		}
+		$sortedMiniatures = $this->getSortedArray($miniatures);
+		$sortedToplinks = $this->getSortedArray($toplinks);
+
+		$sectionsContent = "";
+		foreach($this->sections as $s) {
+			$sectionsContent .= $s->toWebsite();
+		}
+		$content = str_replace('<CONTENT>', $sectionsContent, $content);
+
+		$toplinksContent = "";
+		foreach($toplinks as $s) {
+			$toplinksContent .= $s->toWebsite();
+		}
+		$content = str_replace('<TOPLINKS>', $toplinksContent, $content);
+
+		$miniaturesContent = "";
+		foreach($miniatures as $s) {
+			$miniaturesContent .= $s->toWebsite();
+		}
+		$content = str_replace('<MINIATURES>', $miniaturesContent, $content);
+
+		$file = '../../index_g.php';
+		file_put_contents($file, $content);
+	}
+
+	function getSortedArray($array) {
+		$sortedArray = array();
+		while(true) {
+			$tmp = $this->getLowerRankElem($array);
+			if ($tmp > -1) {
+				array_push($sortedArray, $array[$tmp]);
+				unset($array[$tmp]);
+			}
+			else {
+				break;
+			}
+		}
+		return $sortedArray;
+	}
+
+	function getLowerRankElem($array) {
+		$minRank = 1e9;
+		$index = -1;
+		$count = 0;
+		foreach($array as $e) {
+			if ($e != null && $e->rank < $minRank) {
+				$minRank = $e->rank;
+				$index = $count ++;
+			}
+		}
+		return $index;
+	}
+
 	function deleteSectionByIndex($sectionIndex, $removeUploads) {
 		$this->sections[$sectionIndex]->delete($removeUploads);
 	}

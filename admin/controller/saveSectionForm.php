@@ -41,6 +41,9 @@
 	// Cleans uploads
 	cleanUpUploads($_POST['id']);
 
+	// Generates website
+	$newModel->toWebsite();
+
 
 	// -------------------------------------
 

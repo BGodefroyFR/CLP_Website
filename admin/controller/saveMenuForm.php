@@ -9,6 +9,10 @@
 	updateMiniaturesRanks($model);
 	updateSections($model);
 
+	// Generates website
+	$model->toWebsite();
+	
+
 	// -------------------------------------
 
 	function updateTopLinksRanks($model) {
