@@ -166,7 +166,10 @@ class Section extends Elem {
    }
 
    function toWebsite() {
-      return "";
+      $content = file_get_contents('../../assets/html_chuncks/section.html');
+      $content = str_replace('<REF>', $this->id, $content);
+      $content = str_replace('<STYLE>', $this->title, $content);
+      return $content;
    }
 
    function delete($removeUploads) {
