@@ -95,10 +95,12 @@ class Section extends Elem {
          $content = str_replace('<ISTOPLINK>', 'checked', $content);
          $content = str_replace('<TOPLINK>', $this->toplink->label, $content);
          $content = str_replace('<ISTOPLINKHIDDEN>', '', $content);
+         $content = str_replace('<TOPLINKRANK>', $this->toplink->rank, $content);
       } else {
          $content = str_replace('<ISTOPLINK>', '', $content);
          $content = str_replace('<TOPLINK>', '', $content);
          $content = str_replace('<ISTOPLINKHIDDEN>', 'hidden', $content);
+         $content = str_replace('<TOPLINKRANK>', '-1', $content);
       }
 
       // Miniature
@@ -108,10 +110,12 @@ class Section extends Elem {
          $tmp = "<p id='curMiniature'>" . $this->miniature->upload->initialName . "</p>";
          $content = str_replace('<MINIATUREIMAGE>', $tmp, $content);
          $content = str_replace('<MINIATUREUPLOADID>', $this->miniature->upload->id, $content);
+         $content = str_replace('<MINIATURERANK>', $this->miniature->rank, $content);
       } else {
          $content = str_replace('<ISMINIATURE>', '', $content);
          $content = str_replace('<ISMINIATUREHIDDEN>', 'hidden', $content);
          $content = str_replace('<MINIATUREUPLOADID>', '-1', $content);
+         $content = str_replace('<MINIATURERANK>', '-1', $content);
       }
 
       // Background color

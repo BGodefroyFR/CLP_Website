@@ -110,6 +110,7 @@
 		if (isset($_POST['isTopLink']) && strcmp($_POST['isTopLink'], "on") == 0) {
 			$newTopLink = new TopLink();
 			$newTopLink->createFromForm($_POST['id'], $_POST['topLinkText']);
+			$newTopLink->rank = $_POST['toplink_rank'];
 			$section->toplink = $newTopLink;
 		}
 		return $section;
@@ -120,6 +121,7 @@
 			if (!isUploadError($_FILES['miniatureImage']['error'])) {
 				$newMiniature = new Miniature();
 				$newMiniature->createFromForm($_POST['id'], -1);
+				$newMiniature->rank = $_POST['miniature_rank'];
 				$section->miniature = $newMiniature;
 
 				$path = uploadFile ('images/miniatures', $_FILES['miniatureImage']);
@@ -129,6 +131,7 @@
 			if($section->miniature == null && strcmp($_POST['miniatureUploadId'], '-1') != 0) {
 				$newMiniature = new Miniature();
 				$newMiniature->createFromForm($_POST['id'], $_POST['miniatureUploadId']);
+				$newMiniature->rank = $_POST['miniature_rank'];
 				$section->miniature = $newMiniature;
 			}
 		}

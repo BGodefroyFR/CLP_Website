@@ -41,8 +41,12 @@ class Miniature extends Elem {
 		return $q;
 	}
 
-	function toWebsite() {
-		return "";
+	function toWebsite($sectionTitle) {
+		$content = file_get_contents('../../assets/html_chuncks/miniature.html');
+		$content = str_replace('<REF>', $this->sectionId, $content);
+		$content = str_replace('<SRC>', $this->upload->path, $content);
+		$content = str_replace('<LABEL>', $sectionTitle, $content);
+		return $content;
 	}
 
 	function rankUpdate() {

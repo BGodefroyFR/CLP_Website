@@ -101,14 +101,14 @@ class Model {
 		$content = str_replace('<CONTENT>', $sectionsContent, $content);
 
 		$toplinksContent = "";
-		foreach($toplinks as $s) {
+		foreach($sortedToplinks as $s) {
 			$toplinksContent .= $s->toWebsite();
 		}
 		$content = str_replace('<TOPLINKS>', $toplinksContent, $content);
 
 		$miniaturesContent = "";
-		foreach($miniatures as $s) {
-			$miniaturesContent .= $s->toWebsite();
+		foreach($sortedMiniatures as $s) {
+			$miniaturesContent .= $s->toWebsite($this->getSection($s->sectionId)->title);
 		}
 		$content = str_replace('<MINIATURES>', $miniaturesContent, $content);
 
@@ -118,11 +118,11 @@ class Model {
 
 	function getSortedArray($array) {
 		$sortedArray = array();
+		$lowerRank = -1;
 		while(true) {
-			$tmp = $this->getLowerRankElem($array);
-			if ($tmp > -1) {
-				array_push($sortedArray, $array[$tmp]);
-				unset($array[$tmp]);
+			$lowerRank = $this->getLowerRankElem($array, $lowerRank);
+			if ($lowerRank > -1) {
+				array_push($sortedArray, $array[$lowerRank]);
 			}
 			else {
 				break;
@@ -131,15 +131,16 @@ class Model {
 		return $sortedArray;
 	}
 
-	function getLowerRankElem($array) {
+	function getLowerRankElem($array, $lastLowerRank) {
 		$minRank = 1e9;
 		$index = -1;
 		$count = 0;
 		foreach($array as $e) {
-			if ($e != null && $e->rank < $minRank) {
+			if ($e != null && $e->rank < $minRank && ($lastLowerRank == -1 || $e->rank > $array[$lastLowerRank]->rank)) {
 				$minRank = $e->rank;
-				$index = $count ++;
+				$index = $count;
 			}
+			$count ++;
 		}
 		return $index;
 	}

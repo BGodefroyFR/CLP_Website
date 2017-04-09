@@ -37,7 +37,10 @@ class Toplink extends Elem {
 	}
 
 	function toWebsite() {
-		return "";
+		$content = file_get_contents('../../assets/html_chuncks/toplink.html');
+		$content = str_replace('<REF>', $this->sectionId, $content);
+		$content = str_replace('<LABEL>', $this->label, $content);
+		return $content;
 	}
 
 	function rankUpdate() {
