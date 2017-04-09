@@ -12,6 +12,8 @@ class Section extends Elem {
    var $backgroundColor;
    var $backgroundPattern;
 
+   var $rank;
+
    var $miniature = null;
    var $toplink = null;
 
@@ -33,6 +35,7 @@ class Section extends Elem {
       $this->textColor = $tuple['textColor'];
       $this->backgroundColor = $tuple['backgroundColor'];
       $this->backgroundPattern = $tuple['backgroundPattern'];
+      $this->rank = $tuple['rank'];
 
       // miniature
       $r = executeQuery("SELECT * FROM adm_miniature WHERE sectionId = '" . $this->id . "'");
@@ -168,8 +171,52 @@ class Section extends Elem {
    function toWebsite() {
       $content = file_get_contents('../../assets/html_chuncks/section.html');
       $content = str_replace('<REF>', $this->id, $content);
-      $content = str_replace('<STYLE>', $this->title, $content);
+      $content = str_replace('<STYLE>', $this->getPattern() . " color: " . $this->textColor . ";", $content);
+      $content = str_replace('<TITLE>', $this->title, $content);
+
+      $elem = $this->getSortedElements();
+      $elementContent = "";
+      $linksAreaLeft = "";
+      $linksAreaRight = "";
+      $nbLinksInArea = 0;
+
+      $count = 0;
+
+      foreach($elem as $e) {
+         if (strcmp(get_class($e), "Link") == 0) {
+            if ($nbLinksInArea % 2 == 0) {
+               $linksAreaLeft .= $e->toWebsite();
+            } else {
+               $linksAreaRight .= $e->toWebsite();
+            }
+            $nbLinksInArea ++;
+         }
+         if (strcmp(get_class($e), "Link") != 0 || $count+1 == sizeof($elem)) {
+            if ($nbLinksInArea > 0) {
+               $linksArea = file_get_contents('../../assets/html_chuncks/linksArea.html');
+               $linksArea = str_replace('<LINKS_LEFT>', $linksAreaLeft, $linksArea);
+               $linksArea = str_replace('<LINKS_RIGHT>', $linksAreaRight, $linksArea);
+               $elementContent .= $linksArea;
+
+               $linksAreaLeft = "";
+               $linksAreaRight = "";
+               $nbLinksInArea = 0;
+            }
+            if (strcmp(get_class($e), "Link") != 0)
+               $elementContent .= $e->toWebsite();
+         }
+         $count ++;
+      }
+
+      $content = str_replace('<CONTENT>', $elementContent, $content);
       return $content;
+   }
+
+   function getPattern() {
+      $pattern = file_get_contents('../view/patterns/' . $this->backgroundPattern . '.css');
+      $pattern = str_replace('<BG-COLOR>', $this->backgroundColor, $pattern);
+      $pattern = str_replace('<FONT-COLOR>', $this->textColor, $pattern);
+      return $pattern;
    }
 
    function delete($removeUploads) {

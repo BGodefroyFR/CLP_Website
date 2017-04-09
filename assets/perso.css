@@ -83,6 +83,18 @@ section a,section a:visited,section a:hover,section a:active{
     font-size: 20px;
 }
 
+section .linkAreas {
+  overflow: hidden;
+  margin-bottom: 40px;
+  padding-bottom: 10px
+}
+section .textareas {
+  margin-bottom: 40px;
+}
+  section .textareas p {
+    margin: 0px;
+  }
+
 section a:hover{
 	color:#a27404;
 	text-decoration:none !important;;

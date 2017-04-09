@@ -1,3 +1,5 @@
+background-color: <BG-COLOR>;
+color: <FONT-COLOR>;
 background-image:
 repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
 repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),

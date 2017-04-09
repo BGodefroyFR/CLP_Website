@@ -67,6 +67,17 @@ class Link extends Elem {
       return $q;
    }
 
+   function toWebsite() {
+      $content = file_get_contents('../../assets/html_chuncks/link.html');
+      $ref = $this->target;
+      if ($this->onServer && $this->upload != null) {
+         $ref = $this->upload->path;
+      }
+      $content = str_replace('<REF>', $ref, $content);
+      $content = str_replace('<LABEL>', $this->label, $content);
+      return $content;
+   }
+
    function delete($removeUploads) {
       if ($removeUploads) {
          $this->upload->delete();

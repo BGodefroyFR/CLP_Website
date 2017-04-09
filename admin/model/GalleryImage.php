@@ -42,6 +42,12 @@ class GalleryImage extends Elem {
 		return $q;
 	}
 
+	function toWebsite() {
+      $content = file_get_contents('../../assets/html_chuncks/galleryImage.html');
+      $content = str_replace('<SRC>', $this->upload->path, $content);
+      return $content;
+   }
+
 	function delete($removeUploads) {
 		if ($removeUploads) {
 	         $this->upload->delete();

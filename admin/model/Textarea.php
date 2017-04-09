@@ -57,6 +57,22 @@ class Textarea extends Elem {
       return $q;
    }
 
+   function toWebsite() {
+      $content = "";
+      $col1 = str_replace('../../images/textImages/', 'images/textImages/', $this->contentCol1);
+      $col2 = str_replace('../../images/textImages/', 'images/textImages/', $this->contentCol2);  
+
+      if ($this->isTwoCol) {
+         $content = file_get_contents('../../assets/html_chuncks/textarea_2col.html');
+         $content = str_replace('<COL1>', $col1, $content);
+         $content = str_replace('<COL2>', $col2, $content);
+      } else {
+         $content = file_get_contents('../../assets/html_chuncks/textarea.html');
+         $content = str_replace('<CONTENT>', $col1, $content);
+      }
+      return $content;
+   }
+
    function delete() {
       $q = "DELETE FROM adm_textarea WHERE id = '" . $this->id . "'; ";
       executeQuery($q);

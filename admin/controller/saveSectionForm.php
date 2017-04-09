@@ -42,23 +42,25 @@
 	cleanUpUploads($_POST['id']);
 
 	// Generates website
-	$newModel->toWebsite();
+	$model = new Model();
+	$model->loadFromDB();
+	$model->toWebsite();
 
 
 	// -------------------------------------
 
 	function cleanUpUploads($sectionId) {
 		$toRemove = "SELECT path FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN ("
-    		. "SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
-    		. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' " 
-    		. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "')";
+    		. "SELECT uploadId FROM adm_miniature "
+    		. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id " 
+    		. "UNION SELECT uploadId FROM adm_link)";
 		$filesList = executeQuery($toRemove);
 		while($f = $filesList->fetch()) {
 			unlink("../../" . $f['path']);
 		}
-		$q = "DELETE FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN (SELECT uploadId FROM adm_miniature WHERE sectionId = '" . $sectionId . "' "
-			. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id and sectionId = '" . $sectionId . "' "
-			. "UNION SELECT uploadId FROM adm_link WHERE sectionId = '" . $sectionId . "'); ";
+		$q = "DELETE FROM adm_upload WHERE isTextEmbeded='0' and id NOT IN (SELECT uploadId FROM adm_miniature "
+			. "UNION SELECT uploadId FROM adm_galleryimage, adm_gallery WHERE adm_galleryimage.galleryId = adm_gallery.id "
+			. "UNION SELECT uploadId FROM adm_link); ";
 		executeQuery($q);
 
 		// Embeded images

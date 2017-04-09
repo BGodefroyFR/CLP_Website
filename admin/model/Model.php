@@ -12,7 +12,7 @@ class Model {
 	}
 
 	function loadFromDB() {
-		$r = executeQuery("SELECT * FROM adm_section");
+		$r = executeQuery("SELECT * FROM adm_section ORDER BY rank ASC");
 		while($d = $r->fetch()) {
 			$e = new Section($d);
 			$e->loadFromDB($d);
@@ -82,14 +82,13 @@ class Model {
 
 	function toWebsite() {
 		$content = file_get_contents('../../assets/html_chuncks/skeleton.php');
-		$sortedSections = $this->getSortedArray($this->sections);
 
 		$miniatures = array();
 		$toplinks = array();
 		foreach ($this->sections as $s) {
 			if ($s->miniature != null)
 				array_push($miniatures, $s->miniature);
-			if ($s->toplinks != null)
+			if ($s->toplink != null)
 				array_push($toplinks, $s->toplink);
 		}
 		$sortedMiniatures = $this->getSortedArray($miniatures);

@@ -49,6 +49,18 @@ class Gallery extends Elem {
 		return $q;
 	}
 
+	function toWebsite() {
+      $content = file_get_contents('../../assets/html_chuncks/gallery.html');
+
+      $imagesContent = "";
+      foreach ($this->galleryimages as $g) {
+      	$imagesContent .= $g->toWebsite();
+      }
+
+      $content = str_replace('<IMAGES>', $imagesContent, $content);
+      return $content;
+   }
+
 	function delete($removeUploads) {
 		foreach($this->galleryimages as $g) {
 			$g->delete($removeUploads);

@@ -49,7 +49,7 @@ $( document ).ready(function() {
 	function updatePatternDemo() {
 		var patternName = $("#style #patternSelection option:selected").val();
 
-		p = getPattern(patternName);
+		var p = getPattern(patternName);
 		var curColor = "";
 		if (lastPattern != "" && lastPattern != patternName) {
 			setBkgColor(p[1]);
@@ -58,16 +58,11 @@ $( document ).ready(function() {
 			curColor = $("#style #backgroundColor").val();
 		}
 		lastPattern = patternName;
+		
+		p[0] = p[0].replace('<BG-COLOR>', curColor);
+		p[0] = p[0].replace('<FONT-COLOR>', $("#style #fontColor").val());
 
-		var content = '<div style=\"color: ' + $("#style #fontColor").val() + '; ';
-		if (p[2]) {
-			content += "background-color: " + curColor + "; ";
-			content += p[0];
-		} else {
-			content += p[0];
-			content += "background-color: " + curColor + "; ";
-		}
-		content += '\">' + testText + '</div>';
+		var content = '<div style=\"' + p[0] + '\">' + testText + '</div>';
 		$("#style #patternDemo").html(content);
 	}
 
@@ -78,7 +73,6 @@ $( document ).ready(function() {
 	function getPattern(name) {
 
 		var color = "#dfdfdf";
-		var isColBefore = false;
 
 		switch(name) {
 			case "Uni":
@@ -88,7 +82,6 @@ $( document ).ready(function() {
 		        break;
 		    case "Half-Rombes":
 				color = "#3366cc";
-				isColBefore = true;
 				break;
 			case "Zig-Zag":
 				color = "#EC173A";
@@ -101,7 +94,6 @@ $( document ).ready(function() {
 				break;
 			case "Starry-night":
 				color = "black";
-				isColBefore = true;
 				break;
 			case "Carbon":
 				color = "#131313";
@@ -111,47 +103,36 @@ $( document ).ready(function() {
 				break;
 			case "Argyle":
 				color = "#6d695c";
-				isColBefore = true;
 				break;
 			case "Steps":
 				color = "#FF7D9D";
-				isColBefore = true;
 				break;
 			case "Waves":
 				color = "#708090";
-				isColBefore = false;
 				break;
 			case "Japanese-cube":
 				color = "#555566";
-				isColBefore = true;
 				break;
 			case "Checkerboard":
 				color = "#eeeeee";
-				isColBefore = true;
 				break;
 			case "Diagonal-checkerboard":
 				color = "#eeeeee";
-				isColBefore = true;
 				break;
 			case "Lined-paper":
 				color = "#ffffff";
-				isColBefore = true;
 				break;
 			case "Diagonal-stripes":
 				color = "#808080";
-				isColBefore = true;
 				break;
 			case "Cicada-stripes":
 				color = "#026873";
-				isColBefore = true;
 				break;
 			case "Vertical-stripes":
 				color = "#808080";
-				isColBefore = true;
 				break;
 			case "Horizontal-stripes":
 		    	color = "#808080";
-		    	isColBefore = true;
 		    	break;
 		    default:
 		        alert("Erreur: motif inconnu (" + name + ")");
@@ -163,7 +144,7 @@ $( document ).ready(function() {
 			pattern = data;
 		});
 		$.ajaxSetup({async:true});
-		return [pattern, color, isColBefore];
+		return [pattern, color];
 	}
 
 });

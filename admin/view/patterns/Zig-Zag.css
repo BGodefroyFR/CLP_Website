@@ -4,3 +4,5 @@ linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
 linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
 linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
 background-size: 100px 100px;
+background-color: <BG-COLOR>;
+color: <FONT-COLOR>;
