@@ -150,7 +150,7 @@ class Section extends Elem {
 
    function toSQL() {
       $q = "INSERT INTO adm_section(id, title, textColor, backgroundColor, backgroundPattern, rank)" 
-         . "VALUES('" . $this->id . "', '" . $this->title . "', '" . $this->textColor . "', '" . $this->backgroundColor . "', '" . $this->backgroundPattern . "', '" . $this->rank . "'); ";
+         . "VALUES('" . $this->id . "', '" . addslashes($this->title) . "', '" . $this->textColor . "', '" . $this->backgroundColor . "', '" . $this->backgroundPattern . "', '" . $this->rank . "'); ";
       
       if ($this->toplink != null) {
          $q .= $this->toplink->toSQL();

@@ -35,7 +35,7 @@ class Upload extends Elem {
 		if (!$this->isNew || strcmp($this->path, "") == 0)
 			return "";
 		$q = "INSERT INTO adm_upload(id, path, initialName, isTextEmbeded)" 
-			. "VALUES('" . $this->id . "', '" . $this->path . "', '" . $this->initialName . "', '" . $this->isTextEmbeded . "'); ";
+			. "VALUES('" . $this->id . "', '" . $this->path . "', '" . addslashes($this->initialName) . "', '" . $this->isTextEmbeded . "'); ";
 		return $q;
 	}
 

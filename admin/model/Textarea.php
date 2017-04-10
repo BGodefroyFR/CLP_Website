@@ -53,7 +53,7 @@ class Textarea extends Elem {
 
    function toSQL() {
       $q = "INSERT INTO adm_textarea(id, sectionId, isTwoCol, contentCol1, contentCol2, rank)" 
-         . "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->isTwoCol . "', '" . $this->contentCol1 . "', '" . $this->contentCol2 . "', '" . $this->rank . "'); ";
+         . "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->isTwoCol . "', '" . addslashes($this->contentCol1) . "', '" . addslashes($this->contentCol2) . "', '" . $this->rank . "'); ";
       return $q;
    }
 

@@ -32,7 +32,7 @@ class Toplink extends Elem {
 
 	function toSQL() {
 		$q = "INSERT INTO adm_toplink(id, sectionId, label, rank)" 
-			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . $this->label . "', '" . $this->rank . "'); ";
+			. "VALUES('" . $this->id . "', '" . $this->sectionId . "', '" . addslashes($this->label) . "', '" . $this->rank . "'); ";
 		return $q;
 	}
 

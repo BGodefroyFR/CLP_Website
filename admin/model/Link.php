@@ -63,7 +63,7 @@ class Link extends Elem {
          $uploadId = $this->upload->id;
       }
       $q .= "INSERT INTO adm_link(id, onServer, label, target, uploadId, sectionId, rank)" 
-         . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . $this->label . "', '" . $this->target . "', '" . $uploadId . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
+         . "VALUES('" . $this->id . "', '" . $this->onServer . "', '" . addslashes($this->label) . "', '" . $this->target . "', '" . $uploadId . "', '" . $this->sectionId . "', '" . $this->rank . "'); ";
       return $q;
    }
 

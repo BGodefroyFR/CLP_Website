@@ -59,6 +59,7 @@
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right scroll">
                  <TOPLINKS>
+                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
 
@@ -73,6 +74,23 @@
 </div>
 
 <CONTENT>
+
+<div id="contact" class="spacer">
+  <div class="container contactform center">
+    <h2 class="text-center  wowload fadeInUp" style="font-size: 42px; font-family: raleway;">Contact</h2>
+    <div class="row wowload fadeInLeftBig">      
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12"> 
+        <form action="contact.php" method="post">     
+          <input type="text" name="name" placeholder="Nom">
+          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="subject" placeholder="Sujet">
+          <textarea rows="5" name="message" placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp; Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="footer text-center spacer">
 <p class="wowload flipInX"><a target="_blank" href="https://www.facebook.com/lepassage.fr"><i class="fa fa-facebook fa-2x"></i></a></p>

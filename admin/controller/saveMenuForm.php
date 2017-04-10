@@ -10,6 +10,8 @@
 	updateSections($model);
 
 	// Generates website
+	$model = new Model();
+	$model->loadFromDB();
 	$model->toWebsite();
 	
 
