@@ -1,7 +1,14 @@
 $( document ).ready(function() {
 
+    var isRecentSave = true;
+    var timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
+
     function saveForm() {
         formData = new FormData(document.getElementById('mainForm'));
+
+        isRecentSave = true;
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
 
         $.ajax({
             url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/saveMenuForm.php',
@@ -48,5 +55,12 @@ $( document ).ready(function() {
             contentType: false,
             processData: false
         });
+    });
+
+    $("#nav button").click(function() {
+        if (!isRecentSave && confirm("Enregistrer les modifications ?")) {
+            saveForm();
+        }
+        window.location = "../homepage.php";
     });
 });

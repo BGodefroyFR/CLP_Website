@@ -28,5 +28,13 @@
 		return (strcmp($b, 'true') == 0 ? 1 : 0);
 	}
 
+	function checkConnection() {
+		session_start();
+		if(strcmp(hash('ripemd160', $_SESSION['connexion']), "1df8aecacf101d9da33edca430b32217042213b6") != 0)
+		{
+			die("<script>location.href = 'index.php'</script>");
+		}
+	}
+
 
 ?>

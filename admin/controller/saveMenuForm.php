@@ -2,6 +2,8 @@
 	include '../model/Model.php';
 	include 'uploadFile.php';
 
+	checkConnection();
+
 	$model = new Model();
 	$model->loadFromDB();
 

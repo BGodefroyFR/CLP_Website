@@ -1,6 +1,8 @@
 <?php
 	include '../model/Model.php';
 
+	checkConnection();
+
 	generateSectionForm($_GET['id']);
 
 	function generateSectionForm($sectionId) {

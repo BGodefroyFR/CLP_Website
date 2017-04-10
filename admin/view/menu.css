@@ -23,18 +23,27 @@ div input {
     vertical-align: middle;
 }
 
-section#saveArea #success, section#saveArea #fail {
-	font-size: 12px;
-    display: none;
-    margin-left: 3px;
-    font-family: sans-serif;
+section#nav {
+	display: inline-block;
 }
-	section#saveArea #success {
-	    color: #73ab3a;
+
+section#saveArea {
+	display: inline-block;
+    margin-left: 3px;
+}
+
+	section#saveArea #success, section#saveArea #fail {
+		font-size: 12px;
+	    display: none;
+	    margin-left: 3px;
+	    font-family: sans-serif;
 	}
-	section#saveArea #fail {
-	    color: red;
-	}
+		section#saveArea #success {
+		    color: #73ab3a;
+		}
+		section#saveArea #fail {
+		    color: red;
+		}
 
 section .sectionLabel {
 	font-family: monospace;
