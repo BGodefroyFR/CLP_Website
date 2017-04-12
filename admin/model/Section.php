@@ -31,7 +31,7 @@ class Section extends Elem {
 
    function loadFromDB($tuple) {
       parent::loadFromDB($tuple);
-      $this->title = $tuple['title'];
+      $this->title = stripslashes($tuple['title']);
       $this->textColor = $tuple['textColor'];
       $this->backgroundColor = $tuple['backgroundColor'];
       $this->backgroundPattern = $tuple['backgroundPattern'];

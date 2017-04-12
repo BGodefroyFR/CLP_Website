@@ -20,7 +20,7 @@ class Upload extends Elem {
 		if($d = $r->fetch()) {
 			parent::loadFromDB($d);
 			$this->path = $d['path'];
-			$this->initialName = $d['initialName'];
+			$this->initialName = stripslashes($d['initialName']);
 		}
 		$this->isNew = false;
 	}
@@ -41,8 +41,9 @@ class Upload extends Elem {
 
 	function delete() {
 		// Deletes on disk
-		if (strlen($this->path) > 0)
+		if (strlen($this->path) > 0) {
 			unlink("../../" . $this->path);
+		}
 
 		$q = "DELETE FROM adm_upload WHERE id = '" . $this->id . "'; ";
     	executeQuery($q);

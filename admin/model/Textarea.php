@@ -19,8 +19,8 @@ class Textarea extends Elem {
       parent::loadFromDB($tuple);
       $this->sectionId = $tuple['sectionId'];
       $this->isTwoCol = $tuple['isTwoCol'];
-      $this->contentCol1 = $tuple['contentCol1'];
-      $this->contentCol2 = $tuple['contentCol2'];
+      $this->contentCol1 = stripslashes($tuple['contentCol1']);
+      $this->contentCol2 = stripslashes($tuple['contentCol2']);
    }
 
    function createFromForm($sectionId, $isTwoCol, $contentCol1, $contentCol2, $rank) {
@@ -33,12 +33,12 @@ class Textarea extends Elem {
 
    function toSectionForm() {
       $content = file_get_contents('../view/asset/curTextArea.html');
-      $content = str_replace('<CONTENTLEFT>', $this->contentCol1, $content);
+      $content = str_replace('<CONTENTLEFT>', stripslashes($this->contentCol1), $content);
 
       if ($this->isTwoCol) {
          $content = str_replace('<IS2COL>', 'checked', $content);
          $content = str_replace('<DISPLAYRIGHTCOL>', 'display: inline-block;', $content);
-         $content = str_replace('<CONTENTRIGHT>', $this->contentCol2, $content);
+         $content = str_replace('<CONTENTRIGHT>', stripslashes($this->contentCol2), $content);
          $content = str_replace('<LEFTCOLWIDTH>', '45', $content);
          $content = str_replace('<LEFTCOLLABEL>', 'Colonne gauche', $content);
       } else {
@@ -64,11 +64,11 @@ class Textarea extends Elem {
 
       if ($this->isTwoCol) {
          $content = file_get_contents('../../assets/html_chuncks/textarea_2col.html');
-         $content = str_replace('<COL1>', $col1, $content);
-         $content = str_replace('<COL2>', $col2, $content);
+         $content = str_replace('<COL1>', stripslashes($col1), $content);
+         $content = str_replace('<COL2>', stripslashes($col2), $content);
       } else {
          $content = file_get_contents('../../assets/html_chuncks/textarea.html');
-         $content = str_replace('<CONTENT>', $col1, $content);
+         $content = str_replace('<CONTENT>', stripslashes($col1), $content);
       }
       return $content;
    }

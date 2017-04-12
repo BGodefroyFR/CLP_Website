@@ -2,7 +2,9 @@
 	include '../model/Model.php';
 	include 'uploadFile.php';
 
-	checkConnection();
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 
 	$model = new Model();
 	$model->loadFromDB();

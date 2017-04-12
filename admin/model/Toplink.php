@@ -14,7 +14,7 @@ class Toplink extends Elem {
 	function loadFromDB($tuple) {
 		parent::loadFromDB($tuple);
 		$this->sectionId = $tuple['sectionId'];
-		$this->label = $tuple['label'];
+		$this->label = stripslashes($tuple['label']);
 	}
 
 	function createFromForm($sectionId, $label) {

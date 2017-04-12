@@ -58,6 +58,7 @@
 
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right scroll">
+                <li class="active"><a href="#works">Accueil</a></li>
                  <TOPLINKS>
                  <li><a href="#contact">Contact</a></li>
               </ul>

@@ -45,7 +45,7 @@ class Miniature extends Elem {
 		$content = file_get_contents('../../assets/html_chuncks/miniature.html');
 		$content = str_replace('<REF>', $this->sectionId, $content);
 		$content = str_replace('<SRC>', $this->upload->path, $content);
-		$content = str_replace('<LABEL>', $sectionTitle, $content);
+		$content = str_replace('<LABEL>', str_replace(" ", " &nbsp;&nbsp;",$sectionTitle), $content);
 		return $content;
 	}
 

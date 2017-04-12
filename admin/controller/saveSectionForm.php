@@ -2,8 +2,6 @@
 	include '../model/Model.php';
 	include 'uploadFile.php';
 
-	checkConnection();
-
 	// Gets contents ranking
 	$linksRanks = array();
 	$textAreaRanks = array();
@@ -88,6 +86,7 @@
 		while($e = $textAreaContents->fetch()) {
 			for ($i = 1; $i <= 2; $i++) {
 				$startPos = 0;
+				$e['contentCol'.$i] = stripslashes($e['contentCol'.$i]);
 				do {
 					if (strlen($e['contentCol'.$i]) <= $startPos+1)
 						break;

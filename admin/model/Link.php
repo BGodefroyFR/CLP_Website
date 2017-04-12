@@ -20,7 +20,7 @@ class Link extends Elem {
    function loadFromDB($tuple) {
       parent::loadFromDB($tuple);
       $this->onServer = $tuple['onServer'];
-      $this->label = $tuple['label'];
+      $this->label = stripslashes($tuple['label']);
       $this->target = $tuple['target'];
       $this->upload = new Upload();
       $this->upload->loadFromDB($tuple['uploadId']);

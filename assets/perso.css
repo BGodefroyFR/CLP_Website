@@ -89,11 +89,19 @@ section .linkAreas {
   padding-bottom: 10px
 }
 section .textareas {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
   section .textareas p {
     margin: 0px;
   }
+
+section .linksArea {
+  margin-bottom: 30px;
+}
+
+section .car1 {
+  margin-top: 50px;
+}
 
 section a:hover{
 	color:#a27404;
