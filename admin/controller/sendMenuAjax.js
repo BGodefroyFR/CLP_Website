@@ -11,7 +11,7 @@ $( document ).ready(function() {
         timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
 
         $.ajax({
-            url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/saveMenuForm.php',
+            url: '../controller/saveMenuForm.php',
             type: 'POST',
             data: formData,
             async: false,
@@ -41,7 +41,7 @@ $( document ).ready(function() {
     $(document).on("click", ".section .actionsSection #edit", function() {
         saveForm();
         $.ajax({
-            url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/generateSectionForm.php?id=' + $(this).parent().parent().find('.rankMarker').val(),
+            url: '../controller/generateSectionForm.php?id=' + $(this).parent().parent().find('.rankMarker').val(),
             type: 'POST',
             data: formData,
             async: false,

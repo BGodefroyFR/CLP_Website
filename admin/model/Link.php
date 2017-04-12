@@ -58,7 +58,7 @@ class Link extends Elem {
    function toSQL() {
       $q = "";
       $uploadId = -1;
-      if ($this->upload != null) {
+      if ($this->onServer) {
          $q .= $this->upload->toSQL();
          $uploadId = $this->upload->id;
       }

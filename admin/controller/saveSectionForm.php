@@ -177,8 +177,14 @@
 				array_push($section->links, $newLink);
 			} else {
 				$url = $_POST['link_url'][$newCount];
-				if (booltoInt($link_isUpload[$newCount]) && strlen($uploadFilesPaths[$pathCount][1]) > 0) 
-					$url = $uploadFilesPaths[$pathCount ++][1];
+				if (booltoInt($link_isUpload[$newCount])) {
+					if (strlen($uploadFilesPaths[$pathCount][1]) > 0) {
+						$url = $uploadFilesPaths[$pathCount][1];
+					} else {
+						$url = "";
+					}
+					$pathCount ++;
+				}
 				$newLink->createFromForm(
 					booltoInt($link_isUpload[$newCount]),
 					$_POST['link_label'][$newCount], 

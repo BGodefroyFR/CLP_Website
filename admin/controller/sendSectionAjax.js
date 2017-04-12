@@ -35,7 +35,7 @@ $( document ).ready(function() {
         timeout = setTimeout(function(){ isRecentSave = false; }, 30000);
 
         $.ajax({
-            url: 'http://127.0.1.1/compagnielepassage.fr/admin/controller/saveSectionForm.php',
+            url: '../controller/saveSectionForm.php',
             type: 'POST',
             data: formData,
             async: false,
